@@ -1,22 +1,10 @@
-# cra-template-tailwindcss-typescript
+# Getting Started
+1. Clone Repo
+2. Run yarn install 
+3. Once you have ran yarn install, install nvm and run the command `nvm use` to make sure you are using the version of node I have specified in the package.json and .nvmrc file
 
-A streamlined [Tailwind CSS v3.x](https://tailwindcss.com) template for [Create React App](https://github.com/facebook/create-react-app) in [TypeScript](https://www.typescriptlang.org/).
-
-> This template installs and sets up [Tailwind CSS](https://tailwindcss.com) with TypeScript support.
-
-## Usage
-
-```bash
-npx create-react-app --template tailwindcss-typescript
-```
-
-## Credits
-
-This project was made possible thanks to the following projects.
-
-1. [GeoffSelby/cra-template-tailwindcss](https://github.com/GeoffSelby/cra-template-tailwindcss) - A streamlined Tailwind CSS template for Create React App (in JavaScript).
-2. [cra-template-typescript](https://github.com/facebook/create-react-app/tree/master/packages/cra-template-typescript) - An official TypeScript template for create-react-app.
+# Scripts
+`yarn storybook` will run the storybook UI library so you can have a playground for the components in the components/UI directory. Customize your UI components as you see fit
 
 ## License
-
 MIT © [Sung M. Kim](https://sung.codes)
