@@ -1,5 +1,3 @@
-import './src/styles/tailwindcss';
-
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
