@@ -162,190 +162,202 @@ const Icon = ({ name, color, size, solid, className }: IconInterface) => {
   const formattedClassName = `${c} ${s} ${cn}`;
   const iconMap = {
     adjustments: (
-      <Adjustments solid={solid} formattedClassName={formattedClassName} />
+      <Adjustments solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "arrow-down": (
-      <ArrowDown solid={solid} formattedClassName={formattedClassName} />
+      <ArrowDown solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "arrow-left": (
-      <ArrowLeft solid={solid} formattedClassName={formattedClassName} />
+      <ArrowLeft solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "arrow-right": (
-      <ArrowRight solid={solid} formattedClassName={formattedClassName} />
+      <ArrowRight solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "arrow-up": (
-      <ArrowUp solid={solid} formattedClassName={formattedClassName} />
+      <ArrowUp solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "american-express": (
       <AmericanExpress formattedClassName={formattedClassName} />
     ),
-    beaker: <Beaker solid={solid} formattedClassName={formattedClassName} />,
-    bell: <Bell solid={solid} formattedClassName={formattedClassName} />,
+    beaker: <Beaker solid={!!solid} formattedClassName={formattedClassName} />,
+    bell: <Bell solid={!!solid} formattedClassName={formattedClassName} />,
     "book-open": (
-      <BookOpen solid={solid} formattedClassName={formattedClassName} />
+      <BookOpen solid={!!solid} formattedClassName={formattedClassName} />
     ),
     bullseye: <Bullseye formattedClassName={formattedClassName} />,
     calendar: (
-      <Calendar solid={solid} formattedClassName={formattedClassName} />
+      <Calendar solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "chart-bar": (
-      <ChartBar solid={solid} formattedClassName={formattedClassName} />
+      <ChartBar solid={!!solid} formattedClassName={formattedClassName} />
     ),
-    check: <Check solid={solid} formattedClassName={formattedClassName} />,
+    check: <Check solid={!!solid} formattedClassName={formattedClassName} />,
     "circle-check": (
-      <CircleCheck solid={solid} formattedClassName={formattedClassName} />
+      <CircleCheck solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "chevron-double-down": (
       <ChevronDoubleDown
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
     "chevron-double-left": (
       <ChevronDoubleLeft
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
     "chevron-double-right": (
       <ChevronDoubleRight
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
     "chevron-double-up": (
-      <ChevronDoubleUp solid={solid} formattedClassName={formattedClassName} />
+      <ChevronDoubleUp
+        solid={!!solid}
+        formattedClassName={formattedClassName}
+      />
     ),
     "chevron-down": (
-      <ChevronDown solid={solid} formattedClassName={formattedClassName} />
+      <ChevronDown solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "chevron-left": (
-      <ChevronLeft solid={solid} formattedClassName={formattedClassName} />
+      <ChevronLeft solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "chevron-right": (
-      <ChevronRight solid={solid} formattedClassName={formattedClassName} />
+      <ChevronRight solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "chevron-up": (
-      <ChevronUp solid={solid} formattedClassName={formattedClassName} />
+      <ChevronUp solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "clipboard-list": (
-      <ClipboardList solid={solid} formattedClassName={formattedClassName} />
+      <ClipboardList solid={!!solid} formattedClassName={formattedClassName} />
     ),
-    clock: <Clock solid={solid} formattedClassName={formattedClassName} />,
-    cloud: <Cloud solid={solid} formattedClassName={formattedClassName} />,
-    code: <Code solid={solid} formattedClassName={formattedClassName} />,
-    cog: <Cog solid={solid} formattedClassName={formattedClassName} />,
-    comment: <Comment solid={solid} formattedClassName={formattedClassName} />,
+    clock: <Clock solid={!!solid} formattedClassName={formattedClassName} />,
+    cloud: <Cloud solid={!!solid} formattedClassName={formattedClassName} />,
+    code: <Code solid={!!solid} formattedClassName={formattedClassName} />,
+    cog: <Cog solid={!!solid} formattedClassName={formattedClassName} />,
+    comment: (
+      <Comment solid={!!solid} formattedClassName={formattedClassName} />
+    ),
     "credit-card": (
-      <CreditCard solid={solid} formattedClassName={formattedClassName} />
+      <CreditCard solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "currency-dollar": (
-      <CurrencyDollar solid={solid} formattedClassName={formattedClassName} />
+      <CurrencyDollar solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "desktop-computer": (
-      <DesktopComputer solid={solid} formattedClassName={formattedClassName} />
+      <DesktopComputer
+        solid={!!solid}
+        formattedClassName={formattedClassName}
+      />
     ),
     "diners-club": <DinersClub formattedClassName={formattedClassName} />,
     discover: <Discover formattedClassName={formattedClassName} />,
     document: (
-      <Document solid={solid} formattedClassName={formattedClassName} />
+      <Document solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "dots-horizontal": (
-      <DotsHorizontal solid={solid} formattedClassName={formattedClassName} />
+      <DotsHorizontal solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "dots-vertical": (
-      <DotsVertical solid={solid} formattedClassName={formattedClassName} />
+      <DotsVertical solid={!!solid} formattedClassName={formattedClassName} />
     ),
     download: (
-      <Download solid={solid} formattedClassName={formattedClassName} />
+      <Download solid={!!solid} formattedClassName={formattedClassName} />
     ),
     elo: <Elo formattedClassName={formattedClassName} />,
     "exclamation-circle": (
       <ExclamationCircle
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
     "external-link": (
-      <ExternalLink solid={solid} formattedClassName={formattedClassName} />
+      <ExternalLink solid={!!solid} formattedClassName={formattedClassName} />
     ),
-    eye: <Eye solid={solid} formattedClassName={formattedClassName} />,
+    eye: <Eye solid={!!solid} formattedClassName={formattedClassName} />,
     facebook: <Facebook formattedClassName={formattedClassName} />,
     github: <Github formattedClassName={formattedClassName} />,
-    globe: <Globe solid={solid} formattedClassName={formattedClassName} />,
+    globe: <Globe solid={!!solid} formattedClassName={formattedClassName} />,
     google: <Google formattedClassName={formattedClassName} />,
     hipercard: <Hipercard formattedClassName={formattedClassName} />,
-    home: <Home solid={solid} formattedClassName={formattedClassName} />,
+    home: <Home solid={!!solid} formattedClassName={formattedClassName} />,
     "information-circle": (
       <InformationCircle
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
     instagram: <Instagram formattedClassName={formattedClassName} />,
     jcb: <JCB formattedClassName={formattedClassName} />,
     "lightning-bolt": (
-      <LightningBolt solid={solid} formattedClassName={formattedClassName} />
+      <LightningBolt solid={!!solid} formattedClassName={formattedClassName} />
     ),
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    link: <Link solid={solid} formattedClassName={formattedClassName} />,
+    link: <Link solid={!!solid} formattedClassName={formattedClassName} />,
     linkedin: <LinkedIn formattedClassName={formattedClassName} />,
-    login: <Login solid={solid} formattedClassName={formattedClassName} />,
-    logout: <Logout solid={solid} formattedClassName={formattedClassName} />,
-    mail: <Mail solid={solid} formattedClassName={formattedClassName} />,
+    login: <Login solid={!!solid} formattedClassName={formattedClassName} />,
+    logout: <Logout solid={!!solid} formattedClassName={formattedClassName} />,
+    mail: <Mail solid={!!solid} formattedClassName={formattedClassName} />,
     maestro: <Maestro formattedClassName={formattedClassName} />,
     mastercard: <Mastercard formattedClassName={formattedClassName} />,
-    menu: <Menu solid={solid} formattedClassName={formattedClassName} />,
-    minus: <Minus solid={solid} formattedClassName={formattedClassName} />,
-    moon: <Moon solid={solid} formattedClassName={formattedClassName} />,
+    menu: <Menu solid={!!solid} formattedClassName={formattedClassName} />,
+    minus: <Minus solid={!!solid} formattedClassName={formattedClassName} />,
+    moon: <Moon solid={!!solid} formattedClassName={formattedClassName} />,
     "paper-airplane": (
-      <PaperAirplane solid={solid} formattedClassName={formattedClassName} />
+      <PaperAirplane solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "pencil-alt": (
-      <PencilAlt solid={solid} formattedClassName={formattedClassName} />
+      <PencilAlt solid={!!solid} formattedClassName={formattedClassName} />
     ),
-    play: <Play solid={solid} formattedClassName={formattedClassName} />,
-    plus: <Plus solid={solid} formattedClassName={formattedClassName} />,
+    play: <Play solid={!!solid} formattedClassName={formattedClassName} />,
+    plus: <Plus solid={!!solid} formattedClassName={formattedClassName} />,
     "question-mark-circle": (
       <QuestionMarkCircle
-        solid={solid}
+        solid={!!solid}
         formattedClassName={formattedClassName}
       />
     ),
-    refresh: <Refresh solid={solid} formattedClassName={formattedClassName} />,
-    rss: <RSS solid={solid} formattedClassName={formattedClassName} />,
-    search: <Search solid={solid} formattedClassName={formattedClassName} />,
-    share: <Share solid={solid} formattedClassName={formattedClassName} />,
+    refresh: (
+      <Refresh solid={!!solid} formattedClassName={formattedClassName} />
+    ),
+    rss: <RSS solid={!!solid} formattedClassName={formattedClassName} />,
+    search: <Search solid={!!solid} formattedClassName={formattedClassName} />,
+    share: <Share solid={!!solid} formattedClassName={formattedClassName} />,
     "shield-check": (
-      <ShieldCheck solid={solid} formattedClassName={formattedClassName} />
+      <ShieldCheck solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "sleepless-logo": <SleeplessLogo formattedClassName={formattedClassName} />,
-    star: <Star solid={solid} formattedClassName={formattedClassName} />,
+    star: <Star solid={!!solid} formattedClassName={formattedClassName} />,
     "thumbs-up": (
-      <ThumbsUp solid={solid} formattedClassName={formattedClassName} />
+      <ThumbsUp solid={!!solid} formattedClassName={formattedClassName} />
     ),
     twitch: <Twitch formattedClassName={formattedClassName} />,
     twitter: <Twitter formattedClassName={formattedClassName} />,
     "union-pay": <UnionPay formattedClassName={formattedClassName} />,
-    user: <User solid={solid} formattedClassName={formattedClassName} />,
+    user: <User solid={!!solid} formattedClassName={formattedClassName} />,
     "user-group": (
-      <UserGroup solid={solid} formattedClassName={formattedClassName} />
+      <UserGroup solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "video-camera": (
-      <VideoCamera solid={solid} formattedClassName={formattedClassName} />
+      <VideoCamera solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "view-grid": (
-      <ViewGrid solid={solid} formattedClassName={formattedClassName} />
+      <ViewGrid solid={!!solid} formattedClassName={formattedClassName} />
     ),
     "view-list": (
-      <ViewList solid={solid} formattedClassName={formattedClassName} />
+      <ViewList solid={!!solid} formattedClassName={formattedClassName} />
     ),
     visa: <Visa formattedClassName={formattedClassName} />,
-    x: <X solid={solid} formattedClassName={formattedClassName} />,
+    x: <X solid={!!solid} formattedClassName={formattedClassName} />,
     youtube: <Youtube formattedClassName={formattedClassName} />,
-    "zoom-in": <ZoomIn solid={solid} formattedClassName={formattedClassName} />,
+    "zoom-in": (
+      <ZoomIn solid={!!solid} formattedClassName={formattedClassName} />
+    ),
     "zoom-out": (
-      <ZoomOut solid={solid} formattedClassName={formattedClassName} />
+      <ZoomOut solid={!!solid} formattedClassName={formattedClassName} />
     ),
   };
   return iconMap[name] || null;

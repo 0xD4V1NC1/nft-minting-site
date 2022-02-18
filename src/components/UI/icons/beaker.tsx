@@ -1,9 +1,20 @@
-import React from 'react';
+import React from "react";
 
-function Beaker({ solid, formattedClassName }) {
+function Beaker({
+  solid,
+  formattedClassName,
+}: {
+  solid: boolean,
+  formattedClassName: string,
+}) {
   if (solid) {
     return (
-      <svg className={`${formattedClassName}`} fill="currentColor" viewBox="0 0 20 20" xmlns="https://www.w3.org/2000/svg">
+      <svg
+        className={`${formattedClassName}`}
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="https://www.w3.org/2000/svg"
+      >
         <path
           fillRule="evenodd"
           d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1
@@ -16,7 +27,13 @@ function Beaker({ solid, formattedClassName }) {
   }
 
   return (
-    <svg className={`${formattedClassName}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
