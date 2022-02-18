@@ -1,7 +1,7 @@
-import React from "react";
-import Icon from "./Icon";
-import Loading from "./Loading";
-import ButtonInterface from "../../interfaces/ButtonInterface";
+import React from 'react';
+import Icon from './Icon';
+import Loading from './Loading';
+import ButtonInterface from '../../interfaces/ButtonInterface';
 // TODO: update this component to my needs
 const Button = ({
   type,
@@ -18,71 +18,71 @@ const Button = ({
   disabled,
   size,
 }: ButtonInterface) => {
-  const iconStyle = icon ? "flex" : "";
-  const btnType = type === "submit" ? "submit" : "button";
+  const iconStyle = icon ? 'flex' : '';
+  const btnType = type === 'submit' ? 'submit' : 'button';
   let btnSize;
   let fontSize;
   let btnBgColor;
   let btnBgColorHover;
-  let btnTextColor = "text-white";
+  let btnTextColor = 'text-white';
   switch (color) {
-    case "primary":
+    case 'primary':
       btnBgColor = `bg-sgPrimaryLight-500`;
       btnBgColorHover = `hover:bg-sgPrimaryDark-500`;
       btnTextColor = `text-white`;
       break;
-    case "secondary":
+    case 'secondary':
       btnBgColor = `bg-sgSecondaryLight-500`;
       btnBgColorHover = `hover:bg-sgSecondaryLight-600`;
       btnTextColor = `text-white`;
       break;
-    case "gray":
+    case 'gray':
       btnBgColor = `bg-gray-300`;
       btnBgColorHover = `hover:bg-gray-400`;
       btnTextColor = `text-black`;
       break;
-    case "white":
+    case 'white':
       btnBgColor = `bg-white`;
       btnBgColorHover = `hover:bg-gray-200`;
       btnTextColor = `text-sgPrimaryLight-500`;
       break;
-    case "black":
+    case 'black':
       btnBgColor = `bg-black`;
       btnBgColorHover = `hover:bg-gray-900`;
       break;
-    case "pink":
+    case 'pink':
       btnBgColor = `bg-pink-500`;
       btnBgColorHover = `hover:bg-pink-600`;
       break;
-    case "green":
+    case 'green':
       btnBgColor = `bg-green-500`;
       btnBgColorHover = `hover:bg-green-600`;
       break;
-    case "red":
+    case 'red':
       btnBgColor = `bg-red-500`;
       btnBgColorHover = `hover:bg-red-600`;
       break;
-    case "yellow":
+    case 'yellow':
       btnBgColor = `bg-yellow-500`;
       btnBgColorHover = `hover:bg-yellow-600`;
       break;
-    case "orange":
+    case 'orange':
       btnBgColor = `bg-orange-500`;
       btnBgColorHover = `hover:bg-orange-600`;
       break;
-    case "blue":
+    case 'blue':
       btnBgColor = `bg-blue-500`;
       btnBgColorHover = `hover:bg-blue-600`;
       break;
-    case "teal":
+    case 'teal':
       btnBgColor = `bg-teal-400`;
       btnBgColorHover = `hover:bg-teal-500`;
       break;
-    case "indigo":
+    case 'indigo':
       btnBgColor = `bg-indigo-500`;
       btnBgColorHover = `hover:bg-indigo-600`;
       break;
-    case "purple":
+    case 'purple':
       btnBgColor = `bg-purple-500`;
       btnBgColorHover = `hover:bg-purple-600`;
       break;
@@ -93,37 +93,37 @@ const Button = ({
   }
 
   switch (size) {
-    case "mini":
-      btnSize = "p-2";
-      fontSize = "text-xs";
+    case 'mini':
+      btnSize = 'p-2';
+      fontSize = 'text-xs';
       break;
-    case "tiny":
-      btnSize = "p-2";
-      fontSize = "text-sm";
+    case 'tiny':
+      btnSize = 'p-2';
+      fontSize = 'text-sm';
       break;
-    case "small":
-      btnSize = "p-2";
-      fontSize = "text-base";
+    case 'small':
+      btnSize = 'p-2';
+      fontSize = 'text-base';
       break;
-    case "medium":
-      btnSize = "p-2";
-      fontSize = "text-lg";
+    case 'medium':
+      btnSize = 'p-2';
+      fontSize = 'text-lg';
       break;
-    case "large":
-      btnSize = "p-2";
-      fontSize = "text-xl";
+    case 'large':
+      btnSize = 'p-2';
+      fontSize = 'text-xl';
       break;
-    case "big":
-      btnSize = "p-2";
-      fontSize = "text-2xl";
+    case 'big':
+      btnSize = 'p-2';
+      fontSize = 'text-2xl';
       break;
-    case "huge":
-      btnSize = "p-2";
-      fontSize = "text-3xl";
+    case 'huge':
+      btnSize = 'p-2';
+      fontSize = 'text-3xl';
       break;
-    case "massive":
-      btnSize = "p-2";
-      fontSize = "text-4xl";
+    case 'massive':
+      btnSize = 'p-2';
+      fontSize = 'text-4xl';
       break;
     default:
       btnSize = ``;
@@ -132,48 +132,49 @@ const Button = ({
 
   const handleClick = () => {
     if (href) {
-      window.open(href, target || "_self");
+      window.open(href, target || '_self');
     } else if (onClick) {
       onClick();
     }
   };
 
-  const disabledClass = disabled ? `opacity-50 cursor-not-allowed` : "";
-  const formattedClassName = className || "";
+  const disabledClass = disabled ? `opacity-50 cursor-not-allowed` : '';
+  const formattedClassName = className || '';
   const combinedClassNames = `${iconStyle} ${btnSize} ${fontSize} ${btnBgColor} ${
     !disabled && btnBgColorHover
   } ${btnTextColor} ${formattedClassName} ${disabledClass}`;
   const content = text ? <span>{text}</span> : children;
   const onClickProp =
-    !disabled && !!handleClick ? { onClick: handleClick } : {};
+    !disabled && !!handleClick ? {onClick: handleClick} : {};
   return (
     <button
       type={btnType}
-      className={`${combinedClassNames} focus:outline-none bg-center items-center cursor-pointer shadow-xs rounded`}
+      className={`${combinedClassNames}
+       focus:outline-none bg-center items-center cursor-pointer shadow-xs rounded`}
       {...onClickProp}
     >
-      {icon && !loading && icon.position === "left" ? (
+      {icon && !loading && icon.position === 'left' ? (
         <Icon
           name={icon.name}
           color={icon.color}
           solid={icon.solid}
           size={icon.size}
-          className={`${icon.className || ""} mr-2`}
+          className={`${icon.className || ''} mr-2`}
         />
       ) : null}
 
       {!loading && content}
       {loading && (
-        <Loading className={loadingClassName || "h-4 w-4"} isButton />
+        <Loading className={loadingClassName || 'h-4 w-4'} isButton />
       )}
 
-      {icon && !loading && icon.position === "right" ? (
+      {icon && !loading && icon.position === 'right' ? (
         <Icon
           name={icon.name}
           color={icon.color}
           solid={icon.solid}
           size={icon.size}
-          className={`${icon.className || ""} ml-2`}
+          className={`${icon.className || ''} ml-2`}
         />
       ) : null}
     </button>

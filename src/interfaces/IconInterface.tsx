@@ -5,4 +5,5 @@ export default interface IconInterface {
     solid?: boolean;
     className?: string;
     position?: string;
-}
+};
+
