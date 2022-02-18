@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Twitch({ formattedClassName }: { formattedClassName: string }) {
+function Twitch({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

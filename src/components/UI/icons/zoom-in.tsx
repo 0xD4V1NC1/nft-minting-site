@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function svgIcon(
-  formattedClassName: string,
-  fill: string,
-  stroke: string,
-  viewBox: string,
-  children: React.ReactNode
+    formattedClassName: string,
+    fill: string,
+    stroke: string,
+    viewBox: string,
+    children: React.ReactNode,
 ) {
   return (
     <svg
@@ -27,9 +27,9 @@ function ZoomIn({
   solid: boolean;
   formattedClassName: string;
 }) {
-  const fill = solid ? "currentColor" : "none";
-  const viewBox = solid ? "0 0 20 20" : "0 0 24 24";
-  const stroke = solid ? "" : "currentColor";
+  const fill = solid ? 'currentColor' : 'none';
+  const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
+  const stroke = solid ? '' : 'currentColor';
   const children = solid ? (
     <>
       <path d="M5 8a1 1 0 011-1h1V6a1 1 0 012 0v1h1a1 1 0 110 2H9v1a1 1 0 11-2 0V9H6a1 1 0 01-1-1z" />

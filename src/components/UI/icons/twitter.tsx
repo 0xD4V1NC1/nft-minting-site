@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Twitter({ formattedClassName }: { formattedClassName: string }) {
+function Twitter({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

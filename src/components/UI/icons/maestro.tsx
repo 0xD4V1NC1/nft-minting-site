@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Maestro({ formattedClassName }: { formattedClassName: string }) {
+function Maestro({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

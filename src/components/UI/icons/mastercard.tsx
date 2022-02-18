@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Mastercard({ formattedClassName }: { formattedClassName: string }) {
+function Mastercard({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

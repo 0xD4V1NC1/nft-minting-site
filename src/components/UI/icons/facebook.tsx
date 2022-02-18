@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Facebook({ formattedClassName }: { formattedClassName: string }) {
+function Facebook({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

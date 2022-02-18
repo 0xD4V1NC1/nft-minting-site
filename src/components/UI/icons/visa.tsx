@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Visa({ formattedClassName }: { formattedClassName: string }) {
+function Visa({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

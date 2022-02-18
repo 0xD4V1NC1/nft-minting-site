@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Elo({ formattedClassName }: { formattedClassName: string }) {
+function Elo({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

@@ -1,33 +1,33 @@
-import React from "react";
-import LoadingInterface from "../../interfaces/LoadingInterface";
+import React from 'react';
+import LoadingInterface from '../../interfaces/LoadingInterface';
 
 function getLoaderColor(color: string | undefined) {
   switch (color) {
-    case "white":
+    case 'white':
       return `loader-white`;
-    case "gray":
+    case 'gray':
       return `loader-gray`;
-    case "pink":
+    case 'pink':
       return `loader-pink`;
-    case "green":
+    case 'green':
       return `loader-green`;
-    case "red":
+    case 'red':
       return `loader-red`;
-    case "yellow":
+    case 'yellow':
       return `loader-yellow`;
-    case "purple":
+    case 'purple':
       return `loader-purple`;
-    case "teal":
+    case 'teal':
       return `loader-teal`;
-    case "indigo":
+    case 'indigo':
       return `loader-indigo`;
-    case "blue":
+    case 'blue':
       return `loader-blue`;
-    case "orange":
+    case 'orange':
       return `loader-orange`;
-    case "black":
+    case 'black':
     default:
-      return "loader-black";
+      return 'loader-black';
   }
 }
 
@@ -44,9 +44,9 @@ const Loading = ({
   return (
     <div className="flex flex-col justify-center items-center">
       <div
-        className={`${c} ${b} animate-spin rounded-full ${className || ""}`}
+        className={`${c} ${b} animate-spin rounded-full ${className || ''}`}
       />
-      {message && <div className={`${messageClassName || ""}`}>{message}</div>}
+      {message && <div className={`${messageClassName || ''}`}>{message}</div>}
       {children}
     </div>
   );

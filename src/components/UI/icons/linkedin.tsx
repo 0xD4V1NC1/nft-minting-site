@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function LinkedIn({ formattedClassName }: { formattedClassName: string }) {
+function LinkedIn({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

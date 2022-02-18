@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function svgIcon(
-  formattedClassName: string,
-  fill: string,
-  stroke: string,
-  viewBox: string,
-  children: React.ReactNode
+    formattedClassName: string,
+    fill: string,
+    stroke: string,
+    viewBox: string,
+    children: React.ReactNode,
 ) {
   return (
     <svg
@@ -27,9 +27,9 @@ function ClipboardList({
   solid: boolean;
   formattedClassName: string;
 }) {
-  const fill = solid ? "currentColor" : "none";
-  const viewBox = solid ? "0 0 20 20" : "0 0 24 24";
-  const stroke = solid ? "" : "currentColor";
+  const fill = solid ? 'currentColor' : 'none';
+  const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
+  const stroke = solid ? '' : 'currentColor';
   const children = solid ? (
     <>
       <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />

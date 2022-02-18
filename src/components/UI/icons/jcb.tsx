@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function JCB({ formattedClassName }: { formattedClassName: string }) {
+function JCB({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

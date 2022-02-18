@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Discover({ formattedClassName }: { formattedClassName: string }) {
+function Discover({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function DinersClub({ formattedClassName }: { formattedClassName: string }) {
+function DinersClub({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

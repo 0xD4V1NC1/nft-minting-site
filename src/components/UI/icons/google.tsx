@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Google({ formattedClassName }: { formattedClassName: string }) {
+function Google({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

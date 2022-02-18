@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function ChevronDoubleRight({
   solid,
@@ -7,9 +7,9 @@ function ChevronDoubleRight({
   solid: boolean,
   formattedClassName: string,
 }) {
-  const fill = solid ? "currentColor" : "none";
-  const viewBox = solid ? "0 0 20 20" : "0 0 24 24";
-  const xmlns = "https://www.w3.org/2000/svg";
+  const fill = solid ? 'currentColor' : 'none';
+  const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
+  const xmlns = 'https://www.w3.org/2000/svg';
   if (solid) {
     return (
       <svg

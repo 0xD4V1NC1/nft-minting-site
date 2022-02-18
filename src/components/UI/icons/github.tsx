@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Github({ formattedClassName }: { formattedClassName: string }) {
+function Github({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

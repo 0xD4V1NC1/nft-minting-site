@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Hipercard({ formattedClassName }: { formattedClassName: string }) {
+function Hipercard({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={`${formattedClassName}`}

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-function Instagram({ formattedClassName }: { formattedClassName: string }) {
+function Instagram({formattedClassName}: { formattedClassName: string }) {
   return (
     <svg
       className={formattedClassName}

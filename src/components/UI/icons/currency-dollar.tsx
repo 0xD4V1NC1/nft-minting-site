@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function svgIcon(
-  formattedClassName: string,
-  fill: string,
-  stroke: string,
-  viewBox: string,
-  children: React.ReactNode
+    formattedClassName: string,
+    fill: string,
+    stroke: string,
+    viewBox: string,
+    children: React.ReactNode,
 ) {
   return (
     <svg
@@ -27,9 +27,9 @@ function CurrencyDollar({
   solid: boolean;
   formattedClassName: string;
 }) {
-  const fill = solid ? "currentColor" : "none";
-  const viewBox = solid ? "0 0 20 20" : "0 0 24 24";
-  const stroke = solid ? "" : "currentColor";
+  const fill = solid ? 'currentColor' : 'none';
+  const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
+  const stroke = solid ? '' : 'currentColor';
   const children = solid ? (
     <>
       <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
