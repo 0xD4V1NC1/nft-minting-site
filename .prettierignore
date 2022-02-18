@@ -1,0 +1,9 @@
+node_modules
+# Ignore artifacts:
+build
+coverage
+/src/App.tsx
+/src/index.tsx
+/src/AppRoutes.tsx
+/src/App.test.tsx
+/src/interfaces
