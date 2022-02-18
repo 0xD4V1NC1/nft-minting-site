@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function Mastercard({ formattedClassName }) {
+function Mastercard({ formattedClassName }: { formattedClassName: string }) {
   return (
-    <svg className={`${formattedClassName}`} version="1.1" viewBox="0 0 780 500" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      version="1.1"
+      viewBox="0 0 780 500"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <path
         d="M53.385,15h671.729c21.201,0,38.386,16.853,38.386,37.64v395.22   c0,20.788-17.185,37.64-38.386,37.64H53.385C32.186,485.5,15,468.648,15,447.86V52.64C15,31.853,32.186,15,53.385,15z"
         fill="none"

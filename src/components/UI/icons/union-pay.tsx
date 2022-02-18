@@ -1,10 +1,22 @@
-import React from 'react';
+import React from "react";
 
-function UnionPay({ formattedClassName }) {
+function UnionPay({ formattedClassName }: { formattedClassName: string }) {
   return (
-    <svg className={`${formattedClassName}`} viewBox="0 0 780 500" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      viewBox="0 0 780 500"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <g fill="none" fillRule="evenodd">
-        <rect x="15" y="15" width="720" height="441" rx="25" stroke="#393939" strokeWidth="30" />
+        <rect
+          x="15"
+          y="15"
+          width="720"
+          height="441"
+          rx="25"
+          stroke="#393939"
+          strokeWidth="30"
+        />
         <path
           d="M201.81 55h142.393c19.87 0 32.287 16.406 27.63 36.47L305.5 378.948c-4.656 20.064-24.629 36.47-44.498 36.47H118.61c-19.87 0-32.287-16.406-27.63-36.47L157.311 91.47C161.968 71.302 181.837 55 201.706 55h.104z"
           fill="#7E7E7E"

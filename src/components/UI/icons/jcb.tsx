@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function JCB({ formattedClassName }) {
+function JCB({ formattedClassName }: { formattedClassName: string }) {
   return (
-    <svg className={`${formattedClassName}`} version="1.1" viewBox="0 0 780 500" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      version="1.1"
+      viewBox="0 0 780 500"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <path
         d="M53.41,15h672.18C746.803,15,764,31.87,764,52.68V448.32   c0,20.81-17.197,37.68-38.41,37.68H53.41C32.197,486,15,469.13,15,448.32V52.68C15,31.87,32.197,15,53.41,15z"
         fill="none"

@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function Maestro({ formattedClassName }) {
+function Maestro({ formattedClassName }: { formattedClassName: string }) {
   return (
-    <svg className={`${formattedClassName}`} version="1.1" viewBox="0 0 780 500" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      version="1.1"
+      viewBox="0 0 780 500"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <path
         d="M53.41,15h672.18C746.804,15,764,31.834,764,52.6v394.8   C764,468.166,746.804,485,725.59,485H53.41C32.197,485,15,468.166,15,447.399V52.6C15,31.834,32.197,15,53.41,15z"
         fill="none"

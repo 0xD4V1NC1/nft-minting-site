@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
-function Hipercard({ formattedClassName }) {
+function Hipercard({ formattedClassName }: { formattedClassName: string }) {
   return (
-    <svg className={`${formattedClassName}`} version="1.1" viewBox="0 0 780 500" xmlns="https://www.w3.org/2000/svg">
+    <svg
+      className={`${formattedClassName}`}
+      version="1.1"
+      viewBox="0 0 780 500"
+      xmlns="https://www.w3.org/2000/svg"
+    >
       <path
         d="M698.098,0H52.959C23.757,0,0,23.349,0,52.048v370.021c0,28.701,23.757,52.05,52.959,52.05h645.139  c29.201,0,52.958-23.349,52.958-52.05V52.048C751.056,23.349,727.299,0,698.098,0z"
         fill="none"

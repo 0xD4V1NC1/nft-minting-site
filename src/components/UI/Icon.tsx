@@ -70,7 +70,6 @@ import X from "./icons/x";
 import ZoomIn from "./icons/zoom-in";
 import ZoomOut from "./icons/zoom-out";
 // Social Media Icons
-import SleeplessLogo from "./icons/sleepless-logo";
 import Facebook from "./icons/facebook";
 import Github from "./icons/github";
 import Google from "./icons/google";
@@ -329,7 +328,6 @@ const Icon = ({ name, color, size, solid, className }: IconInterface) => {
     "shield-check": (
       <ShieldCheck solid={!!solid} formattedClassName={formattedClassName} />
     ),
-    "sleepless-logo": <SleeplessLogo formattedClassName={formattedClassName} />,
     star: <Star solid={!!solid} formattedClassName={formattedClassName} />,
     "thumbs-up": (
       <ThumbsUp solid={!!solid} formattedClassName={formattedClassName} />
@@ -363,4 +361,3 @@ const Icon = ({ name, color, size, solid, className }: IconInterface) => {
   return iconMap[name] || null;
 };
 export default Icon;
-// export {};
