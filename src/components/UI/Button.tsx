@@ -2,7 +2,6 @@ import React from 'react';
 import Icon from './Icon';
 import Loading from './Loading';
 import ButtonInterface from '../../interfaces/ButtonInterface';
-// TODO: update this component to my needs
 const Button = ({
   type,
   color,
