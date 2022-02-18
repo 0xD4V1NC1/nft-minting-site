@@ -1,4 +1,3 @@
-// TODO: Update this component to my needs
 import React from "react";
 import Adjustments from "./icons/adjustments";
 import ArrowDown from "./icons/arrow-down";
@@ -92,6 +91,7 @@ import UnionPay from "./icons/union-pay";
 import Visa from "./icons/visa";
 
 import IconInterface from "../../interfaces/IconInterface";
+import IconMapInterface from "../../interfaces/IconMapInterface";
 
 // Get the size className
 function getSizeClassName(size: string) {
@@ -159,7 +159,8 @@ const Icon = ({ name, color, size, solid, className }: IconInterface) => {
   const s = getSizeClassName(size) || "";
   const cn = className || "";
   const formattedClassName = `${c} ${s} ${cn}`;
-  const iconMap = {
+
+  const iconMap: IconMapInterface = {
     adjustments: (
       <Adjustments solid={!!solid} formattedClassName={formattedClassName} />
     ),
