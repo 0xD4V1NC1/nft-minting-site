@@ -38,7 +38,7 @@ const Home = () => {
             Learn React
           </a>
           <a
-            className="px-4 py-2 ml-4 text-white bg-indigo-500 rounded hover:bg-red-600"
+            className="px-4 py-2 ml-4 text-white bg-secondary-500 rounded hover:bg-red-600"
             href="https://tailwindcss.com"
             target="_blank"
             rel="noopener noreferrer"

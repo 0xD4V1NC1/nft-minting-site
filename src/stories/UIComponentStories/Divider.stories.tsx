@@ -14,13 +14,13 @@ const Template: ComponentStory<typeof Divider> = (args) => <Divider {...args} />
 export const HorizontalDivider = Template.bind({});
 HorizontalDivider.args = {
   horizontal: true,
-  className: 'border-2 w-64',
+  className: 'w-64',
 };
 
 export const HorizontalWithChildren = Template.bind({});
 HorizontalWithChildren.args = {
-  vertical: true,
-  className: 'border-2 w-64',
+  horizontal: true,
+  className: 'w-64',
   children: <div>Horizontal with Children </div>,
 };
 

@@ -10,7 +10,7 @@ const Divider = ({horizontal, vertical, children, className}: DividerInterface) 
         </div>
       );
     }
-    return <div className={` border-blue-500 leading-4 text-base h-0 ${className || ''}`} />;
+    return <div className={` border-gray-300 border leading-4 text-base h-0 ${className || ''}`} />;
   }
   if (vertical) {
     if (children) {
@@ -25,7 +25,7 @@ const Divider = ({horizontal, vertical, children, className}: DividerInterface) 
     return <div className={`border-l border-gray-300 inline-block ${className || ''}`} />;
   }
   // DEFAULT HORIZONTAL
-  return <div className={`border-red-500 leading-4 text-base h-0 ${className || ''}`} />;
+  return <div className={`border-gray-300 leading-4 text-base h-0 ${className || ''}`} />;
 };
 
 export default Divider;
