@@ -64,6 +64,27 @@ module.exports = {
         },
       });
     }),
+    plugin(({addUtilities}) => {
+      const newUtilities = {
+        '.animate-fadeIn': {
+          '-webkit-animation-name': 'animate-fadeIn',
+          'animation-name': 'animate-fadeIn',
+          '-webkit-animation-duration': '1s',
+          'animation-duration': '1s',
+          '-webkit-animation-fill-mode': 'both',
+          'animation-fill-mode': 'both',
+        },
+        '.animate-fadeOut': {
+          '-webkit-animation-name': 'animate-fadeOut',
+          'animation-name': 'animate-fadeOut',
+          '-webkit-animation-duration': '1s',
+          'animation-duration': '1s',
+          '-webkit-animation-fill-mode': 'both',
+          'animation-fill-mode': 'both',
+        },
+      };
+      addUtilities(newUtilities);
+    }),
   ],
   // Filenames to scan for classes
   content: [
