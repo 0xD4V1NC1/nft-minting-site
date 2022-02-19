@@ -26,11 +26,13 @@ const Button = ({
   let btnTextColor = 'text-white';
   switch (color) {
     case 'primary':
+    case 'primary-dark':
       btnBgColor = `bg-sgPrimaryLight-500`;
       btnBgColorHover = `hover:bg-sgPrimaryDark-500`;
       btnTextColor = `text-white`;
       break;
     case 'secondary':
+    case 'secondary-dark':
       btnBgColor = `bg-sgSecondaryLight-500`;
       btnBgColorHover = `hover:bg-sgSecondaryLight-600`;
       btnTextColor = `text-white`;

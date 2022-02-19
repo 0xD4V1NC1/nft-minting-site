@@ -4,16 +4,16 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-    // Filenames to scan for classes
+  // Filenames to scan for classes
   content: [
-      "./src/**/*.html",
-      "./src/**/*.js",
-      "./src/**/*.jsx",
-      "./src/**/*.ts",
-      "./src/**/*.tsx",
-      "./public/index.html",
+    './src/**/*.html',
+    './src/**/*.js',
+    './src/**/*.jsx',
+    './src/**/*.ts',
+    './src/**/*.tsx',
+    './public/index.html',
   ],
-    // Options passed to PurgeCSS
+  // Options passed to PurgeCSS
   options: {
     // Whitelist specific selectors by name
     // safelist: [],

@@ -1,8 +1,9 @@
+import { ColorOptions, SizeOptions } from "./types";
 export default interface IconInterface {
     name: string;
-    color: string;
-    size: 'mini' | 'tiny' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
+    color:  ColorOptions;
+    size: SizeOptions;
     solid?: boolean;
     className?: string;
-    position?: string;
+    position?: 'left' | 'right';
 };

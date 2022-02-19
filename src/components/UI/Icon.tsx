@@ -121,6 +121,10 @@ function getSizeClassName(size: string) {
 // Get the color className
 function getColorClassName(color: string) {
   switch (color) {
+    case 'primary':
+    case 'primary-dark':
+    case 'secondary-dark':
+    case 'secondary':
     case 'gray':
       return `text-gray-400`;
     case 'dark-gray':

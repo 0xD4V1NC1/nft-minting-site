@@ -1,10 +1,11 @@
 import React, { ReactNode } from "react";
 import IconInterface from "./IconInterface";
+import { ColorOptions } from "./types";
 
 export default interface ButtonInterface {
   // button type is import for accessibility
   type: string;
-  color: string;
+  color: ColorOptions;
   text?: string;
   children?: ReactNode;
   icon?: IconInterface;
