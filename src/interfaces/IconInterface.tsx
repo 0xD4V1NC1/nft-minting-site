@@ -5,5 +5,5 @@ export default interface IconInterface {
     size: SizeOptions;
     solid?: boolean;
     className?: string;
-    position?: 'left' | 'right';
+    position?: 'left' | 'right' | 'none';
 };

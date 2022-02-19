@@ -162,6 +162,15 @@ const Button = ({
        focus:outline-none bg-center items-center cursor-pointer shadow-xs rounded`}
       {...onClickProp}
     >
+      {icon && !loading && icon.position === 'none' ? (
+        <Icon
+          name={icon.name}
+          color={icon.color}
+          solid={icon.solid}
+          size={icon.size}
+          className={`${icon.className || ''}`}
+        />
+      ) : null}
       {icon && !loading && icon.position === 'left' ? (
         <Icon
           name={icon.name}

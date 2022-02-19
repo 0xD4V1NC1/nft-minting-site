@@ -12,10 +12,48 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
+// size for button refers to the text size. All buttons use p-2 to be consistent in style
 Primary.args = {
   color: 'primary',
-  text: 'Fuck my Life',
-  className: 'py-4 px-8',
+  text: 'Primary',
+  size: 'small',
 };
 
+export const Secondary = Template.bind({});
+Secondary.args = {
+  color: 'secondary',
+  text: 'Secondary',
+  size: 'medium',
+};
 
+export const LargeButton = Template.bind({});
+LargeButton.args = {
+  color: 'blue',
+  text: 'Large',
+  size: 'large',
+};
+
+export const ButtonWithIcon = Template.bind({});
+ButtonWithIcon.args = {
+  color: 'green',
+  text: 'Large',
+  size: 'mini',
+  icon: {
+    name: 'chevron-right',
+    position: 'right',
+    color: 'white',
+    size: 'small',
+  },
+};
+
+export const ButtonIconOnly = Template.bind({});
+ButtonIconOnly.args = {
+  color: 'red',
+  className: 'p-2',
+  icon: {
+    name: 'exclamation-circle',
+    position: 'none',
+    color: 'white',
+    size: 'small',
+  },
+};
