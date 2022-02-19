@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import IconInterface from "./IconInterface";
-import { ColorOptions } from "./types";
+import { ColorOptions, SizeOptions } from "./types";
 
 export default interface ButtonInterface {
   // button type is import for accessibility
@@ -16,6 +16,6 @@ export default interface ButtonInterface {
   href?: string;
   target?: string;
   disabled?: boolean;
-  size?: string;
+  size?: SizeOptions;
 }
 

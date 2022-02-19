@@ -1,4 +1,17 @@
 const plugin = require('tailwindcss/plugin');
+// customer loaders
+const getSpinners = (themeColors) => {
+  return Object.keys(themeColors).map((color) => {
+    return {
+      [`.loader-${color}`]: {
+        'border-top-color': themeColors[color][500] || themeColors[color],
+        'border-left-color': themeColors[color][200] || 'border-gray-200',
+        'border-right-color': themeColors[color][200] || 'border-gray-200',
+        'border-bottom-color': themeColors[color][200] || 'border-gray-200',
+      },
+    };
+  });
+};
 
 module.exports = {
   darkMode: 'class',
@@ -24,7 +37,7 @@ module.exports = {
   plugins: [
     plugin(function({addComponents, theme}) {
       const themeColors = theme('colors', {});
-
+      addComponents(getSpinners(themeColors));
       addComponents({
         '.box-shadow': {
           boxShadow: '0 0 1rem #cccccc',

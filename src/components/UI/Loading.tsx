@@ -3,6 +3,14 @@ import LoadingInterface from '../../interfaces/LoadingInterface';
 
 function getLoaderColor(color: string | undefined) {
   switch (color) {
+    case 'primary':
+      return `loader-primary`;
+    case 'primary-dark':
+      return `loader-primary-dark`;
+    case 'secondary':
+      return `loader-secondary`;
+    case 'secondary-dark':
+      return `loader-secondary-dark`;
     case 'white':
       return `loader-white`;
     case 'gray':

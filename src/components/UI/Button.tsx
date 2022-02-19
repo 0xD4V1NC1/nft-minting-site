@@ -102,35 +102,35 @@ const Button = ({
   }
 
   switch (size) {
-    case 'mini':
+    case 'xsmall':
       btnSize = 'p-2';
       fontSize = 'text-xs';
       break;
-    case 'tiny':
+    case 'small':
       btnSize = 'p-2';
       fontSize = 'text-sm';
       break;
-    case 'small':
+    case 'medium':
       btnSize = 'p-2';
       fontSize = 'text-base';
       break;
-    case 'medium':
+    case 'large':
       btnSize = 'p-2';
       fontSize = 'text-lg';
       break;
-    case 'large':
+    case 'xlarge':
       btnSize = 'p-2';
       fontSize = 'text-xl';
       break;
-    case 'big':
+    case '2xlarge':
       btnSize = 'p-2';
       fontSize = 'text-2xl';
       break;
-    case 'huge':
+    case '3xlarge':
       btnSize = 'p-2';
       fontSize = 'text-3xl';
       break;
-    case 'massive':
+    case '4xlarge':
       btnSize = 'p-2';
       fontSize = 'text-4xl';
       break;

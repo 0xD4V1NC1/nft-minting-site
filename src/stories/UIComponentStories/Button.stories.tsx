@@ -36,13 +36,13 @@ LargeButton.args = {
 export const ButtonWithIcon = Template.bind({});
 ButtonWithIcon.args = {
   color: 'green',
-  text: 'Large',
-  size: 'mini',
+  text: 'Continue',
+  size: 'medium',
   icon: {
     name: 'chevron-right',
     position: 'right',
     color: 'white',
-    size: 'small',
+    size: 'medium',
   },
 };
 
@@ -54,6 +54,6 @@ ButtonIconOnly.args = {
     name: 'exclamation-circle',
     position: 'none',
     color: 'white',
-    size: 'small',
+    size: 'large',
   },
 };
