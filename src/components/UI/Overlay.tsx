@@ -5,28 +5,22 @@ import OverlayInterface from '../../interfaces/OverlayInterface';
 
 
 const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel, ariaLabelledBy, omitDismissX, open}: OverlayInterface) => {
-  const [display, setDisplay] = useState(false);
   const [readyToDisplay, setReadyToDisplay] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (open) {
-      if (!open) {
+      setTimeout(() => {
+        setReadyToDisplay(true);
+      }, 200);
+    } else {
+      setTimeout(() => {
         setReadyToDisplay(false);
-        setTimeout(() => {
-          setDisplay(false);
-        }, 200);
-      } else {
-        setDisplay(true);
-        setTimeout(() => {
-          setReadyToDisplay(true);
-        }, 200);
-        if (containerRef.current) {
-          containerRef.current.focus(); // Add focus so key press is recorded... the ! suppresses the Object may be null warning
-        }
-      }
+      }, 200);
     }
   }, [open]);
-  if (!display) {
+
+  if (!open) {
     return null;
   }
   // if we have aria label by, apply aria labeled by
@@ -43,7 +37,7 @@ const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel,
   } else {
     ariaLabelProps['aria-label'] = ariaLabel || 'Overlay Dialog';
   }
-  const checkKeyPressESC = (e: any, dismiss:() => void) =>{
+  const checkKeyPressESC = (e: any) => {
     if (e && e.key === 'Escape') {
       dismiss();
     }
@@ -53,7 +47,7 @@ const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel,
     <FocusLock autoFocus={false} returnFocus>
       <div
         ref={containerRef}
-        onKeyDown={(e:any) => checkKeyPressESC(e, dismiss)}
+        onKeyDown={(e:any) => checkKeyPressESC(e)}
         onClick={() => dismiss()}
         className={`fixed h-full w-full top-0 right-0 m-0 ${readyToDisplay ? 'z-[1000] bg-black bg-opacity-50' : 'bg-transparent z-0'} transition-all duration-100`}
         {...ariaLabelProps}

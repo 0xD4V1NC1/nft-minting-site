@@ -71,7 +71,7 @@ export const MoreOptionsMenu = Template.bind({});
 MoreOptionsMenu.args ={
   id: '3',
   ariaLabel: 'Storybook Dropdown Example',
-  className: 'p-2',
+  className: 'ml-12 p-2',
   button: {
     color: 'gray',
     type: 'button',
@@ -83,7 +83,7 @@ MoreOptionsMenu.args ={
     size: 'medium',
     position: 'none',
   },
-  dropClassName: 'bg-white rounded-sm border-xs border-gray-700 box-shadow',
+  dropClassName: 'bg-white rounded-sm border-xs border-gray-700 box-shadow min-w-[125px]',
   children: (
     <ul className='box-shadow'>
       <li className=' hover:bg-red-200 hover:animate-pulse px-4 py-2'>

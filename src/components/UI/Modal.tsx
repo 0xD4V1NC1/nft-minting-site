@@ -99,6 +99,7 @@ const Modal = ({
       }
     };
     window.addEventListener('keydown', close );
+    // useEffect cleanup function
     return () => {
       window.removeEventListener('keydown', close);
       setFocusLocked(false);
