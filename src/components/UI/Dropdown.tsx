@@ -9,16 +9,16 @@ type TriggerType = {
     button:ButtonInterface;
     icon:IconInterface;
     trigger:ReactNode;
-    text:string;
+    text?:string;
     openDropDown: boolean;
     setDropDown: (dropDownState:boolean) => void;
 };
 const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: TriggerType) => {
-  console.log('button2: ', button);
   if (icon) {
-    icon.className = `transition duration-200 transform ${openDropDown && icon.rotate ? 'rotate-90' : ''}`;
+    icon.className = `transition duration-200 transform ${openDropDown && icon.rotate ? 'rotate-180' : ''}`;
   }
   if (button) {
+    console.log(button);
     return (
       <Button
         type={button.type}
@@ -48,7 +48,7 @@ const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: Trigg
   );
 };
 
-const Dropdown = ({className, dropClassName, children, button, icon, text, trigger, id}: DropdownInterface) => {
+const Dropdown = ({className, dropClassName, dropBackgroundColor, children, button, icon, text, trigger, id, ariaLabel}: DropdownInterface) => {
   if (!id) {
     return null;
   }
@@ -68,9 +68,8 @@ const Dropdown = ({className, dropClassName, children, button, icon, text, trigg
   const visibility = openDropDown ? 'visible' : 'invisible';
   const opacity = openDropDown ? 'opacity-100' : 'opacity-0';
   const height = openDropDown ? 'h-auto' : '0';
-  console.log('button', button);
   return (
-    <div id={id} className={`relative inline-block top-0 bg-transparent border-none ${className || ''}`}>
+    <div id={id} className={`relative inline-block top-0 ${dropBackgroundColor || 'bg-transparent'} border-none ${className || ''}`} aria-label={ariaLabel}>
       <Trigger button={button} icon={icon} trigger={trigger} text={text} openDropDown={openDropDown} setDropDown={setDropDown} />
       <div className={`z-30 transition duration-200 overflow-hidden absolute right-0 shadow-xs ${visibility} ${opacity} ${height} ${display} ${dropClassName || ''}`}>
         {children}

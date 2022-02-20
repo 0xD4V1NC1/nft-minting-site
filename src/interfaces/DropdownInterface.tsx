@@ -7,11 +7,12 @@ export default interface DropdownInterface{
     id: string;
 
     children: ReactNode;
-
+    dropBackgroundColor?: string;
     className?:string;
     dropClassName?: string;
     button: ButtonInterface;
     icon: IconInterface;
-    text: string;
+    text?: string;
     trigger: ReactNode;
+    ariaLabel: string;
 };
