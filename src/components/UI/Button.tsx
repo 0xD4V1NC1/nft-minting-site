@@ -141,7 +141,8 @@ const Button = ({
 
   const handleClick = () => {
     if (href) {
-      window.open(href, target || '_self');
+      // we want to always pass in noopener norefer if href to protect against xss
+      window.open(href, target || '_self', 'noopener norefer');
     } else if (onClick) {
       onClick();
     }

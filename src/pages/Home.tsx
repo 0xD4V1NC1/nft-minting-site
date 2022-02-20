@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from '../components/UI/Button';
 import Icon from '../components/UI/Icon';
+import Layout from '../components/Layout/Layout';
 
 const Home = () => {
   return (
-    <main>
+    <Layout>
       <div className="flex flex-col items-center justify-center h-screen text-red-300 bg-gradient-to-br from-gray-300 via-teal-700 to-gray-800">
         <Button type="button" color="blue" className='py-2 px-4' text="WHAT THE FUCK?" />
         <Icon name="chevron-left" color="black" size="medium" />
@@ -47,7 +48,7 @@ const Home = () => {
           </a>
         </div>
       </div>
-    </main>
+    </Layout>
   );
 };
 
