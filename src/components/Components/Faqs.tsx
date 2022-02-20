@@ -36,7 +36,7 @@ const Faqs = ({faqs, className}: { faqs: {
     id: number;
     question: string;
     answer: string;
-  }[], className: string}) =>{
+  }[], className?: string}) =>{
   if (!faqs || !faqs.length) {
     return null;
   }
