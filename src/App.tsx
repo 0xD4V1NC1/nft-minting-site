@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter} from 'react-router-dom'; // allows for routing in our app
 /* allows us to update the <head> element of our app needed to
  dynamically change things such as page title */
@@ -6,16 +6,21 @@ import {Helmet} from 'react-helmet';
 
 // import Application Routes to App.js to keep file structure cleaner
 import AppRoutes from './AppRoutes';
+import {GlobalContext} from './providers/GlobalContextProvider';
 
 function App() {
+  const [pageTitle, setPageTitle]= useState<string>();
   return (
     <BrowserRouter>
       <Helmet>
-        <title>Some Title</title>
+        <title>{pageTitle}</title>
       </Helmet>
-      <div className="App">
-        <AppRoutes />
-      </div>
+      <GlobalContext.Provider value={{pageTitle, setPageTitle}}>
+        <div className="App">
+          <AppRoutes />
+        </div>
+      </GlobalContext.Provider>
+
     </BrowserRouter>
   );
 }

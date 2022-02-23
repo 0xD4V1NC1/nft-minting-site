@@ -20,13 +20,14 @@ module.exports = {
     extend: {
       colors: {
         'primary': {
-          500: '#e2037a',
+          400: '#B7B0FF',
+          500: '#53A0FD',
         },
         'primary-dark': {
           500: '#222',
         },
         'secondary': {
-          500: '#555',
+          500: '#C5FF5C',
         },
         'secondary-dark': {
           500: '#333',

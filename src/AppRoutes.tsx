@@ -2,7 +2,7 @@ import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import Home from './pages/Home';
-import SecondPage from './pages/SecondPage';
+import MembersOnly from './pages/MembersOnly';
 
 /* here is where we store all of the routes for our pages.
  Any new page needs to be added to this file, and its correlated paths */
@@ -11,7 +11,7 @@ export default function AppRoutes() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="second-page" element={<SecondPage />} />
+        <Route path="/members-only" element={<MembersOnly />} />
       </Routes>
     </>
   );

@@ -45,6 +45,7 @@ import Login from './icons/login';
 import Logout from './icons/logout';
 import Mail from './icons/mail';
 import Menu from './icons/menu';
+import Menu3 from './icons/menu-3';
 import Minus from './icons/minus';
 import Moon from './icons/moon';
 import PaperAirplane from './icons/paper-airplane';
@@ -120,9 +121,11 @@ function getSizeClassName(size: string) {
 function getColorClassName(color: string) {
   switch (color) {
     case 'primary':
+      return `text-primary-500`;
     case 'primary-dark':
     case 'secondary-dark':
     case 'secondary':
+      return `text-secondary-500`;
     case 'gray':
       return `text-gray-400`;
     case 'dark-gray':
@@ -305,6 +308,7 @@ const Icon = ({name, color, size, solid, className}: IconInterface) => {
     'maestro': <Maestro formattedClassName={formattedClassName} />,
     'mastercard': <Mastercard formattedClassName={formattedClassName} />,
     'menu': <Menu solid={!!solid} formattedClassName={formattedClassName} />,
+    'menu-3': <Menu3 solid={!!solid} formattedClassName={formattedClassName} />,
     'minus': <Minus solid={!!solid} formattedClassName={formattedClassName} />,
     'moon': <Moon solid={!!solid} formattedClassName={formattedClassName} />,
     'paper-airplane': (
