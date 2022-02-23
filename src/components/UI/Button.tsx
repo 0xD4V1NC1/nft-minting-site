@@ -53,7 +53,7 @@ const Button = ({
     case 'white':
       btnBgColor = `bg-white`;
       btnBgColorHover = `hover:bg-gray-200`;
-      btnTextColor = `text-sgPrimaryLight-500`;
+      btnTextColor = `text-black`;
       break;
     case 'black':
       btnBgColor = `bg-black`;

@@ -4,6 +4,7 @@ import Divider from '../../UI/Divider';
 import Discord from '../../UI/icons/discord';
 import Instagram from '../../UI/icons/instagram';
 import Twitter from '../../UI/icons/twitter';
+import LinkTo from '../../Components/LinkTo';
 
 const Footer = () => {
   return (
@@ -11,18 +12,18 @@ const Footer = () => {
       <div className='flex flex-col md:flex-row mt-8 md:justify-between'>
         {/* Section 1 */}
         <div className=''>
-          <h2> LEARN MORE </h2>
+          <h2 className='font-semibold'> LEARN MORE </h2>
           <ul className='my-4'>
-            <li><a href='/members-only'>Members Only</a></li>
-            {/* <li><a>Roadmap</a></li> */}
-            <li><a href="#mint-section">Minting Information</a></li>
-            <li><a href="#faqs-section">FAQs</a></li>
+            <li><LinkTo to='/members-only'>Members Only</LinkTo></li>
+            {/* <li><LinkTo>Roadmap</LinkTo></li> */}
+            <li><LinkTo to="#mint-section">Minting Information</LinkTo></li>
+            <li><LinkTo to="#faqs-section">FAQs</LinkTo></li>
           </ul>
         </div>
         {/* Section 2 */}
         <Divider className='mx-8' vertical />
         <div className='mt-8 md:mt-0 md:max-w-[50%]'>
-          <h2> JOIN OUR DISCORD! </h2>
+          <h2 className='font-semibold'> JOIN OUR DISCORD! </h2>
           <div className='flex my-4'>
             <div className='flex items-center'>
               <Discord formattedClassName='flex items-center mr-8 w-16 h-16 text-primary-500' />
@@ -36,18 +37,18 @@ const Footer = () => {
         {/* Section 3 */}
         <Divider className='mx-8' vertical />
         <div className="mt-8 md:mt-0">
-          <h2> FOLLOW US </h2>
+          <h2 className='font-semibold'> FOLLOW US </h2>
           <div className='flex mt-4 items-center'>
-            <a href="https://twitter.com/0xD4V1NC1" target="_blank" rel="noopener noreferrer">
+            <LinkTo to="https://twitter.com/0xD4V1NC1" target="_blank">
               <Twitter formattedClassName='w-8 h-8 text-primary-500 hover:animate-pulse'/>
-            </a>
-            <h3 className='ml-8'>Twitter</h3>
+            </LinkTo>
+            <h3 className='ml-4'>Twitter</h3>
           </div>
           <div className='flex mt-4 items-center'>
-            <a href="https://instagram.com/0xwolfpackfinance" target="_blank" rel="noopener noreferrer">
+            <LinkTo to="https://instagram.com/0xwolfpackfinance" target="_blank" >
               <Instagram formattedClassName='w-8 h-8 text-primary-500 hover:animate-pulse'/>
-            </a>
-            <h3 className='ml-8'>Instagram</h3>
+            </LinkTo>
+            <h3 className='ml-4'>Instagram</h3>
           </div>
         </div>
       </div>
