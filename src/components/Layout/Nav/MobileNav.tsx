@@ -35,7 +35,6 @@ const MobileNav = () => {
       {/* The Mobile Menu Options is outside of the nav header b/c with justify-between and flex... it would move the button over */}
       <MobileMenuOptions isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />
     </>
-
   );
 };
 export default MobileNav;

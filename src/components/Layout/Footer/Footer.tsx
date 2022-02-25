@@ -5,6 +5,7 @@ import Discord from '../../UI/icons/discord';
 import Instagram from '../../UI/icons/instagram';
 import Twitter from '../../UI/icons/twitter';
 import LinkTo from '../../Components/LinkTo';
+import Opensea from '../../UI/icons/open-sea';
 
 const Footer = () => {
   return (
@@ -16,8 +17,9 @@ const Footer = () => {
           <ul className='my-4'>
             <li><LinkTo to='/members-only'>Members Only</LinkTo></li>
             {/* <li><LinkTo>Roadmap</LinkTo></li> */}
-            <li><LinkTo to="#mint-section">Minting Information</LinkTo></li>
-            <li><LinkTo to="#faqs-section">FAQs</LinkTo></li>
+            <li><LinkTo to="/#mint-section">Minting Information</LinkTo></li>
+            <li><LinkTo to="/#faqs-section">FAQs</LinkTo></li>
+            <li><LinkTo to="/terms-of-service">Terms Of Service</LinkTo></li>
           </ul>
         </div>
         {/* Section 2 */}
@@ -49,6 +51,12 @@ const Footer = () => {
               <Instagram formattedClassName='w-8 h-8 text-primary-500 hover:animate-pulse'/>
             </LinkTo>
             <h3 className='ml-4'>Instagram</h3>
+          </div>
+          <div className='flex mt-4 items-center'>
+            <LinkTo to="" target="_blank" >
+              <Opensea formattedClassName='w-8 h-8 text-primary-500 hover:animate-pulse'/>
+            </LinkTo>
+            <h3 className='ml-4'>Opensea</h3>
           </div>
         </div>
       </div>

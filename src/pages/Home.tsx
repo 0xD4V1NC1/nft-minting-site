@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import {useGlobalContext} from '../providers/GlobalContextProvider';
 import Button from '../components/UI/Button';
 import Layout from '../components/Layout/Layout';
+import Divider from '../components/UI/Divider';
+import Marquee from '../components/UI/Marquee';
+import MintSection from '../components/PageComponents/Home/MintSection';
 
 const Home = () => {
   const {setPageTitle /* , setIsDarkMode, isDarkMode*/} = useGlobalContext();
@@ -14,7 +17,7 @@ const Home = () => {
         <Button type="button" color="blue" className='py-2 px-4' text="set isDarkMode" />
         <div className="flex justify-center mt-4">
           <a
-            className="px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-600"
+            className="px-4 py-2 text-white bg-blue-400 hover:bg-rainbow rounded"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -22,7 +25,7 @@ const Home = () => {
             Learn React
           </a>
           <a
-            className="px-4 py-2 ml-4 text-white bg-secondary-500 rounded hover:bg-red-600"
+            className="px-4 py-2 ml-4 text-white rounded hover:bg-rainbow hover:animate-rainbow"
             href="https://tailwindcss.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -31,6 +34,10 @@ const Home = () => {
           </a>
         </div>
       </section>
+      <Divider />
+      <Marquee marqueeText="Minting March 23 ·"/>
+      <MintSection />
+      <Marquee marqueeText="Minting March 23 ·" reverse />
     </Layout>
   );
 };
