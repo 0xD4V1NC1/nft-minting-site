@@ -34,10 +34,10 @@ module.exports = {
         },
       },
       animation: {
-        'marquee': 'marquee 474.785s linear infinite',
+        'marquee': 'marquee 136.863s linear infinite',
         'marquee-reverse': 'marquee-reverse 136.863s linear infinite',
-        'marquee-2': 'marquee-2 25s linear infinite',
-        'marquee-reverse-2': 'marquee-reverse-2 25s linear infinite',
+        'marquee-2': 'marquee-2 136.863s linear infinite',
+        'marquee-reverse-2': 'marquee-reverse-2 136.863s linear infinite',
         'rainbow': 'rainbow 5s linear infinite',
       },
       keyframes: {

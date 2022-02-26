@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
 import Marquee from '../components/UI/Marquee';
 import MintSection from '../components/PageComponents/Home/MintSection';
+import SoldOut from '../components/UI/backgroundSvgs/sold-out';
 
 const Home = () => {
   const {setPageTitle /* , setIsDarkMode, isDarkMode*/} = useGlobalContext();
@@ -25,7 +26,7 @@ const Home = () => {
             Learn React
           </a>
           <a
-            className="px-4 py-2 ml-4 text-white rounded hover:bg-rainbow hover:animate-rainbow"
+            className="px-4 py-2 ml-4 text-white rounded bg-rainbow hover:bg-rainbow hover:animate-rainbow"
             href="https://tailwindcss.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -38,6 +39,7 @@ const Home = () => {
       <Marquee marqueeText="Minting March 23 ·"/>
       <MintSection />
       <Marquee marqueeText="Minting March 23 ·" reverse />
+      <SoldOut />
     </Layout>
   );
 };
