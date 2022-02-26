@@ -1,11 +1,16 @@
 import React from 'react';
+import {useGlobalContext} from '../../../providers/GlobalContextProvider';
+import {toggleTheme} from '../../../context/themeContext';
+
 import Logo from '../../UI/icons/logo';
 import LinkTo from '../../Components/LinkTo';
 import ConnectWalletButton from '../../Components/ConnectWalletButton';
-import Icon from '../../UI/Icon';
+import Button from '../../UI/Button';
 
 
 const DesktopNav = () => {
+  const {theme, setTheme} = useGlobalContext();
+
   return (
     <div className='hidden md:flex md:justify-between md:items-center'>
       <LinkTo to="/" ariaLabel='Link to Home Page'>
@@ -16,7 +21,8 @@ const DesktopNav = () => {
       </LinkTo>
       <div className='mx-4 my-2 flex items-center'>
         <div className='mr-4'>
-          <Icon name='moon' color='black' size='large' />
+          <Button type='button' color='none' icon={{name: 'moon', size: 'large', position: 'none',
+            color: 'black'}} onClick={()=> toggleTheme(theme, setTheme)} />
         </div>
         <ConnectWalletButton />
       </div>

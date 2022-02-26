@@ -1,18 +1,18 @@
 import React, {useEffect} from 'react';
+import Layout from '../components/Layout/Layout';
 import {useGlobalContext} from '../providers/GlobalContextProvider';
 
-const SecondPage = () => {
+const MembersOnly = () => {
   const {setPageTitle} = useGlobalContext();
   useEffect(() => {
-    setPageTitle('PAG2');
+    setPageTitle('Members | 0xWF');
   }, []);
   return (
-    <main>
+    <Layout>
       <div>
             This is page 2
       </div>
-
-    </main>
+    </Layout>
   );
 };
-export default SecondPage;
+export default MembersOnly;

@@ -8,7 +8,7 @@ import MintSection from '../components/PageComponents/Home/MintSection';
 import SoldOut from '../components/UI/backgroundSvgs/sold-out';
 
 const Home = () => {
-  const {setPageTitle /* , setIsDarkMode, isDarkMode*/} = useGlobalContext();
+  const {setPageTitle} = useGlobalContext();
   useEffect(() => {
     setPageTitle('HOme');
   }, []); // onClick={() => setIsDarkMode(!isDarkMode)}

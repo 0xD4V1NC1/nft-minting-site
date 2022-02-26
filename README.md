@@ -12,4 +12,4 @@ I have so many icons and UI components is b/c this repo is intended to be a very
 `yarn storybook` will run the storybook UI library so you can have a playground for the components in the components/UI directory. Customize your UI components as you see fit
 
 ## License
-MIT © [Sung M. Kim](https://sung.codes)
+MIT © 
