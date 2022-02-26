@@ -10,15 +10,16 @@ import SoldOut from '../components/UI/backgroundSvgs/sold-out';
 const Home = () => {
   const {setPageTitle} = useGlobalContext();
   useEffect(() => {
-    setPageTitle('HOme');
-  }, []); // onClick={() => setIsDarkMode(!isDarkMode)}
+    setPageTitle('Home | 0xWF');
+  }, []);
   return (
     <Layout>
       <section className="flex flex-col items-center justify-center h-screen text-red-300 bg-gradient-to-br from-white via-white to-primary-500">
         <Button type="button" color="blue" className='py-2 px-4' text="set isDarkMode" />
+        <h1 className='text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-red-600'>Gradient Text</h1>
         <div className="flex justify-center mt-4">
           <a
-            className="px-4 py-2 text-white bg-blue-400 hover:bg-rainbow rounded"
+            className="px-4 py-2 text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"

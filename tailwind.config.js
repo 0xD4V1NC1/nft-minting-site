@@ -127,6 +127,9 @@ module.exports = {
           '-webkit-animation-fill-mode': 'both',
           'animation-fill-mode': 'both',
         },
+        '.bg-clip-text': {
+          '-webkit-background-clip': 'text',
+        },
       };
       addUtilities(newUtilities);
     }),

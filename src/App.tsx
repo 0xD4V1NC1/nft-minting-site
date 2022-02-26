@@ -13,16 +13,9 @@ const App = () => {
   const [pageTitle, setPageTitle]= useState<string>();
   const [theme, setTheme] = useState<string>(getInitialTheme());
 
-
-  // if (initialTheme) {
-  //   updateTheme(initialTheme);
-  // }
-
-  useEffect(
-      () => {
-        updateTheme(theme);
-      },
-      [theme],
+  useEffect(() => {
+    updateTheme(theme);
+  }, [theme],
   );
   return (
     <BrowserRouter>
@@ -30,7 +23,7 @@ const App = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <GlobalContext.Provider value={{pageTitle, setPageTitle, theme, setTheme}}>
-        <div className={theme}>
+        <div className="app">
           <AppRoutes />
         </div>
       </GlobalContext.Provider>
