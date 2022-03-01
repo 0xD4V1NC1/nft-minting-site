@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Login({
+const Login = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function Login({
       />
     </svg>
   );
-}
+};
 
 export default Login;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Refresh({
+const Refresh = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Refresh({
       />
     </svg>
   );
-}
+};
 
 export default Refresh;

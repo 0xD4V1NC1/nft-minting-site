@@ -1,12 +1,12 @@
 import React from 'react';
 
-function QuestionMarkCircle({
+const QuestionMarkCircle = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function QuestionMarkCircle({
       />
     </svg>
   );
-}
+};
 
 export default QuestionMarkCircle;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Share({
+const Share = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -37,6 +37,6 @@ function Share({
       />
     </svg>
   );
-}
+};
 
 export default Share;

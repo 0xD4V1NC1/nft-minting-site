@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Logout({
+const Logout = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function Logout({
       />
     </svg>
   );
-}
+};
 
 export default Logout;

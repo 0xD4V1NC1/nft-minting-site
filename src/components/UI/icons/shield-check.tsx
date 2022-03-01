@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ShieldCheck({
+const ShieldCheck = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ShieldCheck({
       />
     </svg>
   );
-}
+};
 
 export default ShieldCheck;

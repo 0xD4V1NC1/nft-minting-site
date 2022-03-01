@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Menu3({
+const Menu3 = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg className={`${formattedClassName}`}
@@ -26,7 +26,7 @@ function Menu3({
     </svg>
 
   );
-}
+};
 
 export default Menu3;
 

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Search({
+const Search = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Search({
       />
     </svg>
   );
-}
+};
 
 export default Search;

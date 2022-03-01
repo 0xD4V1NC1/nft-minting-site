@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Plus({
+const Plus = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Plus({
       />
     </svg>
   );
-}
+};
 
 export default Plus;

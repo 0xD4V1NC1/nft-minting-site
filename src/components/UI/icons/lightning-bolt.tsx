@@ -1,12 +1,12 @@
 import React from 'react';
 
-function LightningBolt({
+const LightningBolt = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function LightningBolt({
       />
     </svg>
   );
-}
+};
 
 export default LightningBolt;

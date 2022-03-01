@@ -1,12 +1,12 @@
 import React from 'react';
 
-function X({
+const X = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function X({
       />
     </svg>
   );
-}
+};
 
 export default X;

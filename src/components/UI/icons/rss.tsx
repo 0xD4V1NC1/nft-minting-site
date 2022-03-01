@@ -1,12 +1,12 @@
 import React from 'react';
 
-function RSS({
+const RSS = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -37,6 +37,6 @@ function RSS({
       />
     </svg>
   );
-}
+};
 
 export default RSS;

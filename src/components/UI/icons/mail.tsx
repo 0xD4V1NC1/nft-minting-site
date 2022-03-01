@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Mail({
+const Mail = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -37,6 +37,6 @@ function Mail({
       />
     </svg>
   );
-}
+};
 
 export default Mail;

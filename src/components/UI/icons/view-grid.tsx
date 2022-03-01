@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ViewGrid({
+const ViewGrid = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ViewGrid({
       />
     </svg>
   );
-}
+};
 
 export default ViewGrid;

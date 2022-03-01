@@ -1,6 +1,6 @@
 import React from 'react';
 
-function JCB({formattedClassName}: { formattedClassName: string }) {
+const JCB = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -20,6 +20,6 @@ function JCB({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default JCB;

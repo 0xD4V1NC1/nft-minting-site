@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UnionPay({formattedClassName}: { formattedClassName: string }) {
+const UnionPay = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -52,6 +52,6 @@ function UnionPay({formattedClassName}: { formattedClassName: string }) {
       </g>
     </svg>
   );
-}
+};
 
 export default UnionPay;

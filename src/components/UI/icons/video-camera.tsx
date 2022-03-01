@@ -1,12 +1,12 @@
 import React from 'react';
 
-function VideoCamera({
+const VideoCamera = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function VideoCamera({
       />
     </svg>
   );
-}
+};
 
 export default VideoCamera;
