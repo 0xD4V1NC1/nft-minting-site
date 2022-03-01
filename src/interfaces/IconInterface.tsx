@@ -6,4 +6,5 @@ export default interface IconInterface {
     solid?: boolean;
     className?: string;
     position?: 'left' | 'right' | 'none';
+    rotate?: boolean;
 };

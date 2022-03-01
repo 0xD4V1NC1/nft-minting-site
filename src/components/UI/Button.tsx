@@ -26,8 +26,8 @@ const Button = ({
   let btnTextColor = 'text-white';
   switch (color) {
     case 'primary':
-      btnBgColor = `bg-primary-500`;
-      btnBgColorHover = `hover:bg-primary-700`;
+      btnBgColor = `bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500`;
+      btnBgColorHover = `hover:animate-pulse`;
       btnTextColor = `text-white`;
       break;
     case 'primary-dark':
@@ -53,7 +53,7 @@ const Button = ({
     case 'white':
       btnBgColor = `bg-white`;
       btnBgColorHover = `hover:bg-gray-200`;
-      btnTextColor = `text-sgPrimaryLight-500`;
+      btnTextColor = `text-black`;
       break;
     case 'black':
       btnBgColor = `bg-black`;
@@ -95,10 +95,11 @@ const Button = ({
       btnBgColor = `bg-purple-500`;
       btnBgColorHover = `hover:bg-purple-600`;
       break;
+    case 'none':
     default:
       btnBgColor = ``;
       btnBgColorHover = ``;
-      btnTextColor = ``;
+      btnTextColor = `text-transparent bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500 bg-clip-text`;
   }
 
   switch (size) {
@@ -141,7 +142,8 @@ const Button = ({
 
   const handleClick = () => {
     if (href) {
-      window.open(href, target || '_self');
+      // we want to always pass in noopener norefer if href to protect against xss
+      window.open(href, target || '_self', 'noopener norefer');
     } else if (onClick) {
       onClick();
     }

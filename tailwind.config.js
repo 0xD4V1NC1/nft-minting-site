@@ -20,17 +20,50 @@ module.exports = {
     extend: {
       colors: {
         'primary': {
-          500: '#e2037a',
+          400: '#B7B0FF',
+          500: '#53A0FD',
         },
         'primary-dark': {
           500: '#222',
         },
         'secondary': {
-          500: '#555',
+          500: '#C5FF5C',
         },
         'secondary-dark': {
           500: '#333',
         },
+      },
+      animation: {
+        'marquee': 'marquee 136.863s linear infinite',
+        'marquee-reverse': 'marquee-reverse 136.863s linear infinite',
+        'marquee-2': 'marquee-2 136.863s linear infinite',
+        'marquee-reverse-2': 'marquee-reverse-2 136.863s linear infinite',
+        'rainbow': 'rainbow 5s linear infinite',
+      },
+      keyframes: {
+        'marquee': {
+          '0%': {transform: 'translateX(0%)'},
+          '100%': {transform: 'translateX(-100%)'},
+        },
+        'marquee-reverse': {
+          '100%': {transform: 'translateX(0%)'},
+          '0%': {transform: 'translateX(-100%)'},
+        },
+        'marquee-2': {
+          '0%': {transform: 'translateX(100%)'},
+          '100%': {transform: 'translateX(0%)'},
+        },
+        'marquee-reverse-2': {
+          '100%': {transform: 'translateX(-100%)'},
+          '0%': {transform: 'translateX(0%)'},
+        },
+        'rainbow': {
+          '0%': {'background-position': '0 50%'},
+          '100%': {'background-position': '400% 50%'},
+        },
+      },
+      flex: {
+        '0-0-auto': '0 0 auto',
       },
     },
   },
@@ -62,7 +95,43 @@ module.exports = {
           minHeight: '1rem',
           width: '1px',
         },
+        '.bg-rainbow': {
+          'backgroundSize': `400% 200%`,
+          'backgroundImage': `linear-gradient(90deg,#32fe31,#33f7f5,#4779ed,#9263d2,#ff0b00,#9263d2,#4779ed,#33f7f5)`,
+        },
+        '.bg-rainbow-animate': {
+          'backgroundSize': `400% 200%`,
+          'backgroundImage': `linear-gradient(90deg,#32fe31,#33f7f5,#4779ed,#9263d2,#ff0b00,#9263d2,#4779ed,#33f7f5)`,
+          'animationName': `rainbow`,
+          'animationDuration': `5s`,
+          'animationIterationCount': `infinite`,
+          'animationTimingFunction': `linear`,
+        },
       });
+    }),
+    plugin(({addUtilities}) => {
+      const newUtilities = {
+        '.animate-fadeIn': {
+          '-webkit-animation-name': 'animate-fadeIn',
+          'animation-name': 'animate-fadeIn',
+          '-webkit-animation-duration': '1s',
+          'animation-duration': '1s',
+          '-webkit-animation-fill-mode': 'both',
+          'animation-fill-mode': 'both',
+        },
+        '.animate-fadeOut': {
+          '-webkit-animation-name': 'animate-fadeOut',
+          'animation-name': 'animate-fadeOut',
+          '-webkit-animation-duration': '1s',
+          'animation-duration': '1s',
+          '-webkit-animation-fill-mode': 'both',
+          'animation-fill-mode': 'both',
+        },
+        '.bg-clip-text': {
+          '-webkit-background-clip': 'text',
+        },
+      };
+      addUtilities(newUtilities);
     }),
   ],
   // Filenames to scan for classes
