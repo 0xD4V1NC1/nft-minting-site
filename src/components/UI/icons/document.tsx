@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Document({
+const Document = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Document({
       />
     </svg>
   );
-}
+};
 
 export default Document;

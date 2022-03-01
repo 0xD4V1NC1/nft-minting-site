@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ArrowLeft({
+const ArrowLeft = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ArrowLeft({
       />
     </svg>
   );
-}
+};
 
 export default ArrowLeft;

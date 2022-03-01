@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ArrowDown({
+const ArrowDown = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ArrowDown({
       />
     </svg>
   );
-}
+};
 
 export default ArrowDown;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Hipercard({formattedClassName}: { formattedClassName: string }) {
+const Hipercard = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -24,6 +24,6 @@ function Hipercard({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default Hipercard;

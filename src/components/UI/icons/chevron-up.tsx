@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ChevronUp({
+const ChevronUp = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ChevronUp({
       />
     </svg>
   );
-}
+};
 
 export default ChevronUp;

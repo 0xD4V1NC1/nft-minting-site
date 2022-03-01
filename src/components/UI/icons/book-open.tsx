@@ -1,12 +1,12 @@
 import React from 'react';
 
-function BookOpen({
+const BookOpen = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function BookOpen({
       />
     </svg>
   );
-}
+};
 
 export default BookOpen;

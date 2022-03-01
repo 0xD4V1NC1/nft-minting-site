@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ChartBar({
+const ChartBar = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function ChartBar({
       />
     </svg>
   );
-}
+};
 
 export default ChartBar;

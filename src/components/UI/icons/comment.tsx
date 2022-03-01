@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Comment({
+const Comment = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Comment({
       />
     </svg>
   );
-}
+};
 
 export default Comment;

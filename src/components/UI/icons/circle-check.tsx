@@ -1,12 +1,12 @@
 import React from 'react';
 
-function CircleCheck({
+const CircleCheck = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function CircleCheck({
       />
     </svg>
   );
-}
+};
 
 export default CircleCheck;

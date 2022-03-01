@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Download({
+const Download = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function Download({
       />
     </svg>
   );
-}
+};
 
 export default Download;

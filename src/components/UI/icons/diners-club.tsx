@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DinersClub({formattedClassName}: { formattedClassName: string }) {
+const DinersClub = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -20,6 +20,6 @@ function DinersClub({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default DinersClub;

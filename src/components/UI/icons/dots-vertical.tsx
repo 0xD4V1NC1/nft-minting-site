@@ -1,12 +1,12 @@
 import React from 'react';
 
-function DotsVertical({
+const DotsVertical = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function DotsVertical({
       />
     </svg>
   );
-}
+};
 
 export default DotsVertical;

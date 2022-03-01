@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Globe({
+const Globe = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Globe({
       />
     </svg>
   );
-}
+};
 
 export default Globe;

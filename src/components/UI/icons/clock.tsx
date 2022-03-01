@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Clock({
+const Clock = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Clock({
       />
     </svg>
   );
-}
+};
 
 export default Clock;

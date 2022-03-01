@@ -1,12 +1,12 @@
 import React from 'react';
 
-function CreditCard({
+const CreditCard = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   const fill = solid ? 'currentColor' : 'none';
   const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
   const xmlns = 'https://www.w3.org/2000/svg';
@@ -44,6 +44,6 @@ function CreditCard({
       />
     </svg>
   );
-}
+};
 
 export default CreditCard;

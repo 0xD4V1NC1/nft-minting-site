@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Discover({formattedClassName}: { formattedClassName: string }) {
+const Discover = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -13,6 +13,6 @@ function Discover({formattedClassName}: { formattedClassName: string }) {
       </g>
     </svg>
   );
-}
+};
 
 export default Discover;
