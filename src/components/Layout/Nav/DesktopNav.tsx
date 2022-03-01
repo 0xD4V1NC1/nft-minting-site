@@ -1,6 +1,6 @@
 import React from 'react';
-import {useGlobalContext} from '../../../providers/GlobalContextProvider';
-import {toggleTheme} from '../../../context/themeContext';
+
+import useDarkMode from '../../../hooks/useDarkMode';
 
 import Logo from '../../UI/icons/logo';
 import LinkTo from '../../Components/LinkTo';
@@ -9,7 +9,8 @@ import Button from '../../UI/Button';
 
 
 const DesktopNav = () => {
-  const {theme, setTheme} = useGlobalContext();
+  const [isDark, setIsDark] = useDarkMode();
+  console.log('user settings', window.matchMedia('(prefers-color-scheme: dark)'));
 
   return (
     <div className='hidden md:flex md:justify-between md:items-center'>
@@ -22,7 +23,7 @@ const DesktopNav = () => {
       <div className='mx-4 my-2 flex items-center'>
         <div className='mr-4'>
           <Button type='button' color='none' icon={{name: 'moon', size: 'large', position: 'none',
-            color: 'black'}} onClick={()=> toggleTheme(theme, setTheme)} />
+            color: 'black'}} onClick={()=> setIsDark(!isDark)} />
         </div>
         <ConnectWalletButton />
       </div>
