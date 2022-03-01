@@ -24,13 +24,17 @@ module.exports = {
           500: '#53A0FD',
         },
         'primary-dark': {
-          500: '#222',
+          400: '#7772a8',
+          500: '#1b3657',
         },
         'secondary': {
           500: '#C5FF5C',
         },
         'secondary-dark': {
-          500: '#333',
+          500: '#94bf45',
+        },
+        'gradient': {
+          color: `linear-gradient(90deg,#53A0FD, #C5FF5C,#B7B0FF,#53A0FD, #C5FF5C, #B7B0FF)`,
         },
       },
       animation: {

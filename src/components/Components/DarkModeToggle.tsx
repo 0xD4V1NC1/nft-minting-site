@@ -8,7 +8,7 @@ const DarkModeToggle = () => {
 
   return (
     <Button type='button' color='none' icon={{name: `${isDark ? 'sun': 'moon'}`, size: 'large', position: 'none',
-      color: 'black', className: 'hover:text-purple-500'}} onClick={()=> setIsDark(!isDark)} />
+      color: 'black', className: 'hover:text-primary-400 dark:hover:text-primary-400', solid: true}} onClick={()=> setIsDark(!isDark)} />
   );
 };
 export default DarkModeToggle;

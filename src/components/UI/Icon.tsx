@@ -122,9 +122,7 @@ function getSizeClassName(size: string) {
 function getColorClassName(color: string) {
   switch (color) {
     case 'primary':
-      return `text-primary-500`;
-    case 'primary-dark':
-    case 'secondary-dark':
+      return `text-primary-500 dark:text-primary-dark-500`;
     case 'secondary':
       return `text-secondary-500`;
     case 'gray':
@@ -134,7 +132,7 @@ function getColorClassName(color: string) {
     case 'white':
       return `text-white`;
     case 'black':
-      return `text-black`;
+      return `text-black dark:text-white`;
     case 'pink':
       return `text-pink-500`;
     case 'green':

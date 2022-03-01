@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {useGlobalContext} from '../providers/GlobalContextProvider';
-import Button from '../components/UI/Button';
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
 import Marquee from '../components/UI/Marquee';
 import MintSection from '../components/PageComponents/Home/MintSection';
-import SoldOut from '../components/UI/backgroundSvgs/sold-out';
+import Button from '../components/UI/Button';
+import Image from '../components/UI/Image';
 
 const Home = () => {
   const {setPageTitle} = useGlobalContext();
@@ -14,8 +14,7 @@ const Home = () => {
   }, []);
   return (
     <Layout>
-      <section className="flex flex-col items-center justify-center h-screen text-red-300 bg-gradient-to-br from-white via-white to-primary-500">
-        <Button type="button" color="blue" className='py-2 px-4' text="set isDarkMode" />
+      <section className="flex flex-col items-center justify-center h-screen text-red-300 bg-gradient-to-br from-white via-white to-primary-500 dark:bg-gradient-to-br dark:from-primary-dark-500 dark:via-primary-dark-500 dark:to-primary-dark-400">
         <h1 className='text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-red-600'>Gradient Text</h1>
         <div className="flex justify-center mt-4">
           <a
@@ -40,7 +39,25 @@ const Home = () => {
       <Marquee marqueeText="Minting March 23 ·"/>
       <MintSection />
       <Marquee marqueeText="Minting March 23 ·" reverse />
-      <SoldOut />
+      <section className='min-h-screen bg-white dark:bg-primary-dark-500 px-8'>
+        <div className='flex gap-8'>
+          <div className=''>
+            <Image src='/preview.gif' size='w-64 h-64'/>
+          </div>
+          <div>
+            <h2> SOme shit was minted</h2>
+            <div className='relative w-1/2 overflow-hidden rounded-3xl bg-blue-400 bg-opacity-50 p-6 py-12' >
+              <div className='h-36 md:h-48'>
+                <div className='absolute inset-0 z-10 flex w-full items-center justify-center bg-cover bg-center bg-no-repeat' style={{backgroundImage: `url('/sold-out.svg')`}}>
+                  {/* @TODO: Change this link  */}
+                  <Button type="button" href="https://www.opensea.io" color="primary" className='text-sm py-2 px-6 uppercase md:text-xl'> Shop on Opensea</Button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };

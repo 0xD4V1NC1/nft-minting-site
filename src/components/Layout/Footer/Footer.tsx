@@ -9,7 +9,7 @@ import Opensea from '../../UI/icons/open-sea';
 
 const Footer = () => {
   return (
-    <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-black text-black dark:text-white'>
+    <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-primary-dark-500 text-black dark:text-white'>
       <div className='flex flex-col md:flex-row mt-8 md:justify-between'>
         {/* Section 1 */}
         <div className=''>
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='mt-8 text-center text-gray-600 text-xs'>© 0xWF All rights reserved. Crafted by 0xD4V1NC1</div>
+      <div className='mt-8 text-center text-gray-600 dark:text-gray-400 text-xs'>© 0xWF All rights reserved. Crafted by 0xD4V1NC1</div>
     </footer>
   );
 };
