@@ -53,7 +53,7 @@ const Button = ({
     case 'white':
       btnBgColor = `bg-white`;
       btnBgColorHover = `hover:bg-gray-200`;
-      btnTextColor = `text-black`;
+      btnTextColor = `text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-red-600`;
       break;
     case 'black':
       btnBgColor = `bg-black`;
@@ -153,8 +153,8 @@ const Button = ({
   const formattedClassName = className || '';
   const combinedClassNames = `${iconStyle} ${btnSize} ${fontSize} ${btnBgColor} ${
     !disabled && btnBgColorHover
-  } ${btnTextColor} ${formattedClassName} ${disabledClass}`;
-  const content = text ? <span>{text}</span> : children;
+  } ${formattedClassName} ${disabledClass}`;
+  const content = text ? <span className={btnTextColor}>{text}</span> : children;
   const onClickProp =
     !disabled && !!handleClick ? {onClick: handleClick} : {};
   return (

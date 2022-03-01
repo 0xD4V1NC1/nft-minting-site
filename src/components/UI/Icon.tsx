@@ -59,6 +59,7 @@ import Search from './icons/search';
 import Share from './icons/share';
 import ShieldCheck from './icons/shield-check';
 import Star from './icons/star';
+import Sun from './icons/sun';
 import ThumbsUp from './icons/thumbs-up';
 import User from './icons/user';
 import UserGroup from './icons/user-group';
@@ -335,6 +336,7 @@ const Icon = ({name, color, size, solid, className}: IconInterface) => {
       <ShieldCheck solid={!!solid} formattedClassName={formattedClassName} />
     ),
     'star': <Star solid={!!solid} formattedClassName={formattedClassName} />,
+    'sun': <Sun solid={!!solid} formattedClassName={formattedClassName} />,
     'thumbs-up': (
       <ThumbsUp solid={!!solid} formattedClassName={formattedClassName} />
     ),
