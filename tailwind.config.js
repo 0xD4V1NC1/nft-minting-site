@@ -97,7 +97,8 @@ module.exports = {
         },
         '.bg-rainbow': {
           'backgroundSize': `400% 200%`,
-          'backgroundImage': `linear-gradient(90deg,#32fe31,#33f7f5,#4779ed,#9263d2,#ff0b00,#9263d2,#4779ed,#33f7f5)`,
+          // 'backgroundImage': `linear-gradient(90deg,#32fe31,#33f7f5,#4779ed,#9263d2,#ff0b00,#9263d2,#4779ed,#33f7f5)`, rainbow gradient
+          'backgroundImage': `linear-gradient(90deg,#53A0FD, #C5FF5C,#B7B0FF,#53A0FD, #C5FF5C, #B7B0FF)`, // my custom gradient
         },
         '.bg-rainbow-animate': {
           'backgroundSize': `400% 200%`,
