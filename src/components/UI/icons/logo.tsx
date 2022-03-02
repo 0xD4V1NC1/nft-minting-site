@@ -1,11 +1,11 @@
 import React from 'react';
-const Logo = ({formattedClassName, gradient}: {formattedClassName?: string, gradient?:boolean}) => {
+const Logo = ({formattedClassName, gradient, gradientId}: {formattedClassName?: string, gradient?:boolean, gradientId?:string}) => {
   return (
-    <svg className={formattedClassName || 'w-8 h-8'} xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-29.1 -21.4 1338.1 986.9" fill={gradient ? 'url(#grad1)' : 'currentColor'}
+    <svg className={formattedClassName || 'w-8 h-8'} xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-29.1 -21.4 1338.1 986.9" fill={gradient ? `url(#${gradientId || 'id-1'})` : 'currentColor'}
     >
       {gradient ?
       <defs>
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={gradientId || 'id-1'} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style={{
             'stopColor': '#B7B0FF',
             'stopOpacity': 1,

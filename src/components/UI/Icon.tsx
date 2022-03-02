@@ -105,7 +105,7 @@ function getSizeClassName(size: string) {
     case 'medium':
       return `w-4 h-4`;
     case 'large':
-      return `w-6 h-6`;
+      return `w-8 h-8 md:w-6 md:h-6`;
     case 'xlarge':
       return `w-8 h-8`;
     case '2xlarge':
@@ -122,7 +122,7 @@ function getSizeClassName(size: string) {
 function getColorClassName(color: string) {
   switch (color) {
     case 'primary':
-      return `text-primary-500 dark:text-primary-dark-500`;
+      return `text-primary-500 dark:text-primary-dark-400`;
     case 'secondary':
       return `text-secondary-500`;
     case 'gray':

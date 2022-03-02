@@ -58,7 +58,7 @@ const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel,
               e.stopPropagation();
             }}
             style={{transition: `all ${duration || '0.75s'} ease`}}
-            className={`w-[60vw] right-0 bg-white ${readyToDisplay ? 'right-0' : 'right-[-100%]'} ${
+            className={`w-[60vw] right-0 bg-white dark:bg-primary-dark-500 ${readyToDisplay ? 'right-0' : 'right-[-100%]'} ${
               !omitPadding ? 'py-4 px-8' : ''
             } absolute h-full m-0 overflow-y-auto z-[1001] sm:w-screen min-w-[95vw] md:w-[95vw] md:min-w-[auto] ${maxWidth || ''}`}
           >

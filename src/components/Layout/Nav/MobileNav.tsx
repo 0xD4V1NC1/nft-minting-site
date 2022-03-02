@@ -4,6 +4,7 @@ import Overlay from '../../UI/Overlay';
 import Logo from '../../UI/icons/logo';
 import LinkTo from '../../Components/LinkTo';
 import ConnectWalletButton from '../../Components/ConnectWalletButton';
+import DarkModeToggle from '../../Components/DarkModeToggle';
 
 const MobileMenuOptions = ({isOverlayOpen, setIsOverlayOpen}:{isOverlayOpen: boolean, setIsOverlayOpen: (state: boolean) => void}) => {
   return (
@@ -27,10 +28,11 @@ const MobileNav = () => {
   return (
     <>
       <div id="mobile-nav-header" className='flex justify-between px-8 py-2 md:hidden'>
+        <DarkModeToggle />
         <LinkTo to="/" ariaLabel='Link to Home Page'>
-          <Logo formattedClassName='w-12 h-12 text-primary-500'/>
+          <Logo formattedClassName='w-12 h-12' gradient gradientId='mobile-logo' />
         </LinkTo>
-        <Button type="button" onClick={() => setIsOverlayOpen(true)} color="none" icon={{name: 'menu-3', size: '2xlarge', color: 'primary', position: 'none'}} />
+        <Button type="button" onClick={() => setIsOverlayOpen(true)} color="none" icon={{name: 'menu-3', size: '2xlarge', color: 'black', position: 'none'}} />
       </div>
       {/* The Mobile Menu Options is outside of the nav header b/c with justify-between and flex... it would move the button over */}
       <MobileMenuOptions isOverlayOpen={isOverlayOpen} setIsOverlayOpen={setIsOverlayOpen} />

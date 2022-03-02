@@ -50,11 +50,10 @@ const Button = ({
       btnBgColorHover = `hover:bg-rainbow hover:animate-rainbow`;
       btnTextColor = `text-white`;
       break;
-      // @TODO
     case 'primary-gradient-outline':
-      btnBgColor = `bg-red-500`;
-      btnBgColorHover = `hover:bg-blue-600`;
-      btnTextColor = `text-white`;
+      btnBgColor = `bg-white dark:bg-primary-dark-500`;
+      btnBgColorHover = `hover:bg-white dark:hover:bg-primary-dark-500`;
+      btnTextColor = `text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500`;
       break;
     case 'gray':
       btnBgColor = `bg-gray-300`;
@@ -62,9 +61,9 @@ const Button = ({
       btnTextColor = `text-black`;
       break;
     case 'white':
-      btnBgColor = `bg-transparent`;
+      btnBgColor = `bg-white`;
       btnBgColorHover = `hover:bg-gray-200`;
-      btnTextColor = `text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500`;
+      btnTextColor = `text-black`;
       break;
     case 'black':
       btnBgColor = `bg-black`;
