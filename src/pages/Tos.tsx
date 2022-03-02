@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useGlobalContext} from '../providers/GlobalContextProvider';
+
 import Layout from '../components/Layout/Layout';
 
 const Tos = () => {
+  const {setPageTitle} = useGlobalContext();
+  useEffect(() => {
+    setPageTitle('Terms Of Service | 0xWF');
+  }, []);
   return (
     <Layout>
       <section id="terms-of-service" className='mx-64 mt-16'>

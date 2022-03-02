@@ -3,7 +3,7 @@ import React from 'react';
 
 const MintSection = () => {
   return (
-    <section>
+    <section className='bg-white dark:bg-primary-dark-500'>
       {/* {revealTime !== 0 && <Countdown date={currentTime + (revealTime - currentTime)} className='countdown mx-3' />} */}
       <div className='flex'>
         <div>
