@@ -171,8 +171,7 @@ const Button = ({
   return (
     <button
       type={btnType}
-      className={`${combinedClassNames}
-       focus:outline-none bg-center items-center cursor-pointer shadow-xs rounded`}
+      className={`${combinedClassNames} bg-center items-center cursor-pointer shadow-xs rounded`}
       {...onClickProp}
     >
       {icon && !loading && icon.position === 'none' ? (

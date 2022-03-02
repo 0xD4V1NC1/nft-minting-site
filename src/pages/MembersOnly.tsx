@@ -9,9 +9,9 @@ const MembersOnly = () => {
   }, []);
   return (
     <Layout>
-      <div>
+      <section className='min-h-screen bg-white dark:bg-primary-dark-500'>
             This is page 2
-      </div>
+      </section>
     </Layout>
   );
 };

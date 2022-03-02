@@ -19,5 +19,4 @@ const Marquee = ({reverse, marqueeText}:{reverse?: boolean, marqueeText: string}
     </div>
   );
 };
-// .hover\:YOOOOOO:hover{background-size:400% 200%;background-image:linear-gradient(90deg,#32fe31,#33f7f5,#4779ed,#9263d2,#ff0b00,#9263d2,#4779ed,#33f7f5);-webkit-animation:rainbow 5s linear infinite;animation:rainbow 5s linear infinite}
 export default Marquee;

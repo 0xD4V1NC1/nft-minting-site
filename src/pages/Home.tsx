@@ -15,10 +15,10 @@ const Home = () => {
   }, []);
   return (
     <Layout>
-      <IntroSection />
-      <Divider />
       <Marquee marqueeText="Minting March 23 ·"/>
+      <IntroSection />
       <MintSection />
+      <Divider horizontal />
       <SoldOutSection />
       <Marquee marqueeText="Minting March 23 ·" reverse />
       <OpenseaBannerSection />
