@@ -10,7 +10,7 @@ const Faq = ({question, answer, id}: {question:string, answer: string, id:number
       <Collapsible
         collapsibleId={`faq-${id}-`}
         trigger={
-          <div className="bg-gray-100 rounded flex justify-between">
+          <div className="bg-gray-100 dark:bg-primary-dark-400 rounded flex justify-between">
             <div>
               <h3 className="font-bold text-lg px-6 py-5">{question}</h3>
             </div>
@@ -24,7 +24,7 @@ const Faq = ({question, answer, id}: {question:string, answer: string, id:number
         open={open}
         ariaLabel={`FAQ Collapsible for ${question}`}
       >
-        <div className="bg-gray-100 rounded">
+        <div className="bg-gray-100 dark:bg-primary-dark-400 rounded">
           <p className="text-sm font-normal px-6 py-5">{answer}</p>
         </div>
       </Collapsible>

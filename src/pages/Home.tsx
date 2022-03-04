@@ -7,6 +7,7 @@ import MintSection from '../components/PageComponents/Home/MintSection';
 import OpenseaBannerSection from '../components/PageComponents/Home/OpenseaBannerSection';
 import SoldOutSection from '../components/PageComponents/Home/SoldOutSection';
 import IntroSection from '../components/PageComponents/Home/IntroSection';
+import FaqsSection from '../components/PageComponents/Home/FaqsSection';
 
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
@@ -14,6 +15,7 @@ const Home = () => {
     setPageTitle('Home | 0xWF');
     setMetaDescription('Home of 0xWF NFT. Mint your NFT here and learn more about our project');
   }, []);
+
   return (
     <Layout>
       <IntroSection />
@@ -22,6 +24,7 @@ const Home = () => {
       <SoldOutSection />
       <Marquee marqueeText="Minting March 23 ·" />
       <OpenseaBannerSection />
+      <FaqsSection />
     </Layout>
   );
 };

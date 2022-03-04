@@ -9,7 +9,7 @@ const IntroSection = () => {
 
         <p className="px-4 py-2 text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500" >
           <LinkTo
-            to={`${process.env.REACT_APP_BASE_URL}/#faq-section`}
+            to={`${process.env.REACT_APP_BASE_URL}/#faqs-section`}
           >
             Learn More
           </LinkTo>
