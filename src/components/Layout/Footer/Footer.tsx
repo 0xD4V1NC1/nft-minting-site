@@ -8,7 +8,6 @@ import LinkTo from '../../Components/LinkTo';
 import Opensea from '../../UI/icons/open-sea';
 
 const Footer = () => {
-  console.log('PUBLIC_URL', process.env.REACT_APP_BASE_URL);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-primary-dark-500 text-black dark:text-white'>
