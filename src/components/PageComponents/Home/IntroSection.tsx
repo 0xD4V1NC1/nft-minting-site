@@ -11,7 +11,7 @@ const IntroSection = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-            Learn React
+            Learn More
         </a>
         <a
           className="px-4 py-2 ml-4 text-white rounded bg-rainbow hover:bg-rainbow hover:animate-rainbow"
@@ -19,7 +19,7 @@ const IntroSection = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-            Learn Tailwind CSS v3.x
+            Mint NFT
         </a>
       </div>
     </section>

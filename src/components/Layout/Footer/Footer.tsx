@@ -8,6 +8,7 @@ import LinkTo from '../../Components/LinkTo';
 import Opensea from '../../UI/icons/open-sea';
 
 const Footer = () => {
+  console.log('ooo', process.env.BASE_URL);
   return (
     <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-primary-dark-500 text-black dark:text-white'>
       <div className='flex flex-col md:flex-row mt-8 md:justify-between'>
@@ -17,8 +18,8 @@ const Footer = () => {
           <ul className='my-4'>
             <li><LinkTo to='/members-only'>Members Only</LinkTo></li>
             {/* <li><LinkTo>Roadmap</LinkTo></li> */}
-            <li><LinkTo to="/#mint-section">Minting Information</LinkTo></li>
-            <li><LinkTo to="/#faqs-section">FAQs</LinkTo></li>
+            <li><LinkTo to={`${process.env.BASE_URL}/#mint-section`}>Minting Information</LinkTo></li>
+            <li><LinkTo to={`${process.env.BASE_URL}/#faqs-section`}>FAQs</LinkTo></li>
             <li><LinkTo to="/terms-of-service">Terms Of Service</LinkTo></li>
           </ul>
         </div>
