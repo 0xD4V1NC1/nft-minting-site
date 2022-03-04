@@ -11,7 +11,7 @@ const SoldOutSection = () => {
           <Image src='/preview.gif' size='w-full h-full md:w-72 md:h-72' marginBottom='mb-0' className='rounded-3xl'/>
         </div>
         <div className='w-full md:w-1/2'>
-          <h2 className='flex flex-col text-center text-5xl font-black md:text-8xl'>
+          <h2 className='mt-8 md:mt-0 flex flex-col text-center text-5xl font-black md:text-8xl'>
             <span className='text-black dark:text-white'> 5000 / 5000 </span>
             <span className='text-5xl text-primary-400'> Minted </span>
           </h2>
