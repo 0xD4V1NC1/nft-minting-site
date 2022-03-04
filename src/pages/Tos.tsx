@@ -4,9 +4,10 @@ import {useGlobalContext} from '../providers/GlobalContextProvider';
 import Layout from '../components/Layout/Layout';
 
 const Tos = () => {
-  const {setPageTitle} = useGlobalContext();
+  const {setPageTitle, setMetaDescription} = useGlobalContext();
   useEffect(() => {
     setPageTitle('Terms Of Service | 0xWF');
+    setMetaDescription('0xWF Terms of Service and ownership related information');
     // scroll to top of page when navigated to
     window.scrollTo(0, 0);
   }, []);
