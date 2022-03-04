@@ -16,6 +16,7 @@ const Button = ({
   target,
   disabled,
   size,
+  ariaLabel,
 }: ButtonInterface) => {
   const iconStyle = icon ? 'flex' : '';
   const btnType = type === 'submit' ? 'submit' : 'button';
@@ -169,6 +170,7 @@ const Button = ({
     !disabled && !!handleClick ? {onClick: handleClick} : {};
   return (
     <button
+      aria-label={ariaLabel || ''}
       type={btnType}
       className={`${combinedClassNames} bg-center items-center cursor-pointer shadow-xs rounded`}
       {...onClickProp}

@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Overlay> = (args) => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   return (
     <>
-      <Button type="button" onClick={() => setIsOverlayOpen(true)} color="primary" size='small' >Click Me</Button>
+      <Button type="button" ariaLabel='Click to trigger Overlay' onClick={() => setIsOverlayOpen(true)} color="primary" size='small' >Click Me</Button>
       <Overlay {...args} open={!!isOverlayOpen} dismiss={()=> setIsOverlayOpen(false)} ariaLabelledBy='overlay-header'/>
     </>
 

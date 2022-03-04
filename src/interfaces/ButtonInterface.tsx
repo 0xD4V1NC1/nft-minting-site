@@ -5,6 +5,7 @@ import { ColorOptions, SizeOptions } from "./types";
 export default interface ButtonInterface {
   // button type is import for accessibility
   type: string;
+  ariaLabel: string;
   color: ColorOptions;
   text?: string;
   children?: ReactNode;

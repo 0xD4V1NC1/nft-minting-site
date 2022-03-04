@@ -34,7 +34,7 @@ const Footer = () => {
               <p className='text-sm'> Our Discord server is a great place to meet the team, chat with us and become part of an exciting and rapidly growing community </p>
             </div>
           </div>
-          <Button text="Join Our Discord" color="primary" type="button" href="https://discord.gg/d272FRg2Xm" target='_blank' className='py-2 px-6 hover:animate-pulse' />
+          <Button text="Join Our Discord" ariaLabel='Click to join 0xWF discord' color="primary" type="button" href="https://discord.gg/d272FRg2Xm" target='_blank' className='py-2 px-6 hover:animate-pulse' />
         </div>
         {/* Section 3 */}
         <Divider className='mx-8' vertical />

@@ -6,7 +6,7 @@ const IntroSection = () => {
       <h1 className='text-3xl text-center md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500'>Welcome to 0xWolfpackFinance</h1>
       <div className="flex justify-center mt-4">
         <a
-          className="px-4 py-2 text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600"
+          className="px-4 py-2 text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"

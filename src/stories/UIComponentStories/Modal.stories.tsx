@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Modal> = (args) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <Button type="button" onClick={() => setIsModalOpen(true)} color="primary" size='small' >Click Me</Button>
+      <Button type="button" ariaLabel='Click to trigger modal' onClick={() => setIsModalOpen(true)} color="primary" size='small' >Click Me</Button>
       <Modal {...args} open={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)}/>
     </>
 

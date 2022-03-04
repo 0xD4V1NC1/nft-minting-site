@@ -4,10 +4,10 @@ import Button from '../../UI/Button';
 
 const SoldOutSection = () => {
   return (
-    <section className='min-h-screen bg-white dark:bg-primary-dark-500 px-8 py-8 m-auto'>
-      <div className='flex flex-col justify-center md:justify-between md:flex-row md:items-end gap-8 w-full'>
+    <section className='min-h-screen bg-white dark:bg-primary-dark-500 px-16 py-8 m-auto'>
+      <div className='flex flex-col justify-center md:flex-row md:items-end md:gap-48 w-full'>
         <div className='flex flex-col'>
-          <h2 className='mb-12 text-8xl font-bold text-right  text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500'> 0xWF</h2>
+          <h2 className='mb-12 text-8xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500'> 0xWF</h2>
           <Image src='/preview.gif' size='w-full h-full md:w-72 md:h-72' marginBottom='mb-0' className='rounded-3xl'/>
         </div>
         <div className='w-full md:w-1/2'>
@@ -19,7 +19,7 @@ const SoldOutSection = () => {
             <div className='h-36 md:h-48'>
               <div className='absolute inset-0 z-10 flex w-full items-center justify-center bg-cover bg-center bg-no-repeat' style={{backgroundImage: `url('/sold-out.svg')`}}>
                 {/* @TODO: Change this link  */}
-                <Button type="button" href="https://www.opensea.io" color="primary-gradient" className='text-sm py-2 px-6 uppercase font-bold md:text-xl' text='Shop on Opensea' />
+                <Button type="button" ariaLabel='Click to view collection on opensea' href="https://www.opensea.io" color="primary-gradient" className='text-sm py-2 px-6 uppercase font-bold md:text-xl' text='Shop on Opensea' />
               </div>
             </div>
           </div>

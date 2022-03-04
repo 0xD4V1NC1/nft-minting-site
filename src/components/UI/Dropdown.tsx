@@ -22,6 +22,7 @@ const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: Trigg
     return (
       <Button
         type={button.type}
+        ariaLabel={button.ariaLabel}
         text={button.text}
         color={button.color}
         icon={icon}

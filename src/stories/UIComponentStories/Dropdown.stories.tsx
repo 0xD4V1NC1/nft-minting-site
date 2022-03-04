@@ -23,6 +23,7 @@ DropdownExample.args = {
     text: 'dropdown',
     color: 'primary',
     type: 'button',
+    ariaLabel: 'test button',
 
   },
   children: (
@@ -76,6 +77,7 @@ MoreOptionsMenu.args ={
     color: 'gray',
     type: 'button',
     className: 'p-2',
+    ariaLabel: 'test button',
   },
   icon: {
     name: 'dots-horizontal',
