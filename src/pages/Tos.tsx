@@ -7,6 +7,8 @@ const Tos = () => {
   const {setPageTitle} = useGlobalContext();
   useEffect(() => {
     setPageTitle('Terms Of Service | 0xWF');
+    // scroll to top of page when navigated to
+    window.scrollTo(0, 0);
   }, []);
   return (
     <Layout>
