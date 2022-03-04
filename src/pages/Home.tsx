@@ -18,12 +18,14 @@ const Home = () => {
 
   return (
     <Layout>
+      <Marquee marqueeText="Minting March 23 ·" reverse />
       <IntroSection />
       <MintSection />
       <Divider horizontal />
       <SoldOutSection />
       <Marquee marqueeText="Minting March 23 ·" />
       <OpenseaBannerSection />
+      <Divider horizontal />
       <FaqsSection />
     </Layout>
   );

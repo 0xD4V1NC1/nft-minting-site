@@ -3,7 +3,7 @@ import Faqs from '../../Components/Faqs';
 
 const FaqsSection = () => {
   return (
-    <section id='faqs-section' className='px-64 py-8 bg-white dark:bg-primary-dark-500'>
+    <section id='faqs-section' className='px-36 py-8 bg-white dark:bg-primary-dark-500'>
       <Faqs faqs={[{
         id: 1,
         question: 'Is programming easy?',
