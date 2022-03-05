@@ -1,6 +1,5 @@
 import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-// import StoryRouter from 'storybook-react-router';
 import {MemoryRouter} from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
