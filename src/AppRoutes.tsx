@@ -14,6 +14,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/members-only" element={<MembersOnly />} />
         <Route path="/terms-of-service" element={<Tos />} />
+        <Route path="*" element={()=> <h2>Page Not Found</h2>} />
       </Routes>
     </>
   );

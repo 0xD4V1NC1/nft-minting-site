@@ -23,7 +23,6 @@ const App = () => {
           <AppRoutes />
         </div>
       </GlobalContext.Provider>
-
     </BrowserRouter>
   );
 };

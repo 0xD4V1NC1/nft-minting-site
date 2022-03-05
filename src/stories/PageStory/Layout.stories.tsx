@@ -1,5 +1,7 @@
 import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
+// import StoryRouter from 'storybook-react-router';
+import {MemoryRouter} from 'react-router-dom';
 
 import Layout from '../../components/Layout/Layout';
 import Faqs from '../../components/Components/Faqs';
@@ -10,7 +12,7 @@ export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
-const Template: ComponentStory<typeof Layout> = (args) => <Layout {...args}/>;
+const Template: ComponentStory<typeof Layout> = (args) => <MemoryRouter><Layout {...args}/></MemoryRouter>;
 
 const myFaqs = [{
   id: 1,
