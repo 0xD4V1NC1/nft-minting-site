@@ -5,21 +5,24 @@ import {ToggleInterface} from '../../interfaces/ToggleInterface';
 Plan toggle button. Toggle between annual and monthly plans.
  */
 // @TODO not done
-const Toggle = ({option, setOption, option1Text, option2Text, toggleColor, toggleBgColor}: ToggleInterface) => {
+const Toggle = ({option, setOption, options, option1Text, option2Text, toggleColor, toggleBgColor}: ToggleInterface) => {
   const [toggle, setToggle] = useState(true);
   useEffect(() => {
     if (toggle) {
-      setOption('option 1');
+      setOption(options[0]);
     } else {
-      setOption('option 2');
+      setOption(options[1]);
     }
-    console.log('Options: ', option);
   }, [toggle]);
+  console.log('option: ', option);
+  console.log('options array: ', options);
+  console.log('options[0]: ', options[0]);
+  console.log('options[1]: ', options[1]);
   return (
     <div className="mt-2 flex items-center justify-center w-full">
       <div className="mr-1 md:mr-2.5">{option1Text}</div>
       <button type="button" className={`w-10 h-6 ${toggleBgColor} border-xs border-gray-400 rounded-full flex items-center`} onClick={() => setToggle(!toggle)}>
-        <div className={`w-5 h-5 ${toggleColor} rounded-full transform mx-auto duration-300 ease-in-out ${option === 'option 2' ? '-translate-x-2' : 'translate-x-2'}`} />
+        <div className={`w-5 h-5 ${toggleColor} rounded-full transform mx-auto duration-300 ease-in-out ${option === options[0] ? '-translate-x-2' : 'translate-x-2'}`} />
       </button>
       <div className="ml-1 md:ml-2.5">{option2Text}</div>
     </div>
