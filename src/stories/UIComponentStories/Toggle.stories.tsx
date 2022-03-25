@@ -13,7 +13,6 @@ const Template: ComponentStory<typeof Toggle> = (args) => {
   // do not make options[0] and options[1] the same...array should only be two elements
   const options: [string, string] = ['option 1', 'option 2'];
   const [toggleOption, setToggleOption] = useState(options[0]);
-  console.log('toggleOption:', options, ['1', '2', 3]);
   return (
     <>
       <Toggle {...args} options={options} option={toggleOption} setOption={setToggleOption} />
