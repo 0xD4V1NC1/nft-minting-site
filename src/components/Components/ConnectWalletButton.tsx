@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../UI/Button';
 
+// @TODO add web 3JS
 const ConnectWalletButton = () => {
   return (
     <div id='connect-wallet-gradient-border' className='p-0.5 bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500 rounded hover:bg-rainbow hover:animate-rainbow' >
