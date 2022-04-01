@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Moon({
+const Moon = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function Moon({
       />
     </svg>
   );
-}
+};
 
 export default Moon;

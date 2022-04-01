@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Minus({
+const Minus = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Minus({
       />
     </svg>
   );
-}
+};
 
 export default Minus;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Check({
+const Check = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function Check({
       />
     </svg>
   );
-}
+};
 
 export default Check;

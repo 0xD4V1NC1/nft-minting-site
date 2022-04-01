@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Elo({formattedClassName}: { formattedClassName: string }) {
+const Elo = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -19,6 +19,6 @@ function Elo({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default Elo;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ViewList({
+const ViewList = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function ViewList({
       />
     </svg>
   );
-}
+};
 
 export default ViewList;

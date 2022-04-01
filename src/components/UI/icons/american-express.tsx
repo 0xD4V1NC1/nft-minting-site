@@ -1,10 +1,10 @@
 import React from 'react';
 
-function AmericanExpress({
+const AmericanExpress = ({
   formattedClassName,
 }: {
   formattedClassName: string;
-}) {
+}) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -60,6 +60,6 @@ function AmericanExpress({
       />
     </svg>
   );
-}
+};
 
 export default AmericanExpress;

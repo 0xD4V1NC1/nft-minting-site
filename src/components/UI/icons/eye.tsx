@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Eye({
+const Eye = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -47,6 +47,6 @@ function Eye({
       />
     </svg>
   );
-}
+};
 
 export default Eye;

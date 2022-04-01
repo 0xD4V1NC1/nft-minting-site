@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Maestro({formattedClassName}: { formattedClassName: string }) {
+const Maestro = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -24,6 +24,6 @@ function Maestro({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default Maestro;

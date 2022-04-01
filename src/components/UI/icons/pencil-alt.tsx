@@ -1,12 +1,12 @@
 import React from 'react';
 
-function PencilAlt({
+const PencilAlt = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function PencilAlt({
       />
     </svg>
   );
-}
+};
 
 export default PencilAlt;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ExternalLink({
+const ExternalLink = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -37,6 +37,6 @@ function ExternalLink({
       />
     </svg>
   );
-}
+};
 
 export default ExternalLink;

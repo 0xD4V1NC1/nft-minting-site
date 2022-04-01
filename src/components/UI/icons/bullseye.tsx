@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Bullseye({formattedClassName}: { formattedClassName: string }) {
+const Bullseye = ({formattedClassName}: { formattedClassName: string }) =>{
   return (
     <svg
       className={`svg-inline--fa fa-bullseye fa-w-16 ${formattedClassName}`}
@@ -17,6 +17,6 @@ function Bullseye({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default Bullseye;

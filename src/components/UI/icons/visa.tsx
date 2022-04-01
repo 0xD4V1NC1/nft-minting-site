@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Visa({formattedClassName}: { formattedClassName: string }) {
+const Visa = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -24,5 +24,5 @@ function Visa({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 export default Visa;

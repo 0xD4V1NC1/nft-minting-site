@@ -1,12 +1,12 @@
 import React from 'react';
 
-function InformationCircle({
+const InformationCircle = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function InformationCircle({
       />
     </svg>
   );
-}
+};
 
 export default InformationCircle;

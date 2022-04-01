@@ -4,7 +4,6 @@ const getInitialTheme = () => {
   if (typeof window !== 'undefined' && window.localStorage) {
     // if we have a theme set in local storage, return that
     const storedPrefs = window.localStorage.getItem('dark-mode');
-    console.log('storedPrefs:', storedPrefs);
     if (typeof storedPrefs === 'boolean') {
       return storedPrefs;
     }

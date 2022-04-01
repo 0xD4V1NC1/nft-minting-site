@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ChevronRight({
+const ChevronRight = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -40,6 +40,6 @@ function ChevronRight({
       />
     </svg>
   );
-}
+};
 
 export default ChevronRight;

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Play({
+const Play = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -46,6 +46,6 @@ function Play({
       />
     </svg>
   );
-}
+};
 
 export default Play;

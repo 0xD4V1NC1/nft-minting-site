@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Star({
+const Star = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -42,6 +42,6 @@ function Star({
       />
     </svg>
   );
-}
+};
 
 export default Star;

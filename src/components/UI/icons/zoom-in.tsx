@@ -1,12 +1,12 @@
 import React from 'react';
 
-function svgIcon(
+const svgIcon = (
     formattedClassName: string,
     fill: string,
     stroke: string,
     viewBox: string,
     children: React.ReactNode,
-) {
+) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -18,15 +18,15 @@ function svgIcon(
       {children}
     </svg>
   );
-}
+};
 
-function ZoomIn({
+const ZoomIn = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean;
   formattedClassName: string;
-}) {
+}) => {
   const fill = solid ? 'currentColor' : 'none';
   const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
   const stroke = solid ? '' : 'currentColor';
@@ -49,6 +49,6 @@ function ZoomIn({
   );
 
   return svgIcon(formattedClassName, fill, stroke, viewBox, children);
-}
+};
 
 export default ZoomIn;

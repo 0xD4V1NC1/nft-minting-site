@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ThumbsUp({
+const ThumbsUp = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function ThumbsUp({
       />
     </svg>
   );
-}
+};
 
 export default ThumbsUp;

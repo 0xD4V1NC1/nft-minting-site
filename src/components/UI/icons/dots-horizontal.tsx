@@ -1,12 +1,12 @@
 import React from 'react';
 
-function DotsHorizontal({
+const DotsHorizontal = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function DotsHorizontal({
       />
     </svg>
   );
-}
+};
 
 export default DotsHorizontal;

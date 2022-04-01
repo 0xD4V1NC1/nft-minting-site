@@ -22,6 +22,7 @@ const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: Trigg
     return (
       <Button
         type={button.type}
+        ariaLabel={button.ariaLabel}
         text={button.text}
         color={button.color}
         icon={icon}
@@ -49,9 +50,6 @@ const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: Trigg
 };
 
 const Dropdown = ({className, dropClassName, dropBackgroundColor, children, button, icon, text, trigger, id, ariaLabel}: DropdownInterface) => {
-  if (!id) {
-    return null;
-  }
   const [openDropDown, setDropDown] = useState(false);
   useEffect(() => {
     function clickHandler() {
@@ -64,6 +62,9 @@ const Dropdown = ({className, dropClassName, dropBackgroundColor, children, butt
       window.removeEventListener('click', clickHandler);
     };
   });
+  if (!id) {
+    return null;
+  }
   const display = openDropDown ? 'block' : 'hidden';
   const visibility = openDropDown ? 'visible' : 'invisible';
   const opacity = openDropDown ? 'opacity-100' : 'opacity-0';

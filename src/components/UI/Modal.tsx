@@ -1,4 +1,3 @@
-export {};
 import React, {useEffect, useState} from 'react';
 import FocusLock from 'react-focus-lock';
 import ModalInterface from '../../interfaces/ModalInterface';

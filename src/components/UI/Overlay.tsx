@@ -6,24 +6,36 @@ import OverlayInterface from '../../interfaces/OverlayInterface';
 
 const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel, ariaLabelledBy, omitDismissX, open}: OverlayInterface) => {
   const [readyToDisplay, setReadyToDisplay] = useState(false);
+  const [display, setDisplay] = useState(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (open) {
-      setTimeout(() => {
-        setReadyToDisplay(true);
-      }, 200);
-    } else {
+    // Timeouts to manage the actual display/return of the component vs the class toggle for animation
+    if (!open) {
       setTimeout(() => {
         setReadyToDisplay(false);
-      }, 200);
+        setTimeout(() => {
+          setDisplay(false);
+        }, 200);
+      });
+    } else {
+      setTimeout(() => {
+        setDisplay(true);
+        setTimeout(() => {
+          setReadyToDisplay(true);
+          if (containerRef && containerRef.current) {
+            containerRef.current.focus(); // Add focus so key press is recorded
+          }
+        }, 200);
+      });
     }
   }, [open]);
 
-  if (!open) {
+  if (!display) {
     return null;
   }
-  // if we have aria label by, apply aria labeled by
+  // // if we have aria label by, apply aria labeled by
   // else use the passed in aria label or default aria label
   const ariaLabelProps = {
     'role': 'dialog',
@@ -58,7 +70,7 @@ const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel,
               e.stopPropagation();
             }}
             style={{transition: `all ${duration || '0.75s'} ease`}}
-            className={`w-[60vw] right-0 bg-white ${readyToDisplay ? 'right-0' : 'right-[-100%]'} ${
+            className={`w-[60vw] right-0 bg-white dark:bg-primary-dark-500 ${readyToDisplay ? 'right-0' : 'right-[-100%]'} ${
               !omitPadding ? 'py-4 px-8' : ''
             } absolute h-full m-0 overflow-y-auto z-[1001] sm:w-screen min-w-[95vw] md:w-[95vw] md:min-w-[auto] ${maxWidth || ''}`}
           >

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Beaker({
+const Beaker = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -43,6 +43,6 @@ function Beaker({
       />
     </svg>
   );
-}
+};
 
 export default Beaker;

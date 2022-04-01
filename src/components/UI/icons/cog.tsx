@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Cog({
+const Cog = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -52,6 +52,6 @@ function Cog({
       />
     </svg>
   );
-}
+};
 
 export default Cog;

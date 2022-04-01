@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ZoomOut({
+const ZoomOut = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -45,6 +45,6 @@ function ZoomOut({
       />
     </svg>
   );
-}
+};
 
 export default ZoomOut;

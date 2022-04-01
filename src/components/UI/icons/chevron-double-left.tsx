@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ChevronDoubleLeft({
+const ChevronDoubleLeft = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -41,6 +41,6 @@ function ChevronDoubleLeft({
       />
     </svg>
   );
-}
+};
 
 export default ChevronDoubleLeft;

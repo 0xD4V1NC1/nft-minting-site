@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Cloud({
+const Cloud = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function Cloud({
       />
     </svg>
   );
-}
+};
 
 export default Cloud;

@@ -16,6 +16,7 @@ const Button = ({
   target,
   disabled,
   size,
+  ariaLabel,
 }: ButtonInterface) => {
   const iconStyle = icon ? 'flex' : '';
   const btnType = type === 'submit' ? 'submit' : 'button';
@@ -44,6 +45,16 @@ const Button = ({
       btnBgColor = `bg-secondary-dark-500`;
       btnBgColorHover = `hover:bg-secondary-dark-600`;
       btnTextColor = `text-white`;
+      break;
+    case 'primary-gradient':
+      btnBgColor = `bg-rainbow`;
+      btnBgColorHover = `hover:bg-rainbow hover:animate-rainbow`;
+      btnTextColor = `text-white`;
+      break;
+    case 'primary-gradient-outline':
+      btnBgColor = `bg-white dark:bg-primary-dark-500`;
+      btnBgColorHover = `hover:bg-white dark:hover:bg-primary-dark-500`;
+      btnTextColor = `text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500`;
       break;
     case 'gray':
       btnBgColor = `bg-gray-300`;
@@ -99,7 +110,7 @@ const Button = ({
     default:
       btnBgColor = ``;
       btnBgColorHover = ``;
-      btnTextColor = `text-transparent bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500 bg-clip-text`;
+      btnTextColor = ``;
   }
 
   switch (size) {
@@ -153,15 +164,15 @@ const Button = ({
   const formattedClassName = className || '';
   const combinedClassNames = `${iconStyle} ${btnSize} ${fontSize} ${btnBgColor} ${
     !disabled && btnBgColorHover
-  } ${btnTextColor} ${formattedClassName} ${disabledClass}`;
-  const content = text ? <span>{text}</span> : children;
+  } ${formattedClassName} ${disabledClass}`;
+  const content = text ? <span className={btnTextColor}>{text}</span> : children;
   const onClickProp =
     !disabled && !!handleClick ? {onClick: handleClick} : {};
   return (
     <button
+      aria-label={ariaLabel || ''}
       type={btnType}
-      className={`${combinedClassNames}
-       focus:outline-none bg-center items-center cursor-pointer shadow-xs rounded`}
+      className={`${combinedClassNames} bg-center items-center cursor-pointer shadow-xs rounded`}
       {...onClickProp}
     >
       {icon && !loading && icon.position === 'none' ? (

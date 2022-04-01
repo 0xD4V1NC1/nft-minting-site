@@ -8,8 +8,9 @@ import LinkTo from '../../Components/LinkTo';
 import Opensea from '../../UI/icons/open-sea';
 
 const Footer = () => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
-    <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-black text-black dark:text-white'>
+    <footer className='bottom-0 w-full py-4 px-20 bg-white dark:bg-primary-dark-500 text-black dark:text-white'>
       <div className='flex flex-col md:flex-row mt-8 md:justify-between'>
         {/* Section 1 */}
         <div className=''>
@@ -17,8 +18,8 @@ const Footer = () => {
           <ul className='my-4'>
             <li><LinkTo to='/members-only'>Members Only</LinkTo></li>
             {/* <li><LinkTo>Roadmap</LinkTo></li> */}
-            <li><LinkTo to="/#mint-section">Minting Information</LinkTo></li>
-            <li><LinkTo to="/#faqs-section">FAQs</LinkTo></li>
+            <li><LinkTo to={`${BASE_URL}/#mint-section`}>Minting Information</LinkTo></li>
+            <li><LinkTo to={`${BASE_URL}/#faqs-section`}>FAQs</LinkTo></li>
             <li><LinkTo to="/terms-of-service">Terms Of Service</LinkTo></li>
           </ul>
         </div>
@@ -34,7 +35,7 @@ const Footer = () => {
               <p className='text-sm'> Our Discord server is a great place to meet the team, chat with us and become part of an exciting and rapidly growing community </p>
             </div>
           </div>
-          <Button text="Join Our Discord" color="primary" type="button" href="https://discord.gg/d272FRg2Xm" target='_blank' className='py-2 px-6 hover:animate-pulse' />
+          <Button text="Join Our Discord" ariaLabel='Click to join 0xWF discord' color="primary" type="button" href="https://discord.gg/d272FRg2Xm" target='_blank' className='py-2 px-6 hover:animate-pulse' />
         </div>
         {/* Section 3 */}
         <Divider className='mx-8' vertical />
@@ -60,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='mt-8 text-center text-gray-600 text-xs'>© 0xWF All rights reserved. Crafted by 0xD4V1NC1</div>
+      <div className='mt-8 text-center text-gray-600 dark:text-gray-400 text-xs'>© 0xWF All rights reserved. Crafted by 0xD4V1NC1</div>
     </footer>
   );
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home({
+const Home = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   if (solid) {
     return (
       <svg
@@ -36,6 +36,6 @@ function Home({
       />
     </svg>
   );
-}
+};
 
 export default Home;

@@ -9,18 +9,20 @@ import AppRoutes from './AppRoutes';
 import {GlobalContext} from './providers/GlobalContextProvider';
 
 const App = () => {
-  const [pageTitle, setPageTitle]= useState<string>();
+  const [pageTitle, setPageTitle]= useState<string>('');
+  const [metaDescription, setMetaDescription]= useState<string>('');
+
   return (
     <BrowserRouter>
       <Helmet>
         <title>{pageTitle}</title>
+        <meta name="description" content={`${metaDescription || '0xWF is revolutionary NFT project'}`} />
       </Helmet>
-      <GlobalContext.Provider value={{pageTitle, setPageTitle}}>
+      <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription}}>
         <div className="app">
           <AppRoutes />
         </div>
       </GlobalContext.Provider>
-
     </BrowserRouter>
   );
 };

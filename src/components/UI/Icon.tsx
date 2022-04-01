@@ -59,6 +59,7 @@ import Search from './icons/search';
 import Share from './icons/share';
 import ShieldCheck from './icons/shield-check';
 import Star from './icons/star';
+import Sun from './icons/sun';
 import ThumbsUp from './icons/thumbs-up';
 import User from './icons/user';
 import UserGroup from './icons/user-group';
@@ -104,7 +105,7 @@ function getSizeClassName(size: string) {
     case 'medium':
       return `w-4 h-4`;
     case 'large':
-      return `w-6 h-6`;
+      return `w-8 h-8 md:w-6 md:h-6`;
     case 'xlarge':
       return `w-8 h-8`;
     case '2xlarge':
@@ -121,9 +122,7 @@ function getSizeClassName(size: string) {
 function getColorClassName(color: string) {
   switch (color) {
     case 'primary':
-      return `text-primary-500`;
-    case 'primary-dark':
-    case 'secondary-dark':
+      return `text-primary-500 dark:text-primary-dark-400`;
     case 'secondary':
       return `text-secondary-500`;
     case 'gray':
@@ -133,7 +132,7 @@ function getColorClassName(color: string) {
     case 'white':
       return `text-white`;
     case 'black':
-      return `text-black`;
+      return `text-black dark:text-white`;
     case 'pink':
       return `text-pink-500`;
     case 'green':
@@ -335,6 +334,7 @@ const Icon = ({name, color, size, solid, className}: IconInterface) => {
       <ShieldCheck solid={!!solid} formattedClassName={formattedClassName} />
     ),
     'star': <Star solid={!!solid} formattedClassName={formattedClassName} />,
+    'sun': <Sun solid={!!solid} formattedClassName={formattedClassName} />,
     'thumbs-up': (
       <ThumbsUp solid={!!solid} formattedClassName={formattedClassName} />
     ),

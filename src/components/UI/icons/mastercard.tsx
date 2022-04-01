@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Mastercard({formattedClassName}: { formattedClassName: string }) {
+const Mastercard = ({formattedClassName}: { formattedClassName: string }) => {
   return (
     <svg
       className={`${formattedClassName}`}
@@ -25,6 +25,6 @@ function Mastercard({formattedClassName}: { formattedClassName: string }) {
       />
     </svg>
   );
-}
+};
 
 export default Mastercard;

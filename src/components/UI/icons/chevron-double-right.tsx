@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ChevronDoubleRight({
+const ChevronDoubleRight = ({
   solid,
   formattedClassName,
 }: {
   solid: boolean,
   formattedClassName: string,
-}) {
+}) => {
   const fill = solid ? 'currentColor' : 'none';
   const viewBox = solid ? '0 0 20 20' : '0 0 24 24';
   const xmlns = 'https://www.w3.org/2000/svg';
@@ -48,6 +48,6 @@ function ChevronDoubleRight({
       />
     </svg>
   );
-}
+};
 
 export default ChevronDoubleRight;

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const isExternal = (path:any) => {
   return /^http/.test(path);
 };
-function LinkTo({to, target, children, ariaLabel}:{to:string, target?:string, children:ReactNode, ariaLabel?:string}) {
+const LinkTo = ({to, target, children, ariaLabel}:{to:string, target?:string, children:ReactNode, ariaLabel?:string}) => {
   if (isExternal(to)) {
     const newWindowSrText = target && target === '_blank' ? <span className="sr-only">This link opens a new window</span> : null;
     // rel="noopener noreferrer" is an important security addition b/c it helps prevent known security issues with XSS (cross site scripting) in certain browsers
@@ -28,5 +28,5 @@ function LinkTo({to, target, children, ariaLabel}:{to:string, target?:string, ch
     NOTE: aria-label SHOULD be added to icons with no label text regardless of <Link> or <a> as it is not descriptive enough.
   */
   return <Link to={to} {...ariaProps}>{children}</Link>;
-}
+};
 export default LinkTo;
