@@ -7,6 +7,7 @@
     "npm": ">=8.0.0"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.0.7",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -16,6 +17,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-helmet": "^6.1.5",
+    "@walletconnect/ethereum-provider": "^1.7.7",
     "@web3-react/coinbase-wallet": "8.0.26-beta.0",
     "@web3-react/core": "8.0.23-beta.0",
     "@web3-react/metamask": "8.0.19-beta.0",
@@ -24,6 +26,7 @@
     "autoprefixer": "^10.4.2",
     "eslint-config-google": "^0.14.0",
     "ethers": "^5.6.2",
+    "json-rpc-engine": "^6.1.0",
     "postcss": "^8.4.6",
     "postcss-cli": "^9.1.0",
     "postcss-preset-env": "^7.3.3",
