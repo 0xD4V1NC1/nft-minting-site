@@ -2,8 +2,8 @@ import React from 'react';
 
 import Logo from '../../UI/icons/logo';
 import LinkTo from '../../Components/LinkTo';
-import ConnectWalletButton from '../../Components/ConnectWalletButton';
 import DarkModeToggle from '../../Components/DarkModeToggle';
+import AccountButton from '../../Components/AccountButton';
 
 const DesktopNav = () => {
   return (
@@ -18,7 +18,7 @@ const DesktopNav = () => {
         <div className='mr-4'>
           <DarkModeToggle />
         </div>
-        <ConnectWalletButton />
+        <AccountButton />
       </div>
     </div>
   );
