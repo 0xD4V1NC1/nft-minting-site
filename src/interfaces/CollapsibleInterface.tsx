@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 export default interface CollapsibleInterface {
     ariaLabel: string;
     collapsibleId: string;
     transitionTime?: number;
     open: boolean; 
-    trigger?: ReactNode | string;
-    children: ReactNode;
+    trigger?: ReactElement | string;
+    children: ReactElement;
     onOpening?: () => void;
     onClosing?: () => void;
 };
