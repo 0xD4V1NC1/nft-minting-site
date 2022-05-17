@@ -9,8 +9,9 @@ import Web3Provider from './providers/Web3Provider';
 ReactDOM.render(
     /* Make web3 provider globally accessible throughout the dApp */
     <>
-      <Web3Provider />
-      <App />
+      <Web3Provider>
+        <App />
+      </Web3Provider>
     </>,
     document.getElementById('root'));
 

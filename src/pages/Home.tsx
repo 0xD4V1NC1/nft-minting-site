@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import {useWeb3React} from '@web3-react/core';
+
 import {useGlobalContext} from '../providers/GlobalContextProvider';
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
@@ -11,10 +13,13 @@ import FaqsSection from '../components/PageComponents/Home/FaqsSection';
 
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
+  const {account} = useWeb3React();
+
   useEffect(() => {
     setPageTitle('Home | 0xWF');
     setMetaDescription('Home of 0xWF NFT. Mint your NFT here and learn more about our project');
   }, []);
+  console.log('account home.js', account);
 
   return (
     <Layout>
