@@ -1,21 +1,16 @@
 import React from 'react';
-import {hooks} from '../../connectors/metaMask';
+import {useWeb3React} from '@web3-react/core';
+
 import ConnectWalletButton from './ConnectWalletButton';
 import AddressInformationButton from './AddressInformationButton';
 
-const {useIsActive, useAccounts} = hooks;
 
 const AccountButton = () => {
-  const isActive = useIsActive();
-  const account = useAccounts() || [];
-  // useEffect(() => {
-  //   connector?.connectEagerly?.();
-  // }, []);
-  console.log('mm is active:', isActive);
-  console.log('address is: ', account[0]);
+  const {connector, account, isActive} = useWeb3React();
+  // console.log(connector, account, isActive);
   return (
     <>
-      {isActive ? <AddressInformationButton address={account[0]} /> : <ConnectWalletButton />}
+      {isActive ? <AddressInformationButton address={account || ''} connector={connector} /> : <ConnectWalletButton />}
     </>
   );
 };

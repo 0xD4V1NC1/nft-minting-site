@@ -1,12 +1,16 @@
 import React from 'react';
-import type {Connector} from '@web3-react/types';
 
 import {metaMask} from '../../connectors/metaMask';
 import {coinbaseWallet} from '../../connectors/coinbaseWallet';
 import {walletConnect} from '../../connectors/walletConnect';
+// import {getConnectorName} from '../../providers/Web3Provider';
 
 import Modal from '../UI/Modal';
 import Image from '../UI/Image';
+import {MetaMask} from '@web3-react/metamask';
+import {WalletConnect} from '@web3-react/walletconnect';
+import {CoinbaseWallet} from '@web3-react/coinbase-wallet';
+import {Network} from '@web3-react/network';
 
 const walletOptions = [
   {
@@ -26,7 +30,6 @@ const walletOptions = [
   },
 ];
 
-
 const WalletOption = ({
   walletName,
   logoUrl,
@@ -35,20 +38,29 @@ const WalletOption = ({
 }: {
   walletName: string;
   logoUrl: string;
-  connector: Connector;
+  connector: MetaMask | WalletConnect | CoinbaseWallet | Network;
   setIsModalOpen: any;
 }) => {
   if (!walletName || !connector) return null;
-  const polygonChainID = 137;
-
+  const polygonChainID = 1;
+  if (walletConnect instanceof WalletConnect) {
+    console.log('is instance of');
+  }
   return (
     <button
       className="hover:bg-rainbow hover:animate-rainbow flex justify-center items-center hover:cursor-pointer w-full"
       aria-label={`Connect to ${walletName} wallet`}
-      onClick={() => {
-        // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
-        connector.activate(polygonChainID);
-        setIsModalOpen(false);
+      onClick={async () => {
+        try {
+          // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
+          // console.log('CONNECTOR:', getConnectorName(connector));
+
+          await walletConnect.activate(polygonChainID).then(() => console.log('should activate'));
+          console.log(walletConnect);
+          setIsModalOpen(false);
+        } catch (e) {
+          console.log('error:', e);
+        }
       }}
     >
       <div className="flex justify-start items-center p-4">

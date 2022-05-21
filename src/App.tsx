@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom'; // allows for routing in our app
 import {useWeb3React} from '@web3-react/core';
@@ -22,7 +23,7 @@ const App = () => {
     connector.connectEagerly?.();
   }, []);
 
-  console.log('account app.js', account);
+  // console.log('account app.js', account);
   console.log(`Priority Connector is: ${getConnectorName(connector)}`);
   return (
     <BrowserRouter>
