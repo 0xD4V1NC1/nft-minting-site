@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, useRef} from 'react';
+import React, {useState, useLayoutEffect, useRef, RefObject} from 'react';
 import Image from '../../UI/Image';
 import Button from '../../UI/Button';
 
@@ -6,7 +6,7 @@ import Countdown from 'react-countdown';
 // use https://codechi.com/dev-tools/date-to-millisecond-calculators/ to calculate future date in milliseconds
 import {NFT_MINT_DATE} from '../../../consts/consts';
 
-const MintSection = () => {
+const MintSection = ({mintSectionRef}:{mintSectionRef: RefObject<HTMLDivElement>}) => {
   const [countdownCompleted, setCountdownCompleted] = useState(false);
   const handleCountdownCompleted = () => {
     setCountdownCompleted(true);
@@ -23,7 +23,7 @@ const MintSection = () => {
   const disabledProp = countdownCompleted ? null: {disabled: true};
 
   return (
-    <section id='mint-section' className='min-h-screen bg-white dark:bg-primary-dark-500 px-16 py-8 m-auto'>
+    <section id='mint-section' ref={mintSectionRef} className='min-h-screen bg-white dark:bg-primary-dark-500 px-16 py-8 m-auto'>
       <div className='flex flex-col justify-center md:flex-row md:items-end md:gap-48 w-full'>
         <div className='flex flex-col'>
           <h2 className='mb-12 text-8xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500'> 0xWF</h2>
