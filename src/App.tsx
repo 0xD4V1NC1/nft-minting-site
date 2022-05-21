@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom'; // allows for routing in our app
 import {useWeb3React} from '@web3-react/core';
@@ -10,12 +9,10 @@ import {Helmet} from 'react-helmet';
 // import Application Routes to App.js to keep file structure cleaner
 import AppRoutes from './AppRoutes';
 import {GlobalContext} from './providers/GlobalContextProvider';
-import {getConnectorName} from './providers/Web3Provider';
-
 const App = () => {
   const [pageTitle, setPageTitle]= useState<string>('');
   const [metaDescription, setMetaDescription]= useState<string>('');
-  const {connector, account} = useWeb3React();
+  const {connector} = useWeb3React();
 
   useEffect(() => {
     // written like that b/c of type error 'cannot invoke an object which is possibly undefined'
@@ -23,8 +20,6 @@ const App = () => {
     connector.connectEagerly?.();
   }, []);
 
-  // console.log('account app.js', account);
-  console.log(`Priority Connector is: ${getConnectorName(connector)}`);
   return (
     <BrowserRouter>
       <Helmet>

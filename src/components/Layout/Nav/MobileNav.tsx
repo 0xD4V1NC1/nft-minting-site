@@ -6,7 +6,7 @@ import Overlay from '../../UI/Overlay';
 import Logo from '../../UI/icons/logo';
 
 import LinkTo from '../../Components/LinkTo';
-import ConnectWalletButton from '../../Components/ConnectWalletButton';
+import AccountButton from '../../Components/AccountButton';
 import DarkModeToggle from '../../Components/DarkModeToggle';
 
 import nav from '../Nav/nav.enum';
@@ -35,8 +35,8 @@ const MobileMenuOptions = ({isOverlayOpen, setIsOverlayOpen}:{isOverlayOpen: boo
           </li>
         ))}
       </ul>
-      <div className='mx-12 w-2/3'>
-        <ConnectWalletButton />
+      <div className='mx-4 my-2 flex items-center'>
+        <AccountButton />
       </div>
     </Overlay>
   );

@@ -26,28 +26,6 @@ interface ExtendedChainInformation extends BasicChainInformation {
   nativeCurrency: AddEthereumChainParameter['nativeCurrency']
   blockExplorerUrls: AddEthereumChainParameter['blockExplorerUrls']
 }
-
-function isExtendedChainInformation(
-    chainInformation: BasicChainInformation | ExtendedChainInformation,
-): chainInformation is ExtendedChainInformation {
-  return !!(chainInformation as ExtendedChainInformation).nativeCurrency;
-}
-
-export function getAddChainParameters(chainId: number): AddEthereumChainParameter | number {
-  const chainInformation = CHAINS[chainId];
-  if (isExtendedChainInformation(chainInformation)) {
-    return {
-      chainId,
-      chainName: chainInformation.name,
-      nativeCurrency: chainInformation.nativeCurrency,
-      rpcUrls: chainInformation.urls,
-      blockExplorerUrls: chainInformation.blockExplorerUrls,
-    };
-  } else {
-    return chainId;
-  }
-}
-
 export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainInformation } = {
   1: { // eth
     urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/mainnet`].filter((url) => url !== undefined),
@@ -126,6 +104,28 @@ export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainI
     blockExplorerUrls: ['https://polygonscan.com'],
   },
 };
+
+function isExtendedChainInformation(
+    chainInformation: BasicChainInformation | ExtendedChainInformation,
+): chainInformation is ExtendedChainInformation {
+  return !!(chainInformation as ExtendedChainInformation).nativeCurrency;
+}
+
+export function getAddChainParameters(chainId: number): AddEthereumChainParameter | number {
+  const chainInformation = CHAINS[chainId];
+  if (isExtendedChainInformation(chainInformation)) {
+    return {
+      chainId,
+      chainName: chainInformation.name,
+      nativeCurrency: chainInformation.nativeCurrency,
+      rpcUrls: chainInformation.urls,
+      blockExplorerUrls: chainInformation.blockExplorerUrls,
+    };
+  } else {
+    return chainId;
+  }
+}
+
 
 export const URLS: { [chainId: number]: string[] } = Object.keys(CHAINS).reduce<{ [chainId: number]: string[] }>(
     (accumulator, chainId) => {

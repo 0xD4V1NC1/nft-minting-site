@@ -2,8 +2,6 @@ import React from 'react';
 
 import {metaMask} from '../../connectors/metaMask';
 import {coinbaseWallet} from '../../connectors/coinbaseWallet';
-import {walletConnect} from '../../connectors/walletConnect';
-// import {getConnectorName} from '../../providers/Web3Provider';
 
 import Modal from '../UI/Modal';
 import Image from '../UI/Image';
@@ -23,11 +21,13 @@ const walletOptions = [
     logoUrl: '/CoinbaseWalletLogo.png',
     connector: coinbaseWallet,
   },
-  {
-    name: 'Wallet Connect',
-    logoUrl: '/WalletConnectLogo.png',
-    connector: walletConnect,
-  },
+  // @TODO implement Wallet Connect and Gnosis Safe... wallet connect is pain in the ass rn...
+  // my working code sandbox https://codesandbox.io/s/sweet-blackburn-so0d17?file=/src/providers/Web3Provider.tsx
+  // {
+  //   name: 'Wallet Connect',
+  //   logoUrl: '/WalletConnectLogo.png',
+  //   connector: walletConnect,
+  // },
 ];
 
 const WalletOption = ({
@@ -42,26 +42,18 @@ const WalletOption = ({
   setIsModalOpen: any;
 }) => {
   if (!walletName || !connector) return null;
-  const polygonChainID = 1;
-  if (walletConnect instanceof WalletConnect) {
-    console.log('is instance of');
-  }
+  const polygonChainID = 137;
+  const handleConnectWallet = () => {
+    // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
+    connector.activate(polygonChainID);
+    setIsModalOpen(false);
+  };
+
   return (
     <button
       className="hover:bg-rainbow hover:animate-rainbow flex justify-center items-center hover:cursor-pointer w-full"
       aria-label={`Connect to ${walletName} wallet`}
-      onClick={async () => {
-        try {
-          // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
-          // console.log('CONNECTOR:', getConnectorName(connector));
-
-          await walletConnect.activate(polygonChainID).then(() => console.log('should activate'));
-          console.log(walletConnect);
-          setIsModalOpen(false);
-        } catch (e) {
-          console.log('error:', e);
-        }
-      }}
+      onClick={() => handleConnectWallet()}
     >
       <div className="flex justify-start items-center p-4">
         <Image src={logoUrl} size="w-16 h-16" />
