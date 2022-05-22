@@ -11,15 +11,21 @@ const Overlay = ({duration, children, dismiss, omitPadding, maxWidth, ariaLabel,
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Timeouts to manage the actual display/return of the component vs the class toggle for animation
-    if (!open) {
+    /*
+        display - dictates whether the component returns null or displays it in a closed state...
+        readyToDisplay - controls transitions in and out
+
+        setTimeout is used bc it allows for the element to get placed in DOM and the ref to get set in order for the transition animations to work. The timeouts manage the actual display/return of the component
+        vs the class toggle animation
+    */
+    if (!open && display) {
       setTimeout(() => {
         setReadyToDisplay(false);
         setTimeout(() => {
           setDisplay(false);
         }, 200);
       });
-    } else {
+    } else if (open && !display) {
       setTimeout(() => {
         setDisplay(true);
         setTimeout(() => {

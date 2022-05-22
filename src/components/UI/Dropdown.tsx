@@ -18,7 +18,6 @@ const Trigger = ({button, icon, trigger, text, openDropDown, setDropDown}: Trigg
     icon.className = `transition duration-200 transform ${openDropDown && icon.rotate ? 'rotate-180' : ''}`;
   }
   if (button) {
-    console.log(button);
     return (
       <Button
         type={button.type}

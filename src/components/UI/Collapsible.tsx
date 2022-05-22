@@ -3,12 +3,6 @@ import ReactCollapsible from 'react-collapsible';
 import {v4 as uuidv4} from 'uuid';
 import CollapsibleInterface from '../../interfaces/CollapsibleInterface';
 
-// const Trigger = ({open, collapsibleId, trigger}: {open: boolean, collapsibleId: string, trigger:React.ReactNode}) => {
-//   return (
-
-//   );
-// };
-
 const Collapsible = (props: CollapsibleInterface) => {
   const collapsibleId = props.collapsibleId || uuidv4();
   let ariaProps = {};

@@ -11,10 +11,11 @@ const MembersOnly = () => {
     // scroll to top of page when navigated to
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <Layout>
       <section className='min-h-screen bg-white dark:bg-primary-dark-500'>
-            This is page 2
+        <h2> Members Only </h2>
       </section>
     </Layout>
   );
