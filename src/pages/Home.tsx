@@ -13,7 +13,7 @@ import FaqsSection from '../components/PageComponents/Home/FaqsSection';
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
   const mintSectionRef = useRef<null | HTMLDivElement>(null);
-  // @TODO update this with logic after hardhat configuration
+  // @TODO update this with logic after hardhat configuration.
   const isSoldOut = false;
 
   useEffect(() => {
