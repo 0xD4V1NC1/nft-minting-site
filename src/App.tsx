@@ -21,17 +21,22 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={`${metaDescription || '0xWF is revolutionary NFT project'}`} />
-      </Helmet>
-      <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription}}>
-        <div className="app">
-          <AppRoutes/>
-        </div>
-      </GlobalContext.Provider>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        {/* @ts-ignore upgraded helmet types... waiting for react-helmet to upgrade... issue comes in with react 18 upgrade */}
+        <Helmet>
+          <title>{pageTitle}</title>
+          <meta name="description" content={`${metaDescription || '0xWF is revolutionary NFT project'}`} />
+        </Helmet>
+
+        <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription}}>
+          <div className="app">
+            <AppRoutes/>
+          </div>
+        </GlobalContext.Provider>
+      </BrowserRouter>
+    </>
+
   );
 };
 
