@@ -3,7 +3,7 @@ import React from 'react';
 import {metaMask} from '../../connectors/metaMask';
 import {coinbaseWallet} from '../../connectors/coinbaseWallet';
 // import {gnosisSafe} from '../../connectors/gnosisSafe';
-// import {walletConnect} from '../../connectors/walletConnect';
+import {walletConnect} from '../../connectors/walletConnect';
 
 import Modal from '../UI/Modal';
 import Image from '../UI/Image';
@@ -25,12 +25,13 @@ const walletOptions = [
     connector: coinbaseWallet,
   },
   // @TODO implement Wallet Connect and Gnosis Safe... wallet connect is pain in the ass rn...
-  // my working code sandbox https://codesandbox.io/s/sweet-blackburn-so0d17?file=/src/providers/Web3Provider.tsx
-  // {
-  //   name: 'Wallet Connect',
-  //   logoUrl: '/WalletConnectLogo.png',
-  //   connector: walletConnect,
-  // },
+  // wallet connect doesn't work with react-scripts 5.0.0 + so had to add config-overrides.js and
+  // react-app-rewired
+  {
+    name: 'Wallet Connect',
+    logoUrl: '/WalletConnectLogo.png',
+    connector: walletConnect,
+  },
   // {
   //   name: 'Gnosis Safe',
   //   logoUrl: '/CoinbaseWalletLogo.png',
