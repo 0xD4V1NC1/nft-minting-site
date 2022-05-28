@@ -24,9 +24,11 @@ const walletOptions = [
     logoUrl: '/CoinbaseWalletLogo.png',
     connector: coinbaseWallet,
   },
-  // @TODO implement Wallet Connect and Gnosis Safe... wallet connect is pain in the ass rn...
-  // wallet connect doesn't work with react-scripts 5.0.0 + so had to add config-overrides.js and
-  // react-app-rewired
+  // @TODO implement Gnosis Safe...
+  /*
+    wallet connect doesn't work with react-scripts 5.0.0 + so had to add config-overrides.js and
+    react-app-rewired
+  */
   {
     name: 'Wallet Connect',
     logoUrl: '/WalletConnectLogo.png',
