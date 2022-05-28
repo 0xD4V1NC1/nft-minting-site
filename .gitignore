@@ -9,6 +9,12 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Hardhat
+/hardhat/artifacts
+/hardhat/cache
+/hardhat/typechain/*
+/hardhat/coverage.json
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
