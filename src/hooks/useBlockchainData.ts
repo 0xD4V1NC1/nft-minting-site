@@ -1,38 +1,52 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useCallback} from 'react';
+import ethers from 'ethers';
 
-export default function useBlockchainData() {
-  const [nftData, setNftData] = useState();
-  const [availableSupply, setAvailableSupply] = useState();
-  // can use this for members only
-  const [isOwnerOf, setIsOwnerOf] = useState(false);
-  const loadBlockchainData = async (_web3, _account, _networkId) => {
+import WfNFT from '../../hardhat/artifacts/contracts/WfNFT.sol/WfNFT.json';
+
+// eslint-disable-next-line no-unused-vars
+import {POLYGON_CHAIN_ID, POLYGON_MUMBAI_CHAIN_ID} from '../consts/consts';
+
+// @TODO update types
+export default function useBlockchainData(account: string | undefined) {
+  const [nftData, setNftData] = useState<object>();
+  const [availableSupply, setAvailableSupply] = useState(0);
+  // the tokens/nfts this user/address owns... if length is 0 they dont own one
+  const [usersWfNfts, setUsersWfNfts] = useState([]);
+
+  const loadBlockchainData = useCallback(async () => {
     // Fetch Contract, Data, etc.
     try {
-      const openPunks = new _web3.eth.Contract(OpenPunks.abi, OpenPunks.networks[_networkId].address);
-      setOpenPunks(openPunks);
+      //  @TODO change this to your nft project name
+      const wfNFT = new ethers.Contract(
+          WfNFT.abi,
+          WfNFT.networks[POLYGON_MUMBAI_CHAIN_ID].address,
+      );
+      setNftData(wfNFT);
 
-      const maxSupply = await openPunks.methods.maxSupply().call();
-      const totalSupply = await openPunks.methods.totalSupply().call();
-      setSupplyAvailable(maxSupply - totalSupply);
+      const maxSupply = await wfNFT.methods.maxSupply().call();
+      const totalSupply = await wfNFT.methods.totalSupply().call();
+      setAvailableSupply(maxSupply - totalSupply);
 
-      const allowMintingAfter = await openPunks.methods.allowMintingAfter().call();
-      const timeDeployed = await openPunks.methods.timeDeployed().call();
-      setRevealTime((Number(timeDeployed) + Number(allowMintingAfter)).toString() + '000');
+      const allowMintingAfter = await wfNFT.methods.allowMintingAfter().call();
+      const timeDeployed = await wfNFT.methods.timeDeployed().call();
+      setRevealTime(
+          (Number(timeDeployed) + Number(allowMintingAfter)).toString() + '000',
+      );
 
-      if (_account) {
-        const ownerOf = await openPunks.methods.walletOfOwner(_account).call();
-        setOwnerOf(ownerOf);
-        console.log(ownerOf);
+      if (account) {
+        const ownerOf = await WfNFT.methods.walletOfOwner(account).call();
+        setUsersWfNfts(ownerOf);
+        console.log('This address is owner of: ', ownerOf);
       } else {
-        setOwnerOf([]);
+        setUsersWfNfts([]);
       }
     } catch (error) {
-      setIsError(true);
-      setMessage('Contract not deployed to current network, please change network in MetaMask');
+      console.warn('Error in useBlockchainData Hook: ', error);
     }
-  };
-  useEffect(() => {
-
   }, []);
-  return {};
+
+  useEffect(() => {
+    loadBlockchainData();
+  }, []);
+  return {nftData, availableSupply, usersWfNfts};
 }

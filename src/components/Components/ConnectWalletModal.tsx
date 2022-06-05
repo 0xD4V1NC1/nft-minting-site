@@ -1,17 +1,21 @@
 import React from 'react';
 
-import {metaMask} from '../../connectors/metaMask';
-import {coinbaseWallet} from '../../connectors/coinbaseWallet';
-// import {gnosisSafe} from '../../connectors/gnosisSafe';
-import {walletConnect} from '../../connectors/walletConnect';
 
-import Modal from '../UI/Modal';
-import Image from '../UI/Image';
+import {CoinbaseWallet} from '@web3-react/coinbase-wallet';
+import {GnosisSafe} from '@web3-react/gnosis-safe';
+import {Network} from '@web3-react/network';
 import {MetaMask} from '@web3-react/metamask';
 import {WalletConnect} from '@web3-react/walletconnect';
-import {CoinbaseWallet} from '@web3-react/coinbase-wallet';
-import {Network} from '@web3-react/network';
-import {GnosisSafe} from '@web3-react/gnosis-safe';
+
+import {coinbaseWallet} from '../../connectors/coinbaseWallet';
+// import {gnosisSafe} from '../../connectors/gnosisSafe';
+import {metaMask} from '../../connectors/metaMask';
+import {walletConnect} from '../../connectors/walletConnect';
+
+import Image from '../UI/Image';
+import Modal from '../UI/Modal';
+// eslint-disable-next-line no-unused-vars
+import {POLYGON_CHAIN_ID, POLYGON_MUMBAI_CHAIN_ID} from '../../consts/consts';
 
 const walletOptions = [
   {
@@ -53,10 +57,9 @@ const WalletOption = ({
   setIsModalOpen: any;
 }) => {
   if (!walletName || !connector) return null;
-  const polygonChainID = 137;
   const handleConnectWallet = () => {
     // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
-    connector.activate(polygonChainID);
+    connector.activate(POLYGON_MUMBAI_CHAIN_ID );
     setIsModalOpen(false);
   };
 

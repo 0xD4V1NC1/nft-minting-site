@@ -1,6 +1,9 @@
 import React, {useEffect, useRef} from 'react';
+import {useWeb3React} from '@web3-react/core';
 
 import {useGlobalContext} from '../providers/GlobalContextProvider';
+import useBlockchainData from '../hooks/useBlockchainData';
+
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
 import Marquee from '../components/UI/Marquee';
@@ -13,6 +16,12 @@ import FaqsSection from '../components/PageComponents/Home/FaqsSection';
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
   const mintSectionRef = useRef<null | HTMLDivElement>(null);
+  const {account} = useWeb3React();
+  const {nftData, availableSupply, usersWfNfts} = useBlockchainData(account);
+  console.log('Available Supply: ', availableSupply);
+  console.log('user owned NFTS:', usersWfNfts);
+  console.log('NFT Data: ', nftData);
+
   // @TODO update this with logic after hardhat configuration
   const isSoldOut = false;
 
@@ -28,6 +37,40 @@ const Home = () => {
       });
     }
   };
+
+  // const mintNFTHandler = async () => {
+  //   if (revealTime > new Date().getTime()) {
+  //     window.alert('Minting is not live yet!');
+  //     return;
+  //   }
+
+  //   if (ownerOf.length > 0) {
+  //     window.alert('You\'ve already minted!');
+  //     return;
+  //   }
+
+  //   // Mint NFT
+  //   if (openPunks && account) {
+  //     setIsMinting(true);
+  //     setIsError(false);
+
+  //     await openPunks.methods.mint(1).send({from: account, value: 0})
+  //         .on('confirmation', async () => {
+  //           const maxSupply = await openPunks.methods.maxSupply().call();
+  //           const totalSupply = await openPunks.methods.totalSupply().call();
+  //           setSupplyAvailable(maxSupply - totalSupply);
+
+  //           const ownerOf = await openPunks.methods.walletOfOwner(account).call();
+  //           setOwnerOf(ownerOf);
+  //         })
+  //         .on('error', (error) => {
+  //           window.alert(error);
+  //           setIsError(true);
+  //         });
+  //   }
+
+  //   setIsMinting(false);
+  // };
 
   return (
     <Layout>
