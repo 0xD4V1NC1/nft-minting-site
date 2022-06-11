@@ -1421,7 +1421,8 @@ contract WfNFT is ERC721Enumerable, Ownable {
     uint256 public timeDeployed;
     uint256 public allowMintingAfter = 0;
     bool public isPaused = false;
-    bool public isRevealed = true;
+    // we do not want to reveal the nft yet so we initialize it to false
+    bool public isRevealed = false;
     string public notRevealedUri;
 
     constructor(
@@ -1456,9 +1457,9 @@ contract WfNFT is ERC721Enumerable, Ownable {
             block.timestamp >= timeDeployed + allowMintingAfter,
             "Minting now allowed yet"
         );
-
+        // @TODO this is a security vulnerability
         require(balanceOf(msg.sender) == 0, "Only 1 mint per account");
-
+        // mapping( address => uint256) public walletMints
         uint256 supply = totalSupply();
         require(!isPaused);
         require(_mintAmount > 0);
