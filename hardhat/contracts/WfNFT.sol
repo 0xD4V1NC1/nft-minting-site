@@ -1455,7 +1455,7 @@ contract WfNFT is ERC721Enumerable, Ownable {
     function mint(uint256 _mintAmount) public payable {
         require(
             block.timestamp >= timeDeployed + allowMintingAfter,
-            "Minting now allowed yet"
+            "Minting not allowed yet"
         );
         // @TODO this is a security vulnerability
         require(balanceOf(msg.sender) == 0, "Only 1 mint per account");

@@ -1,8 +1,9 @@
 import React, {useEffect, useRef} from 'react';
+
 import {useWeb3React} from '@web3-react/core';
 
 import {useGlobalContext} from '../providers/GlobalContextProvider';
-import useBlockchainData from '../hooks/useBlockchainData';
+// import useBlockchainData from '../hooks/useBlockchainData';
 
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
@@ -12,16 +13,16 @@ import OpenseaBannerSection from '../components/PageComponents/Home/OpenseaBanne
 import SoldOutSection from '../components/PageComponents/Home/SoldOutSection';
 import IntroSection from '../components/PageComponents/Home/IntroSection';
 import FaqsSection from '../components/PageComponents/Home/FaqsSection';
+import {NFT_CONTRACT_ADDRESS, NFT_ABI} from '../consts/consts';
+import useNftData from '../hooks/useNftData';
 
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
   const mintSectionRef = useRef<null | HTMLDivElement>(null);
-  const {account} = useWeb3React();
-  const {nftData, availableSupply, usersWfNfts} = useBlockchainData(account);
-  console.log('Available Supply: ', availableSupply);
-  console.log('user owned NFTS:', usersWfNfts);
-  console.log('NFT Data: ', nftData);
-
+  const {account, provider, isActive} = useWeb3React();
+  const signer = provider?.getSigner();
+  const {nftCost} = useNftData(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
+  console.log('ACCOUNT (Home):', account, isActive);
   // @TODO update this with logic after hardhat configuration
   const isSoldOut = false;
 
@@ -76,7 +77,7 @@ const Home = () => {
     <Layout>
       <Marquee marqueeText="Minting May 26 ·" reverse />
       <IntroSection handleScrollToMintSection={handleScrollToMintSection} isSoldOut={isSoldOut} />
-      {isSoldOut ? <SoldOutSection /> : <MintSection mintSectionRef={mintSectionRef} />}
+      {isSoldOut ? <SoldOutSection /> : <MintSection mintSectionRef={mintSectionRef} nftCost={nftCost} isAccountConnected={isActive} />}
       <Marquee marqueeText="Minting May 26 ·" />
       <FaqsSection />
       {isSoldOut ? (

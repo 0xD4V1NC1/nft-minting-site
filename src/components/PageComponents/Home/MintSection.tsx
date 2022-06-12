@@ -1,18 +1,21 @@
 import React, {useState, useLayoutEffect, useRef, RefObject} from 'react';
-import Image from '../../UI/Image';
-import Button from '../../UI/Button';
-
 import Countdown from 'react-countdown';
+import {useWeb3React} from '@web3-react/core';
+
+import Button from '../../UI/Button';
+import Image from '../../UI/Image';
+
+import {handleMint} from '../../../utils/mintUtil';
 // use https://codechi.com/dev-tools/date-to-millisecond-calculators/ to calculate future date in milliseconds
 import {NFT_MINT_DATE} from '../../../consts/consts';
 
-const MintSection = ({mintSectionRef}:{mintSectionRef: RefObject<HTMLDivElement>}) => {
+const MintSection = ({mintSectionRef, nftCost, isAccountConnected}:{mintSectionRef: RefObject<HTMLDivElement>, nftCost: string, isAccountConnected: boolean}) => {
   const [countdownCompleted, setCountdownCompleted] = useState(false);
-  const handleCountdownCompleted = () => {
-    setCountdownCompleted(true);
-  };
-
+  const [mintAmount, setMintAmount] = useState(1);
   const countdownRef = useRef<Countdown>(null);
+  const {provider} = useWeb3React();
+
+
   // check dom before rendering to see if we should display completed countdown timer state
   useLayoutEffect(() => {
     const isCountdownCompleted = countdownRef.current?.api?.isCompleted();
@@ -20,8 +23,26 @@ const MintSection = ({mintSectionRef}:{mintSectionRef: RefObject<HTMLDivElement>
     if (isCountdownCompleted) setCountdownCompleted(true);
   }, [countdownCompleted]);
 
-  const disabledProp = countdownCompleted ? null: {disabled: true};
+  const handleCountdownCompleted = () => {
+    setCountdownCompleted(true);
+  };
 
+  const handleIncrement = () => {
+    // @TODO max sure not bigger then the max amount or amount left...?
+    if (mintAmount > 3) return;
+    const incrementedAmount = mintAmount +1;
+    setMintAmount(incrementedAmount);
+  };
+
+  const handleDecrement = () => {
+    if (mintAmount < 1) return;
+    const decrementedAmount = mintAmount - 1;
+    setMintAmount(decrementedAmount);
+  };
+
+  const disabledProp = countdownCompleted ? null: {disabled: true};
+  const decrementAriaLabel = mintAmount > 0 ? mintAmount - 1: 0;
+  console.log('MINT AMOUNT (MintSection):', mintAmount);
   return (
     <section id='mint-section' ref={mintSectionRef} className='min-h-screen bg-white dark:bg-primary-dark-500 px-16 py-8 m-auto'>
       <div className='flex flex-col justify-center md:flex-row md:items-end md:gap-48 w-full'>
@@ -36,9 +57,20 @@ const MintSection = ({mintSectionRef}:{mintSectionRef: RefObject<HTMLDivElement>
             <span className='text-5xl text-primary-400'> Minted </span>
           </h2>
           <div className='relative w-full overflow-hidden rounded-3xl bg-primary-400 p-6 py-12 mt-12' >
-            <div className='h-36 md:h-48'>
-              <Button type='button' ariaLabel='Click to Mint an NFT' color='primary-gradient' className='font-semibold px-8 py-1' text='MINT' {...disabledProp} onClick={() => console.log('button clicked')}/>
-            </div>
+            {isAccountConnected ? (
+              <div className='h-36 md:h-48'>
+                <div className='flex'>
+                  <Button type='button' color='blue' ariaLabel={`Click to Decrement to ${decrementAriaLabel} NFTs`} text='-' onClick={handleDecrement} />
+                  <input type="number" className='' value={mintAmount}/>
+                  <Button type='button' color='red' ariaLabel={`Click to Increment to ${mintAmount+1} NFTs`} text='+' onClick={handleIncrement} />
+                </div>
+                <Button type='button' ariaLabel='Click to Mint an NFT' color='primary-gradient' className='font-semibold px-8 py-1' text='MINT' {...disabledProp} onClick={() => handleMint(mintAmount, provider)}/>
+              </div>
+              ) : (
+                <div>
+                  <p> Please Connect your wallet to Mint NFT</p>
+                </div>
+            )}
           </div>
         </div>
       </div>

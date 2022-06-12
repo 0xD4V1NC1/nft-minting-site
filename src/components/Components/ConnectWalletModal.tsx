@@ -15,7 +15,7 @@ import {walletConnect} from '../../connectors/walletConnect';
 import Image from '../UI/Image';
 import Modal from '../UI/Modal';
 // eslint-disable-next-line no-unused-vars
-import {POLYGON_CHAIN_ID, POLYGON_MUMBAI_CHAIN_ID} from '../../consts/consts';
+import {POLYGON_CHAIN_ID, POLYGON_MUMBAI_CHAIN_ID, LOCALHOST_CHAIN_ID} from '../../consts/consts';
 
 const walletOptions = [
   {
@@ -28,7 +28,6 @@ const walletOptions = [
     logoUrl: '/CoinbaseWalletLogo.png',
     connector: coinbaseWallet,
   },
-  // @TODO implement Gnosis Safe...
   /*
     wallet connect doesn't work with react-scripts 5.0.0 + so had to add config-overrides.js and
     react-app-rewired
@@ -37,7 +36,7 @@ const walletOptions = [
     name: 'Wallet Connect',
     logoUrl: '/WalletConnectLogo.png',
     connector: walletConnect,
-  },
+  }, // @TODO implement Gnosis Safe...
   // {
   //   name: 'Gnosis Safe',
   //   logoUrl: '/CoinbaseWalletLogo.png',
@@ -59,7 +58,7 @@ const WalletOption = ({
   if (!walletName || !connector) return null;
   const handleConnectWallet = () => {
     // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
-    connector.activate(POLYGON_MUMBAI_CHAIN_ID );
+    connector.activate(LOCALHOST_CHAIN_ID);
     setIsModalOpen(false);
   };
 

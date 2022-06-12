@@ -27,6 +27,10 @@ interface ExtendedChainInformation extends BasicChainInformation {
   blockExplorerUrls: AddEthereumChainParameter['blockExplorerUrls']
 }
 export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainInformation } = {
+  31337: { // Localhost via Hardhat
+    urls: [`http://127.0.0.1:8545/`].filter((url) => url !== undefined),
+    name: 'Localhost',
+  },
   1: { // eth
     urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/mainnet`].filter((url) => url !== undefined),
     name: 'Mainnet',

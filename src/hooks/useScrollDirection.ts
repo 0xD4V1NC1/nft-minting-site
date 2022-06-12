@@ -10,7 +10,7 @@ const SCROLL_DOWN = 'down';
   thresholdPixels - are just the sensitivity of the scroll direction hook... i.e. if the threshold is 10,
   a 10 pixel swipe would be needed to trigger the hook to change scroll direction
  */
-export default function useScrollDirection({initialDirection = SCROLL_DOWN, thresholdPixels = 10} = {}) {
+const useScrollDirection = ({initialDirection = SCROLL_DOWN, thresholdPixels = 10} = {}) => {
   const [scrollDirection, setScrollDirection] = useState<string>(initialDirection);
 
   useEffect(() => {
@@ -32,4 +32,5 @@ export default function useScrollDirection({initialDirection = SCROLL_DOWN, thre
     };
   }, [scrollDirection]);
   return scrollDirection;
-}
+};
+export default useScrollDirection;
