@@ -1410,6 +1410,8 @@ abstract contract Ownable is Context {
 
 pragma solidity >=0.7.0 <0.9.0;
 
+/// @title WFNT Smart Contract
+/// @author 0xD4V1NC1 
 contract WfNFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
@@ -1446,7 +1448,7 @@ contract WfNFT is ERC721Enumerable, Ownable {
         setNotRevealedURI(_initNotRevealedUri);
     }
 
-    // internal
+    /// internal
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
     }

@@ -11,7 +11,7 @@ import {ethers} from 'ethers';
     6. Return isOwnerOf and nftsOwned
 */
 
-const checkNumOfNfts = async (contract: any, signer: any, accountAddress: string | undefined) => {
+const checkNumOfNfts = async (contract: any, accountAddress: string | undefined, signer: any) => {
   let usersNfts = [];
   if (window.ethereum && signer) {
     // 1. ownerOf returns an array of the TokenIds that the user owns
@@ -34,7 +34,7 @@ const useNftOwner = (NFT_CONTRACT_ADDRESS: string, NFT_ABI: string, accountAddre
   useEffect(() => {
     const handleIsOwnerOf = async () => {
       // 2.
-      const nftsInWallet = await checkNumOfNfts(contract, signer, accountAddress);
+      const nftsInWallet = await checkNumOfNfts(contract, accountAddress, signer);
       // 3.
       setNftsOwned(nftsInWallet);
       // 4.

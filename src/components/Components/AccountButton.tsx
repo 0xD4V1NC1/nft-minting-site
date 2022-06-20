@@ -7,7 +7,6 @@ import AddressInformationButton from './AddressInformationButton';
 
 const AccountButton = () => {
   const {connector, account, isActive} = useWeb3React();
-  console.log('isActive:', isActive, account);
   return (
     <>
       {isActive ? <AddressInformationButton address={account || ''} connector={connector} /> : <ConnectWalletButton />}

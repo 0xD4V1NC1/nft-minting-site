@@ -2,6 +2,9 @@
 import nftData from '../0xWF.json';
 
 // NFT Mint date in milliseconds
+// const currentTime = new Date().getTime();
+// const revealTime = (Number(timeDeployed) + Number(allowMintingAfter)).toString() + '000';
+// const lol = currentTime + (revealTime - currentTime);
 export const NFT_MINT_DATE = 1653699600000;
 export const POLYGON_CHAIN_ID = 137;
 export const LOCALHOST_CHAIN_ID = 31337;

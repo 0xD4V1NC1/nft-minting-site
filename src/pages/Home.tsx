@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {useWeb3React} from '@web3-react/core';
 
@@ -15,20 +15,26 @@ import IntroSection from '../components/PageComponents/Home/IntroSection';
 import FaqsSection from '../components/PageComponents/Home/FaqsSection';
 import {NFT_CONTRACT_ADDRESS, NFT_ABI} from '../consts/consts';
 import useNftData from '../hooks/useNftData';
+import useNftOwner from '../hooks/useNftOwner';
 
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
   const mintSectionRef = useRef<null | HTMLDivElement>(null);
   const {account, provider, isActive} = useWeb3React();
   const signer = provider?.getSigner();
-  const {nftCost} = useNftData(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
-  console.log('ACCOUNT (Home):', account, isActive);
-  // @TODO update this with logic after hardhat configuration
-  const isSoldOut = false;
+  const {nftCost, maxNftSupply, currentNftId, isNftDataLoading} = useNftData(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
+  const {nftsOwned} = useNftOwner(NFT_CONTRACT_ADDRESS, NFT_ABI, account, signer);
+  console.log('nftsOwned: ', nftsOwned.toString());
+  const [isSoldOut, setIsSoldOut] = useState(false);
+  console.log('ACCOUNT (Home):', account, isActive, nftCost, maxNftSupply, currentNftId);
 
   useEffect(() => {
     setPageTitle('Home | 0xWF');
     setMetaDescription('Home of 0xWF NFT. Mint your NFT here and learn more about our project');
+    if (!isNftDataLoading && parseInt(currentNftId) >= parseInt(maxNftSupply)) {
+      console.error('parseInt(currentNftId) >= parseInt(maxNftSupply):', parseInt(currentNftId), parseInt(maxNftSupply));
+      setIsSoldOut(true);
+    }
   }, []);
 
   const handleScrollToMintSection = () => {
@@ -39,45 +45,11 @@ const Home = () => {
     }
   };
 
-  // const mintNFTHandler = async () => {
-  //   if (revealTime > new Date().getTime()) {
-  //     window.alert('Minting is not live yet!');
-  //     return;
-  //   }
-
-  //   if (ownerOf.length > 0) {
-  //     window.alert('You\'ve already minted!');
-  //     return;
-  //   }
-
-  //   // Mint NFT
-  //   if (openPunks && account) {
-  //     setIsMinting(true);
-  //     setIsError(false);
-
-  //     await openPunks.methods.mint(1).send({from: account, value: 0})
-  //         .on('confirmation', async () => {
-  //           const maxSupply = await openPunks.methods.maxSupply().call();
-  //           const totalSupply = await openPunks.methods.totalSupply().call();
-  //           setSupplyAvailable(maxSupply - totalSupply);
-
-  //           const ownerOf = await openPunks.methods.walletOfOwner(account).call();
-  //           setOwnerOf(ownerOf);
-  //         })
-  //         .on('error', (error) => {
-  //           window.alert(error);
-  //           setIsError(true);
-  //         });
-  //   }
-
-  //   setIsMinting(false);
-  // };
-
   return (
     <Layout>
       <Marquee marqueeText="Minting May 26 ·" reverse />
       <IntroSection handleScrollToMintSection={handleScrollToMintSection} isSoldOut={isSoldOut} />
-      {isSoldOut ? <SoldOutSection /> : <MintSection mintSectionRef={mintSectionRef} nftCost={nftCost} isAccountConnected={isActive} />}
+      {isSoldOut ? <SoldOutSection /> : <MintSection mintSectionRef={mintSectionRef} nftCost={nftCost} isAccountConnected={isActive} maxAmount={maxNftSupply} currentNftId={currentNftId} />}
       <Marquee marqueeText="Minting May 26 ·" />
       <FaqsSection />
       {isSoldOut ? (

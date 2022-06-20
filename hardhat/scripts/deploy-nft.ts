@@ -18,6 +18,7 @@ async function main() {
   console.log('------------------------------------------');
   console.log('NFT CONFIG: ');
   console.log(NAME, SYMBOL, MINT_COST, MAX_SUPPLY, NFT_MINT_DATE, IPFS_IMAGE_METADATA_URI, IPFS_HIDDEN_IMAGE_METADATA_URI);
+  console.log('TEST FE APP ENV:', process.env.NODE_ENV)
   console.log('------------------------------------------');
   // We get the contract to deploy
   console.log('Getting Contract...');
@@ -30,8 +31,7 @@ async function main() {
   await wf_nft.deployed();
   console.log('NFT Smart Contract deployed to: ', wf_nft.address);
   const wfNftInterface = wf_nft.interface.format('json');
-  console.log('1: ', wfNftInterface);
-  console.log('2: ',  wf_nft.interface.format('json'))
+
   const contractData = {
     address: wf_nft.address,
     abi: wfNftInterface
