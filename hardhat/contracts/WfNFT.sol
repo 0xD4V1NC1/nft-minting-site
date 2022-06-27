@@ -1,17 +1,6 @@
 // SPDX-License-Identifier: MIT
-// @TODO add whitelist and royalties?
-// Amended by HashLips
-/**
-    !Disclaimer!
-    These contracts have been used to create tutorials,
-    and was created for the purpose to teach people
-    how to create smart contracts on the blockchain.
-    please review this code on your own before using any of
-    the following code for production.
-    HashLips will not be liable in any way if for the use 
-    of the code. That being said, the code has been tested 
-    to the best of the developers' knowledge to work as intended.
-*/
+// @TODO add whitelist and royalties? remove console.log
+import "hardhat/console.sol";
 
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
 pragma solidity ^0.8.0;
@@ -1411,15 +1400,15 @@ abstract contract Ownable is Context {
 pragma solidity >=0.7.0 <0.9.0;
 
 /// @title WFNT Smart Contract
-/// @author 0xD4V1NC1 
+/// @author 0xD4V1NC1
 contract WfNFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
-    string baseURI;
+    string public baseURI;
     string public baseExtension = ".json";
     uint256 public cost;
     uint256 public maxSupply;
-    uint256 public maxMintAmount = 2;
+    uint256 public maxMintAmount;
     uint256 public timeDeployed;
     uint256 public allowMintingAfter = 0;
     bool public isPaused = false;
@@ -1432,6 +1421,7 @@ contract WfNFT is ERC721Enumerable, Ownable {
         string memory _symbol,
         uint256 _cost,
         uint256 _maxSupply,
+        uint256 _maxMintAmount,
         uint256 _allowMintingOn,
         string memory _initBaseURI,
         string memory _initNotRevealedUri
@@ -1442,6 +1432,7 @@ contract WfNFT is ERC721Enumerable, Ownable {
 
         cost = _cost;
         maxSupply = _maxSupply;
+        maxMintAmount = _maxMintAmount;
         timeDeployed = block.timestamp;
 
         setBaseURI(_initBaseURI);
@@ -1461,9 +1452,10 @@ contract WfNFT is ERC721Enumerable, Ownable {
         );
         // @TODO this is a security vulnerability
         require(balanceOf(msg.sender) == 0, "Only 1 mint per account");
+        console.log(msg.sender, ' bypassed Only 1 mint check');
         // mapping( address => uint256) public walletMints
         uint256 supply = totalSupply();
-        require(!isPaused);
+        require(!isPaused, "Error: Minting is pause");
         require(_mintAmount > 0);
         require(_mintAmount <= maxMintAmount);
         require(supply + _mintAmount <= maxSupply);
