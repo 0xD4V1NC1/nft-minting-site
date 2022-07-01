@@ -1,42 +1,17 @@
 // SPDX-License-Identifier: MIT
-// @TODO add whitelist and royalties? remove console.log
-import "hardhat/console.sol";
-
-// File: @openzeppelin/contracts/utils/introspection/IERC165.sol
+// @TODO add whitelist and royalties?
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/IERC721.sol
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
-
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
-
-// File: @openzeppelin/contracts/utils/Strings.sol
 import "@openzeppelin/contracts/utils/Strings.sol";
-
-// File: @openzeppelin/contracts/utils/Address.sol
 import "@openzeppelin/contracts/utils/Address.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol
 import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/IERC721Receiver.sol
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-
-// File: @openzeppelin/contracts/utils/Context.sol
 import "@openzeppelin/contracts/utils/Context.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/ERC721.sol
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
-// File: @openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-
-// File: @openzeppelin/contracts/access/Ownable.sol
 import "@openzeppelin/contracts/access/Ownable.sol";
-
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 pragma solidity >=0.7.0 <0.9.0;
