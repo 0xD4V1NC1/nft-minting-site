@@ -234,6 +234,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
       const isMintingPaused = true;
       await testNFT.setIsPaused(isMintingPaused);
       const result = await testNFT.isPaused();
+      const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
 
       // get contract data
       const WfNFT = await ethers.getContractFactory(`WfNFT`);
@@ -247,7 +248,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
       expect(result).to.be.true;
 
       const attemptMint = myContract.mint(1, {
-        value: ethers.utils.parseEther((0.05 * 1).toString()),
+        value: ethers.utils.parseEther((mintCost * 1).toString()),
       });
       // expect minting to fail b/c its paused...
       await expect(attemptMint).to.be.reverted;
@@ -309,6 +310,8 @@ describe(`0xWF NFT Contract Functions:`, function () {
   });
 
   describe(`Should Fail Scenarios: `, async () => {
+    const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
+
     // should fail attempting to mint before mint date
     it.skip(`Should Fail: Mint before mint date`, async () => {
       const WfNFT = await ethers.getContractFactory(`WfNFT`);
@@ -320,43 +323,58 @@ describe(`0xWF NFT Contract Functions:`, function () {
       );
       // attempt to mint 1 NFT
       const result = myContract.mint(1, {
-        value: ethers.utils.parseEther((0.05 * 1).toString()),
+        value: ethers.utils.parseEther((mintCost * 1).toString()),
       });
 
       // we expect an error b/c it is before mint date
       await expect(result).to.be.reverted;
     });
 
-    // should fail trying to mint multiple
-    it.skip(``, async () => {});
+    it(`Trying to mint more than max amount`, async () => {
+      const addr6 = addrs[6];
+      const maxMintAmount = Number(MAX_MINT_AMOUNT);
+      const attemptedMintAmount = maxMintAmount + 1;
+
+      const attemptBadMint = testNFT.connect(addr6).mint(attemptedMintAmount, {
+        value: ethers.utils.parseEther(
+          (mintCost * attemptedMintAmount).toString()
+        ),
+      });
+
+      await expect(attemptBadMint).to.be.revertedWith(
+        "Insufficient Mints Left"
+      );
+    });
+
+    it(`Trying to mint with not enough money`, async () => {
+      const addr7 = addrs[7];
+
+      const attemptBadMint = testNFT.connect(addr7).mint(1, {
+        value: ethers.utils.parseEther((0.01 * 1).toString()),
+      });
+
+      await expect(attemptBadMint).to.be.revertedWith(
+        "Not enough funds provided"
+      );
+    });
 
     // should fail trying to mint and transfer then mint again
     it(`Test Re-entrancy attack`, async () => {
-      const reentrancy = async () => {
+      const reentrancyTest = async () => {
         let currentTokenIndex = await testNFT.totalSupply();
         const maxTokenSupply = await testNFT.maxSupply();
-
-        for (var i = 0; i < maxTokenSupply; i++) {
-          console.log("----------------------------------------------");
-          console.log(`LOOP COUNTER: ${i + 1} of ${maxTokenSupply}`);
-          /*  
-            - Transfer to account3
-            - attempt to mint again...
-          */
-          const addr3 = addrs[5];
-
-          try {
+        try {
+          for (var i = 0; i < maxTokenSupply; i++) {
+            /*  
+              - Transfer to account3
+              - attempt to mint again...
+            */
+            const addr3 = addrs[5];
             // - Mint NFT with account2
             await testNFT.connect(addr2).mint(1, {
-              value: ethers.utils.parseEther((0.05 * 1).toString()),
+              value: ethers.utils.parseEther((mintCost * 1).toString()),
             });
-            console.log("Address 2:", addr2.address);
-            console.log("Address 3:", addr3.address);
-            const addr2NFTs = await testNFT.walletOfOwner(addr2.address);
-            const addr3NFTs = await testNFT.walletOfOwner(addr3.address);
 
-            console.log("Address 2 NFTs:", addr2NFTs);
-            console.log("Address 3 NFTs:", addr3NFTs);
             await testNFT
               .connect(addr2)
               .approve(addr3.address, currentTokenIndex.toNumber() + 1);
@@ -369,16 +387,24 @@ describe(`0xWF NFT Contract Functions:`, function () {
                 currentTokenIndex.toNumber() + 1
               );
             currentTokenIndex = await testNFT.totalSupply();
-            console.log("CurrentTokenIndex: ", currentTokenIndex.toNumber());
-          } catch (error) {
-            console.log("We got an error: ", error);
           }
+        } catch (error) {
+          assert.isTrue(true);
         }
       };
-      await reentrancy();
-      // @TODO re-entrancy test works... fix expect() and fix smart contract maxMint check...
+      // addr2 numOfMints should be less than or equal to maxMintAmount
+      await reentrancyTest();
 
-      expect(reentrancy).to.be.reverted;
+      const attemptAnotherMint = testNFT.connect(addr2).mint(1, {
+        value: ethers.utils.parseEther((mintCost * 1).toString()),
+      });
+      const addr2NumOfMints = await testNFT.userNumOfMints(addr2.address);
+      await expect(attemptAnotherMint).to.be.revertedWith(
+        "Insufficient Mints Left"
+      );
+      expect(addr2NumOfMints.toNumber()).to.be.lessThanOrEqual(
+        Number(MAX_MINT_AMOUNT)
+      );
     });
   });
 });
