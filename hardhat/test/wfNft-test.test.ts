@@ -80,14 +80,14 @@ describe(`0xWF NFT Contract Functions:`, function () {
       "-------------------------------------------------------------"
     );
   });
-  describe(`Test ethers.getSigners():`, async () => {
+  describe.skip(`Test ethers.getSigners():`, async () => {
     it(`Make sure signers exist:`, async () => {
       expect(owner?.address).to.exist;
       expect(addr1?.address).to.exist;
       expect(addr2?.address).to.exist;
     });
   });
-  describe(`${SYMBOL} NFT Deployment`, function () {
+  describe.skip(`${SYMBOL} NFT Deployment`, function () {
     it(`.name() - Returns the contract name`, async () => {
       const result = await testNFT.name();
       expect(result).to.equal(NAME);
@@ -121,7 +121,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
     });
   });
 
-  describe(`${SYMBOL} Public Functions`, function () {
+  describe.skip(`${SYMBOL} Public Functions`, function () {
     let response: any;
     before(`Mint 2 NFTs`, async () => {
       // get contract data
@@ -200,7 +200,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
     });
   });
 
-  describe(`${SYMBOL} Only Owner Functions`, function () {
+  describe.skip(`${SYMBOL} Only Owner Functions`, function () {
     it(`.setBaseURI(string newBaseURI) - should set baseURI`, async () => {
       const newBaseURI = "example.com";
       await testNFT.setBaseURI(newBaseURI, { from: owner.address });
@@ -310,7 +310,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
 
   describe(`Should Fail Scenarios: `, async () => {
     // should fail attempting to mint before mint date
-    it(`Should Fail: Mint before mint date`, async () => {
+    it.skip(`Should Fail: Mint before mint date`, async () => {
       const WfNFT = await ethers.getContractFactory(`WfNFT`);
       // create instance of NFT contract with addr1 as the signer (aka minter)
       const myContract = new ethers.Contract(
@@ -331,15 +331,54 @@ describe(`0xWF NFT Contract Functions:`, function () {
     it.skip(``, async () => {});
 
     // should fail trying to mint and transfer then mint again
-    it.skip(``, async () => {
-      // get contract data
-      const WfNFT = await ethers.getContractFactory(`WfNFT`);
-      // create instance of NFT contract with addr1 as the signer (aka minter)
-      const myContract = new ethers.Contract(
-        testNFT.address,
-        WfNFT.interface,
-        addr1
-      );
+    it(`Test Re-entrancy attack`, async () => {
+      const reentrancy = async () => {
+        let currentTokenIndex = await testNFT.totalSupply();
+        const maxTokenSupply = await testNFT.maxSupply();
+
+        for (var i = 0; i < maxTokenSupply; i++) {
+          console.log("----------------------------------------------");
+          console.log(`LOOP COUNTER: ${i + 1} of ${maxTokenSupply}`);
+          /*  
+            - Transfer to account3
+            - attempt to mint again...
+          */
+          const addr3 = addrs[5];
+
+          try {
+            // - Mint NFT with account2
+            await testNFT.connect(addr2).mint(1, {
+              value: ethers.utils.parseEther((0.05 * 1).toString()),
+            });
+            console.log("Address 2:", addr2.address);
+            console.log("Address 3:", addr3.address);
+            const addr2NFTs = await testNFT.walletOfOwner(addr2.address);
+            const addr3NFTs = await testNFT.walletOfOwner(addr3.address);
+
+            console.log("Address 2 NFTs:", addr2NFTs);
+            console.log("Address 3 NFTs:", addr3NFTs);
+            await testNFT
+              .connect(addr2)
+              .approve(addr3.address, currentTokenIndex.toNumber() + 1);
+
+            await testNFT
+              .connect(addr2)
+              .transferFrom(
+                addr2.address,
+                addr3.address,
+                currentTokenIndex.toNumber() + 1
+              );
+            currentTokenIndex = await testNFT.totalSupply();
+            console.log("CurrentTokenIndex: ", currentTokenIndex.toNumber());
+          } catch (error) {
+            console.log("We got an error: ", error);
+          }
+        }
+      };
+      await reentrancy();
+      // @TODO re-entrancy test works... fix expect() and fix smart contract maxMint check...
+
+      expect(reentrancy).to.be.reverted;
     });
   });
 });

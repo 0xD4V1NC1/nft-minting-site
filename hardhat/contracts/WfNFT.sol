@@ -784,6 +784,11 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      */
     function approve(address to, uint256 tokenId) public virtual override {
         address owner = ERC721.ownerOf(tokenId);
+        console.log("------------approve()------------------");
+        console.log("OWNER:", owner);
+        console.log("TO:", to);
+        console.log("TOKEN ID:", tokenId);
+
         require(to != owner, "ERC721: approval to current owner");
 
         require(
@@ -1401,6 +1406,21 @@ pragma solidity >=0.7.0 <0.9.0;
 
 /// @title WFNT Smart Contract
 /// @author 0xD4V1NC1
+/*
+
+      _          _      _            _               _      _          _   _                      _              _       _              
+    / /\       /_/\    /\ \         /\ \         _  /\ \   /\ \    _ / /\ / /\                   /\ \     _    /\ \     / /\            
+   / /  \      \ \ \   \ \_\       /  \ \____   /\_\\ \ \  \ \ \  /_/ / // /  \                 /  \ \   /\_\ /  \ \   / /  \           
+  / / /\ \      \ \ \__/ / /      / /\ \_____\ / / / \ \ \  \ \ \ \___\//_/ /\ \               / /\ \ \_/ / // /\ \ \ /_/ /\ \          
+ / / /\ \ \      \ \__ \/_/      / / /\/___  // / /   \ \ \ / / /  \ \ \\_\/\ \ \             / / /\ \___/ // / /\ \ \\_\/\ \ \         
+/_/ /  \ \ \      \/_/\__/\     / / /   / / / \ \ \____\ \ \\ \ \   \_\ \    \ \ \           / / /  \/____// / /  \ \_\    \ \ \        
+\ \ \   \ \ \      _/\/__\ \   / / /   / / /   \ \________\ \\ \ \  / / /     \ \ \         / / /    / / // / /    \/_/     \ \ \       
+ \ \ \   \ \ \    / _/_/\ \ \ / / /   / / /     \/________/\ \\ \ \/ / /       \ \ \       / / /    / / // / /               \ \ \      
+  \ \ \___\ \ \  / / /   \ \ \\ \ \__/ / /                \ \ \\ \ \/ /       __\ \ \___  / / /    / / // / /________       __\ \ \___  
+   \ \/____\ \ \/ / /    /_/ / \ \___\/ /                  \ \_\\ \  /       /___\_\/__/\/ / /    / / // / /_________\     /___\_\/__/\ 
+    \_________\/\/_/     \_\/   \/_____/                    \/_/ \_\/        \_________\/\/_/     \/_/ \/____________/     \_________\/
+    
+ */
 contract WfNFT is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
@@ -1452,7 +1472,7 @@ contract WfNFT is ERC721Enumerable, Ownable {
         );
         // @TODO this is a security vulnerability
         require(balanceOf(msg.sender) == 0, "Only 1 mint per account");
-        console.log(msg.sender, ' bypassed Only 1 mint check');
+        console.log(msg.sender, " bypassed Only 1 mint check");
         // mapping( address => uint256) public walletMints
         uint256 supply = totalSupply();
         require(!isPaused, "Error: Minting is pause");
