@@ -15,10 +15,17 @@ async function main() {
   const NFT_MINT_DATE = new Date(process.env.NFT_MINT_DATE || 0).getTime().toString().slice(0, 10);
   const IPFS_IMAGE_METADATA_URI = `ipfs://${process.env.IPFS_IMAGE_METADATA_CID}/`
   const IPFS_HIDDEN_IMAGE_METADATA_URI = `ipfs://${process.env.IPFS_HIDDEN_IMAGE_METADATA_CID}/hidden.json`;
-  console.log('------------------------------------------');
+  console.log('------------------------------------------\n');
   console.log('NFT CONFIG: ');
-  console.log(NAME, SYMBOL, MINT_COST, MAX_SUPPLY, NFT_MINT_DATE, IPFS_IMAGE_METADATA_URI, IPFS_HIDDEN_IMAGE_METADATA_URI);
-  console.log('TEST FE APP ENV:', process.env.NODE_ENV)
+  console.log('Name: ', NAME);
+  console.log('SYMBOL: ', SYMBOL);
+  console.log('MINT COST: ', MINT_COST);
+  console.log('MAX SUPPLY: ', MAX_SUPPLY);
+  console.log('MAX MINT AMOUNT: ', MAX_MINT_AMOUNT);
+  console.log('NFT MINT DATE: ', NFT_MINT_DATE);
+  console.log('IPFS_IMAGE_METADATA_URI: ', IPFS_IMAGE_METADATA_URI);
+  console.log('IPFS_HIDDEN_IMAGE_METADATA_URI: ', IPFS_HIDDEN_IMAGE_METADATA_URI);
+  console.log('TEST FE APP ENV:', process.env.NODE_ENV);
   console.log('------------------------------------------');
   // We get the contract to deploy
   console.log('Getting Contract...');
