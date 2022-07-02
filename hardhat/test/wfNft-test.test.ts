@@ -5,10 +5,14 @@ describe(`0xWF NFT Contract Functions:`, function () {
   let NFT;
   let testNFT: any;
   let testNFT2: any; // deployed at a future date
+  let testNFT3: any; // for only owner functions
+
   let owner: any;
   let addr1: any;
   let addr2: any;
-  let addrs: any;
+  let addr3: any;
+  let addr4: any;
+
   // deploy config variables
   const NAME = process.env.PROJECT_NAME || ``;
   const SYMBOL = process.env.PROJECT_SYMBOL || `NFT`;
@@ -30,10 +34,14 @@ describe(`0xWF NFT Contract Functions:`, function () {
   const IPFS_IMAGE_METADATA_URI = `ipfs://${process.env.IPFS_IMAGE_METADATA_CID}/`;
   const IPFS_HIDDEN_IMAGE_METADATA_URI = `ipfs://${process.env.IPFS_HIDDEN_IMAGE_METADATA_CID}/hidden.json`;
 
+  // formatEther will convert our large number that is a string to actual ether price,
+  // and parseFloat will convert the price to a number
+  const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
+
   before(async function () {
-    /* Get the ContractFactory and Signers here. @TODO replace this with your contract name */
+    /* Get the ContractFactory and Signers here. @TODO `WfNFT` replace this with your contract name */
     NFT = await ethers.getContractFactory(`WfNFT`);
-    [owner, addr1, addr2, ...addrs] = await ethers.getSigners();
+    [owner, addr1, addr2, addr3, addr4] = await ethers.getSigners();
     testNFT = await NFT.deploy(
       NAME,
       SYMBOL,
@@ -55,13 +63,27 @@ describe(`0xWF NFT Contract Functions:`, function () {
       IPFS_IMAGE_METADATA_URI,
       IPFS_HIDDEN_IMAGE_METADATA_URI
     );
-    console.log("-----------------------------------------------------------");
+    testNFT3 = await NFT.deploy(
+      NAME,
+      SYMBOL,
+      MINT_COST,
+      MAX_SUPPLY,
+      MAX_MINT_AMOUNT,
+      NFT_MINT_DATE,
+      IPFS_IMAGE_METADATA_URI,
+      IPFS_HIDDEN_IMAGE_METADATA_URI
+    );
+    console.log(`-----------------------------------------------------------`);
     console.log(`\n - - Address Variables - - \n`);
     console.log(`Contract 1 Address: `, testNFT.address);
     console.log(`Contract 2 Address: `, testNFT2.address);
+    console.log(`Contract 3 Address: `, testNFT3.address);
+
     console.log(`Owner:`, owner?.address);
     console.log(`Ad1:`, addr1?.address);
     console.log(`Ad2:`, addr2?.address);
+    console.log(`Ad3:`, addr3?.address);
+    console.log(`Ad4:`, addr4?.address);
     console.log(`\n - - Env Variables - - \n`);
     console.log(`NAME:`, NAME);
     console.log(`SYMBOL:`, SYMBOL);
@@ -76,22 +98,29 @@ describe(`0xWF NFT Contract Functions:`, function () {
     );
     console.log(`\n - - Other Test Variables - - \n`);
     console.log(`FUTURE_MINT_DATE:`, FUTURE_MINT_DATE);
+    console.log(`mintCost (as number)`, mintCost);
+
     console.log(
-      "-------------------------------------------------------------"
+      `-------------------------------------------------------------`
     );
   });
-  describe.skip(`Test ethers.getSigners():`, async () => {
+
+  describe(`Test ethers.getSigners():`, async () => {
     it(`Make sure signers exist:`, async () => {
       expect(owner?.address).to.exist;
       expect(addr1?.address).to.exist;
       expect(addr2?.address).to.exist;
+      expect(addr3?.address).to.exist;
+      expect(addr4?.address).to.exist;
     });
   });
-  describe.skip(`${SYMBOL} NFT Deployment`, function () {
+
+  describe(`${SYMBOL} NFT Deployment`, function () {
     it(`.name() - Returns the contract name`, async () => {
       const result = await testNFT.name();
       expect(result).to.equal(NAME);
     });
+
     it(`.symbol() - Returns the symbol `, async () => {
       const result = await testNFT.symbol();
       expect(result).to.equal(SYMBOL);
@@ -106,55 +135,43 @@ describe(`0xWF NFT Contract Functions:`, function () {
       const result = await testNFT.maxSupply();
       expect(result.toString()).to.equal(MAX_SUPPLY.toString());
     });
+
     it(`.maxMintAmount() - Returns the max mint amount `, async () => {
       const result = await testNFT.maxMintAmount();
       expect(result).to.equal(MAX_MINT_AMOUNT);
     });
 
-    it(`.owner() - Should successfully set correct owner`, async function () {
+    it(`.owner() - Should successfully set correct owner`, async () => {
       const result = await testNFT.owner();
       expect(result).to.equal(owner.address);
     });
+
     it(`.timeDeployed() - Returns the time deployed`, async () => {
       const result = await testNFT.timeDeployed();
       expect(result > 0).to.be.true;
     });
   });
 
-  describe.skip(`${SYMBOL} Public Functions`, function () {
-    let response: any;
-    before(`Mint 2 NFTs`, async () => {
-      // get contract data
-      const WfNFT = await ethers.getContractFactory(`WfNFT`);
-      // create instance of NFT contract with addr1 as the signer (aka minter)
-      const myContract = new ethers.Contract(
-        testNFT.address,
-        WfNFT.interface,
-        addr1
-      );
-      // attempt to mint 2 NFTs
-      const mintAmount = 2;
-      // formatEther will convert our large number that is a string to actual ether price,
-      // and parseFloat will convert the price to a number
-      const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
+  describe(`${SYMBOL} Public Functions`, function () {
+    it(`.mint(int mintAmount) - Should Mint an NFT`, async () => {
+       // attempt to mint 2 NFTs
+       const mintAmount = 2;
 
-      response = await myContract.mint(mintAmount, {
-        value: ethers.utils.parseEther((mintCost * mintAmount).toString()),
-      });
+       const response = await testNFT.connect(addr1).mint(mintAmount, {
+         value: ethers.utils.parseEther((mintCost * mintAmount).toString()),
+       });
+      // since we already called the mint function in the beforeEach, we just expect a response to exist
+      expect(response).to.exist;
     });
     it(`.walletOfOwner(address _owner) - Returns the IDs of minted NFTs as array`, async () => {
       const result = await testNFT.walletOfOwner(addr1.address);
-
       // expect addr1 to have 2 NFTs in wallet
       expect(result.length).to.equal(2);
       // expect the very first minted NFT to have an ID of `1`
       expect(result[0].toString()).to.equal(`1`);
     });
 
-    it(`.mint(int mintAmount) - Should Mint an NFT`, async () => {
-      // since we already called the mint function in the beforeEach, we just expect a response to exist
-      expect(response).to.exist;
-    });
+
 
     it(`.totalSupply() - Should get current supply of tokens minted`, async () => {
       const totalSupply = await testNFT.totalSupply();
@@ -200,9 +217,9 @@ describe(`0xWF NFT Contract Functions:`, function () {
     });
   });
 
-  describe.skip(`${SYMBOL} Only Owner Functions`, function () {
+  describe(`${SYMBOL} Only Owner Functions`, function () {
     it(`.setBaseURI(string newBaseURI) - should set baseURI`, async () => {
-      const newBaseURI = "example.com";
+      const newBaseURI = `example.com`;
       await testNFT.setBaseURI(newBaseURI, { from: owner.address });
       const result = await testNFT.baseURI();
       expect(result).to.equal(newBaseURI);
@@ -234,20 +251,11 @@ describe(`0xWF NFT Contract Functions:`, function () {
       const isMintingPaused = true;
       await testNFT.setIsPaused(isMintingPaused);
       const result = await testNFT.isPaused();
-      const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
 
-      // get contract data
-      const WfNFT = await ethers.getContractFactory(`WfNFT`);
-      // create instance of NFT contract with addr1 as the signer (aka minter)
-      const myContract = new ethers.Contract(
-        testNFT.address,
-        WfNFT.interface,
-        addr1
-      );
       // expect minting is paused to be true...
       expect(result).to.be.true;
 
-      const attemptMint = myContract.mint(1, {
+      const attemptMint = testNFT.connect(addr1).mint(1, {
         value: ethers.utils.parseEther((mintCost * 1).toString()),
       });
       // expect minting to fail b/c its paused...
@@ -291,7 +299,7 @@ describe(`0xWF NFT Contract Functions:`, function () {
       );
 
       /* 
-      these values are all "BigNumbers" so you would do math on them like so --> https://docs.ethers.io/v5/api/utils/bignumber/ 
+      these values are all `BigNumbers` so you would do math on them like so --> https://docs.ethers.io/v5/api/utils/bignumber/ 
       ownerBalance should be equal to the 
       (owners balance before transaction) + (the contract balance before transaction) - (the cost of gas used for the withdraw) 
       */
@@ -310,19 +318,10 @@ describe(`0xWF NFT Contract Functions:`, function () {
   });
 
   describe(`Should Fail Scenarios: `, async () => {
-    const mintCost = parseFloat(ethers.utils.formatEther(MINT_COST));
-
     // should fail attempting to mint before mint date
-    it.skip(`Should Fail: Mint before mint date`, async () => {
-      const WfNFT = await ethers.getContractFactory(`WfNFT`);
-      // create instance of NFT contract with addr1 as the signer (aka minter)
-      const myContract = new ethers.Contract(
-        testNFT2.address,
-        WfNFT.interface,
-        addr1
-      );
+    it(`Should Fail: Mint before mint date`, async () => {
       // attempt to mint 1 NFT
-      const result = myContract.mint(1, {
+      const result = testNFT2.connect(addr1).mint(1, {
         value: ethers.utils.parseEther((mintCost * 1).toString()),
       });
 
@@ -331,62 +330,59 @@ describe(`0xWF NFT Contract Functions:`, function () {
     });
 
     it(`Trying to mint more than max amount`, async () => {
-      const addr6 = addrs[6];
       const maxMintAmount = Number(MAX_MINT_AMOUNT);
       const attemptedMintAmount = maxMintAmount + 1;
 
-      const attemptBadMint = testNFT.connect(addr6).mint(attemptedMintAmount, {
+      const attemptBadMint = testNFT3.connect(addr4).mint(attemptedMintAmount, {
         value: ethers.utils.parseEther(
           (mintCost * attemptedMintAmount).toString()
         ),
       });
 
       await expect(attemptBadMint).to.be.revertedWith(
-        "Insufficient Mints Left"
+        `Insufficient Mints Left`
       );
     });
 
     it(`Trying to mint with not enough money`, async () => {
-      const addr7 = addrs[7];
-
-      const attemptBadMint = testNFT.connect(addr7).mint(1, {
+      const attemptBadMint = testNFT3.connect(addr4).mint(1, {
         value: ethers.utils.parseEther((0.01 * 1).toString()),
       });
 
       await expect(attemptBadMint).to.be.revertedWith(
-        "Not enough funds provided"
+        `Not enough funds provided`
       );
     });
 
     // should fail trying to mint and transfer then mint again
     it(`Test Re-entrancy attack`, async () => {
       const reentrancyTest = async () => {
-        let currentTokenIndex = await testNFT.totalSupply();
-        const maxTokenSupply = await testNFT.maxSupply();
+        let currentTokenIndex = await testNFT3.totalSupply();
+        const maxTokenSupply = await testNFT3.maxSupply();
         try {
           for (var i = 0; i < maxTokenSupply; i++) {
             /*  
               - Transfer to account3
               - attempt to mint again...
             */
-            const addr3 = addrs[5];
+
             // - Mint NFT with account2
-            await testNFT.connect(addr2).mint(1, {
+            await testNFT3.connect(addr2).mint(1, {
               value: ethers.utils.parseEther((mintCost * 1).toString()),
             });
 
-            await testNFT
+            await testNFT3
               .connect(addr2)
               .approve(addr3.address, currentTokenIndex.toNumber() + 1);
 
-            await testNFT
+            await testNFT3
               .connect(addr2)
               .transferFrom(
                 addr2.address,
                 addr3.address,
                 currentTokenIndex.toNumber() + 1
               );
-            currentTokenIndex = await testNFT.totalSupply();
+            currentTokenIndex = await testNFT3.totalSupply();
           }
         } catch (error) {
           assert.isTrue(true);
@@ -395,12 +391,12 @@ describe(`0xWF NFT Contract Functions:`, function () {
       // addr2 numOfMints should be less than or equal to maxMintAmount
       await reentrancyTest();
 
-      const attemptAnotherMint = testNFT.connect(addr2).mint(1, {
+      const attemptAnotherMint = testNFT3.connect(addr2).mint(1, {
         value: ethers.utils.parseEther((mintCost * 1).toString()),
       });
-      const addr2NumOfMints = await testNFT.userNumOfMints(addr2.address);
+      const addr2NumOfMints = await testNFT3.userNumOfMints(addr2.address);
       await expect(attemptAnotherMint).to.be.revertedWith(
-        "Insufficient Mints Left"
+        `Insufficient Mints Left`
       );
       expect(addr2NumOfMints.toNumber()).to.be.lessThanOrEqual(
         Number(MAX_MINT_AMOUNT)
