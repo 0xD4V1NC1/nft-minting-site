@@ -1,13 +1,15 @@
-import React, {useState, useLayoutEffect, useRef, RefObject} from 'react';
+import React, {useState, useLayoutEffect, useRef, RefObject, useEffect} from 'react';
 import Countdown from 'react-countdown';
 import {useWeb3React} from '@web3-react/core';
 
 import Button from '../../UI/Button';
 import Image from '../../UI/Image';
 
-import {handleMint} from '../../../utils/mintUtil';
 // use https://codechi.com/dev-tools/date-to-millisecond-calculators/ to calculate future date in milliseconds
 import {NFT_MINT_DATE} from '../../../consts/consts';
+
+import {handleMint} from '../../../utils/mintUtil';
+import {pluralize} from '../../../utils/formatUtil';
 
 const MintSection = ({
   mintSectionRef,
@@ -15,32 +17,36 @@ const MintSection = ({
   isAccountConnected,
   maxAmount,
   currentNftId,
+  availableMints,
 }: {
   mintSectionRef: RefObject<HTMLDivElement>;
-  nftCost: string;
+  nftCost: number;
   isAccountConnected: boolean;
-  maxAmount: string;
-  currentNftId: string;
+  maxAmount: number;
+  currentNftId: number;
+  availableMints: number;
 }) => {
-  const [countdownCompleted, setCountdownCompleted] = useState(false);
-  const [mintAmount, setMintAmount] = useState(1);
+  const [countdownCompleted, setCountdownCompleted] = useState<boolean>(false);
+  const [mintAmount, setMintAmount] = useState<number>(1);
   const countdownRef = useRef<Countdown>(null);
   const {provider} = useWeb3React();
 
   // check dom before rendering to see if we should display completed countdown timer state
   useLayoutEffect(() => {
     const isCountdownCompleted = countdownRef.current?.api?.isCompleted();
-
     if (isCountdownCompleted) setCountdownCompleted(true);
   }, [countdownCompleted]);
 
+  useEffect(() => {
+    if (availableMints === 0) setMintAmount(0);
+  }, [availableMints]);
   const handleCountdownCompleted = () => {
     setCountdownCompleted(true);
   };
 
   const handleIncrement = () => {
     // @TODO max sure not bigger then the max amount or amount left...?
-    if (mintAmount > 3) return;
+    if (mintAmount >= availableMints) return;
     const incrementedAmount = mintAmount + 1;
     setMintAmount(incrementedAmount);
   };
@@ -66,10 +72,12 @@ const MintSection = ({
     }
   };
 
-  const disabledProp = countdownCompleted ? null : {disabled: true};
+  const disabledProp = countdownCompleted && availableMints > 0? null : {disabled: true};
   const decrementAriaLabel = mintAmount > 0 ? mintAmount - 1 : 0;
-  const totalCost = (parseFloat(nftCost) * mintAmount);
+  const totalCost = (nftCost * mintAmount);
   const formattedTotalCost = totalCost.toFixed(2);
+  const mintTextColor = availableMints > 0 ? 'text-black' : 'text-red-500';
+
   return (
     <section
       id="mint-section"
@@ -110,7 +118,6 @@ const MintSection = ({
                     text="-"
                     onClick={handleDecrement}
                   />
-                  {/* <input type="number" className='p-4 w-1/2' value={mintAmount}/> */}
                   <input
                     type="number"
                     className={`mb-0 box-content border-none text-center p-4 w-1/2`}
@@ -141,6 +148,7 @@ const MintSection = ({
                   {...disabledProp}
                   onClick={() => handleMint(mintAmount, provider, nftCost)}
                 />
+                <p className={`${mintTextColor} pt-4`}> You have {availableMints} {pluralize(availableMints, 'mint')} left</p>
               </div>
             ) : (
               <div className="h-36 md:h-48 flex justify-center items-center text-center">

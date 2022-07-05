@@ -1,6 +1,6 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
-
+import MembersOnlyRoute from './middleware/MembersOnlyRoute';
 import Home from './pages/Home';
 import MembersOnly from './pages/MembersOnly';
 import Tos from './pages/Tos';
@@ -13,7 +13,11 @@ export default function AppRoutes() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/members-only" element={<MembersOnly />} />
+        <Route path="/members-only" element={
+          <MembersOnlyRoute >
+            <MembersOnly />
+          </MembersOnlyRoute>
+        } />
         <Route path="/terms-of-service" element={<Tos />} />
         <Route path="*" element={<h2>Page Not Found</h2>
         } />

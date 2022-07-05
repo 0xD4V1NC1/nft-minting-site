@@ -13,7 +13,6 @@ const App = () => {
   const [pageTitle, setPageTitle]= useState<string>('');
   const [metaDescription, setMetaDescription]= useState<string>('');
   const {connector} = useWeb3React();
-  console.log('Connector:', connector);
 
   useEffect(() => {
     // written like that b/c of type error 'cannot invoke an object which is possibly undefined'

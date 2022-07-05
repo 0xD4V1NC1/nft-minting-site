@@ -17,7 +17,10 @@ task("accounts", "Prints the list of accounts", async (_taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
   for (const account of accounts) {
-    console.log(account.address);
+    const balance = await account.provider?.getBalance(account.address);
+    console.log(`Address: ${account.address}`);
+    console.log(`Balance: ${parseFloat(hre.ethers.utils.formatEther(balance||0))}`);
+
   }
 });
 
