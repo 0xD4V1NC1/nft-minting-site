@@ -2,11 +2,8 @@
 import nftData from '../0xWF.json';
 import {ethers} from 'ethers';
 
-// NFT Mint date in milliseconds
-// const currentTime = new Date().getTime();
-// const revealTime = (Number(timeDeployed) + Number(allowMintingAfter)).toString() + '000';
-// const lol = currentTime + (revealTime - currentTime);
-export const NFT_MINT_DATE = 1653699600000;
+// NFT Mint date in milliseconds for the countdown timer
+export const NFT_MINT_DATE = new Date(process.env.REACT_APP_NFT_MINT_DATE || '').getTime();
 export const POLYGON_CHAIN_ID = 137;
 export const LOCALHOST_CHAIN_ID = 31337;
 export const POLYGON_MUMBAI_CHAIN_ID = 80001;

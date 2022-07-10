@@ -29,6 +29,7 @@ const MintSection = ({
   const [countdownCompleted, setCountdownCompleted] = useState<boolean>(false);
   const [mintAmount, setMintAmount] = useState<number>(1);
   const countdownRef = useRef<Countdown>(null);
+  const [isMinting, setIsMinting] = useState<boolean>(false);
   const {provider} = useWeb3React();
 
   // check dom before rendering to see if we should display completed countdown timer state
@@ -45,7 +46,6 @@ const MintSection = ({
   };
 
   const handleIncrement = () => {
-    // @TODO max sure not bigger then the max amount or amount left...?
     if (mintAmount >= availableMints) return;
     const incrementedAmount = mintAmount + 1;
     setMintAmount(incrementedAmount);
@@ -77,7 +77,6 @@ const MintSection = ({
   const totalCost = (nftCost * mintAmount);
   const formattedTotalCost = totalCost.toFixed(2);
   const mintTextColor = availableMints > 0 ? 'text-black' : 'text-red-500';
-
   return (
     <section
       id="mint-section"
@@ -146,7 +145,12 @@ const MintSection = ({
                   className="font-semibold px-[5.5rem] py-4"
                   text="MINT"
                   {...disabledProp}
-                  onClick={() => handleMint(mintAmount, provider, nftCost)}
+                  onClick={() => {
+                    setIsMinting(true);
+                    handleMint(mintAmount, provider, nftCost);
+                    setIsMinting(false);
+                  }}
+                  loading={isMinting}
                 />
                 <p className={`${mintTextColor} pt-4`}> You have {availableMints} {pluralize(availableMints, 'mint')} left</p>
               </div>

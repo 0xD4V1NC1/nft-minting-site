@@ -4,7 +4,7 @@ import {ethers} from 'ethers';
 import {useWeb3React} from '@web3-react/core';
 
 import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT, MAX_NFT_SUPPLY, NFT_COST} from '../consts/consts';
-// @TODO finish this update defaults to .env shit
+
 /*
     Fetch NftCost, allowMintingAfter, and baseExtension? (to show what NFTs you minted) .... from smart contract
 */
