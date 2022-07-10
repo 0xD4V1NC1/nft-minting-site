@@ -45,7 +45,7 @@ const useNftData = () => {
 
       // TotalSupply is the current NFT of the MaxAmount... i.e. 1 of 25
       const totalSupply = await contract.totalSupply();
-      currentToken = totalSupply.toString();
+      currentToken = parseInt(totalSupply.toString());
     } catch (error) {
       console.warn('Error fetching cost of NFT (useNftData.ts):', error);
     }

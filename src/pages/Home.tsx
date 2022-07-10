@@ -30,7 +30,7 @@ const Home = () => {
     if (!isNftDataLoading && currentNftId >= maxNftSupply) {
       setIsSoldOut(true);
     }
-  }, []);
+  }, [currentNftId]);
 
   const handleScrollToMintSection = () => {
     if (mintSectionRef && mintSectionRef.current) {
@@ -47,7 +47,6 @@ const Home = () => {
       {isSoldOut ? <SoldOutSection /> : <MintSection mintSectionRef={mintSectionRef} nftCost={nftCost} isAccountConnected={isActive} maxAmount={maxNftSupply} currentNftId={currentNftId} availableMints={availableMints} />}
       <Marquee marqueeText="Minting May 26 ·" />
       <FaqsSection />
-      <SoldOutSection />
       {isSoldOut ? (
         <>
           <Divider horizontal />
