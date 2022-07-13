@@ -13,4 +13,5 @@ export default interface ImageInterface {
     ariaLabel?: string;
     omitMarginAuto?: boolean; 
     marginBottom?: string; 
+    setIsImgLoading?: (arg0: boolean) => void
 }

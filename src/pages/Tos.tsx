@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useGlobalContext} from '../providers/GlobalContextProvider';
+import {useGlobalContext} from '../providers/GlobalContext';
 
 import Layout from '../components/Layout/Layout';
 

@@ -3,6 +3,7 @@ import {BigNumber, ethers} from 'ethers';
 import {useWeb3React} from '@web3-react/core';
 
 import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT} from '../consts/consts';
+import {useGlobalContext} from '../providers/GlobalContext';
 
 /*
     Determine how many, if any NFTs the user owns in the collection:
@@ -16,20 +17,23 @@ import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT} from '../consts/consts';
 */
 
 const useNftOwner = () => {
-  const {provider, account} = useWeb3React();
+  const {provider} = useWeb3React();
+  const {account} = useGlobalContext();
   const signer = provider?.getSigner();
   // stores user's ownership status: if the user owns any of the NFTs in the collection
-  const [isOwnerOf, setIsOwnerOf] = useState(false);
+  const [isOwnerOf, setIsOwnerOf] = useState<boolean | null>(null);
 
   // stores the Token IDs owned by the user
   const [nftsOwned, setNftsOwned] = useState<number[]>([]);
 
   const [availableMints, setAvailableMints] = useState<number>(MAX_MINT_AMOUNT);
-  const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
+  const [isLoadingNftOwnerData, setIsLoadingNftOwnerData] = useState<boolean>(true);
 
   const fetchUsersNfts = useCallback(async () => {
-    let usersNfts = [];
+    let usersNfts:number[] = [];
     if (window.ethereum && signer) {
+      const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, signer);
+
       // 1. ownerOf returns an array of the TokenIds that the user owns
       const ownerOf = await contract.walletOfOwner(account);
 
@@ -37,27 +41,35 @@ const useNftOwner = () => {
       usersNfts = ownerOf.map((tokenId:BigNumber) => {
         return tokenId.toNumber();
       });
+
+      // get token uris
     }
     return usersNfts;
   }, [account]);
+
 
   useEffect(() => {
     const handleIsOwnerOf = async () => {
       // 2.
       const nftsInWallet = await fetchUsersNfts();
+
       // 3.
       setNftsOwned(nftsInWallet);
+
       // 4.
       const isNftOwner = nftsInWallet && nftsInWallet.length ? true : false;
+
       // 5.
       setIsOwnerOf(isNftOwner);
 
       // 6.
       setAvailableMints(MAX_MINT_AMOUNT-nftsInWallet.length);
+
+      setTimeout(() => setIsLoadingNftOwnerData(false), 1000);
     };
     handleIsOwnerOf();
   }, [account]);
 
-  return {nftsOwned, isOwnerOf, availableMints};
+  return {nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData};
 };
 export default useNftOwner;

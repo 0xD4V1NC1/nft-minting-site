@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 
 import {useWeb3React} from '@web3-react/core';
 
-import {useGlobalContext} from '../providers/GlobalContextProvider';
+import {useGlobalContext} from '../providers/GlobalContext';
 
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
@@ -25,6 +25,7 @@ const Home = () => {
   const [isSoldOut, setIsSoldOut] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setPageTitle('Home | 0xWF');
     setMetaDescription('Home of 0xWF NFT. Mint your NFT here and learn more about our project');
     if (!isNftDataLoading && currentNftId >= maxNftSupply) {

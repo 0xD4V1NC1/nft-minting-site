@@ -8,14 +8,15 @@ import {Helmet} from 'react-helmet';
 
 // import Application Routes to App.js to keep file structure cleaner
 import AppRoutes from './AppRoutes';
-import {GlobalContext} from './providers/GlobalContextProvider';
+import {GlobalContext} from './providers/GlobalContext';
+import {NftOwnerContextProvider} from './providers/NftOwnerContext';
+
 const App = () => {
   const [pageTitle, setPageTitle]= useState<string>('');
   const [metaDescription, setMetaDescription]= useState<string>('');
-  const {connector} = useWeb3React();
+  const {connector, account} = useWeb3React();
 
   useEffect(() => {
-    // written like that b/c of type error 'cannot invoke an object which is possibly undefined'
     // this is what attempts to keep wallet connection when returning to the site
     connector.connectEagerly?.();
   }, []);
@@ -28,10 +29,13 @@ const App = () => {
         <meta name="description" content={`${metaDescription || '0xWF is revolutionary NFT project'}`} />
       </Helmet>
 
-      <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription}}>
-        <div className="app">
-          <AppRoutes/>
-        </div>
+      <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription, account}}>
+        <NftOwnerContextProvider>
+          <div className="app">
+            <AppRoutes/>
+          </div>
+        </NftOwnerContextProvider>
+
       </GlobalContext.Provider>
     </BrowserRouter>
 

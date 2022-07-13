@@ -8,14 +8,13 @@ import {MetaMask} from '@web3-react/metamask';
 import {WalletConnect} from '@web3-react/walletconnect';
 
 import {coinbaseWallet} from '../../connectors/coinbaseWallet';
-// import {gnosisSafe} from '../../connectors/gnosisSafe';
 import {metaMask} from '../../connectors/metaMask';
 import {walletConnect} from '../../connectors/walletConnect';
 
 import Image from '../UI/Image';
 import Modal from '../UI/Modal';
 // eslint-disable-next-line no-unused-vars
-import {POLYGON_CHAIN_ID, POLYGON_MUMBAI_CHAIN_ID, LOCALHOST_CHAIN_ID} from '../../consts/consts';
+import {CHAIN_ID} from '../../consts/consts';
 
 const walletOptions = [
   {
@@ -36,12 +35,7 @@ const walletOptions = [
     name: 'Wallet Connect',
     logoUrl: '/WalletConnectLogo.png',
     connector: walletConnect,
-  }, // @TODO implement Gnosis Safe...
-  // {
-  //   name: 'Gnosis Safe',
-  //   logoUrl: '/CoinbaseWalletLogo.png',
-  //   connector: gnosisSafe,
-  // },
+  },
 ];
 
 const WalletOption = ({
@@ -57,8 +51,8 @@ const WalletOption = ({
 }) => {
   if (!walletName || !connector) return null;
   const handleConnectWallet = () => {
-    // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet
-    connector.activate(LOCALHOST_CHAIN_ID);
+    // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet when in prod, hardhat local when development
+    connector.activate(CHAIN_ID);
     setIsModalOpen(false);
   };
 

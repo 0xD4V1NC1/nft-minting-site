@@ -21,7 +21,6 @@ const useNftData = () => {
         This is what allows us to have write permissions to the imported smart contract. If you replace signer with provider
         in the contract instance, you would only have read permissions of the imported contract
     */
-  const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, provider);
 
   const getNftData = useCallback(async () => {
     // cost per NFT
@@ -31,6 +30,8 @@ const useNftData = () => {
     // maxNFTSupply
     let maxSupply;
     try {
+      const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, provider);
+
       const cost = await contract.cost();
       const costInWei = cost && cost.toString();
       // cost is returned as a bigNumber... to convert it we need to turn it into a string for formatEther then convert it to a number

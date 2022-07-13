@@ -22,3 +22,27 @@ export const MAX_MINT_AMOUNT = parseInt(process.env.REACT_APP_MAX_MINT_AMOUNT ||
 export const MAX_NFT_SUPPLY = parseInt(process.env.REACT_APP_MAX_SUPPLY || '0');
 
 export const NFT_COST = parseFloat(ethers.utils.formatEther(process.env.REACT_APP_MINT_COST || '0'));
+
+export const NFT_IMAGE_CID = process.env.REACT_APP_IPFS_IMAGE_CID;
+
+export const NFT_HIDDEN_IMAGE_CID = process.env.REACT_APP_IPFS_HIDDEN_IMAGE_CID;
+
+export const GRADIENT_TEXT = `text-transparent bg-clip-text bg-gradient-to-br from-primary-400 via-primary-500 to-secondary-500`;
+
+const getChainId = () => {
+  const environment = process.env.NODE_ENV;
+  let chainId;
+  switch (environment) {
+    case 'test':
+      chainId = POLYGON_MUMBAI_CHAIN_ID;
+      break;
+    case 'production':
+      chainId = POLYGON_CHAIN_ID;
+      break;
+    case 'development':
+    default:
+      chainId = LOCALHOST_CHAIN_ID;
+  }
+  return chainId;
+};
+export const CHAIN_ID = getChainId();
