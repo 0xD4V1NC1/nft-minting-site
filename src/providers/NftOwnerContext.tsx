@@ -15,14 +15,13 @@ export const NftOwnerContext = createContext<NftOwnerData>({
   isLoadingNftOwnerData: true,
 });
 
-export const useNftOwnerContext = () => useContext(NftOwnerContext);
-
 export const NftOwnerContextProvider = (props: any) => {
   const {nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData} = useNftOwner();
-
   return (
     <NftOwnerContext.Provider value={{nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData}}>
       {props.children}
     </NftOwnerContext.Provider>
   );
 };
+
+export const useNftOwnerContext = () => useContext(NftOwnerContext);

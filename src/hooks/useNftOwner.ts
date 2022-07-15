@@ -4,6 +4,7 @@ import {useWeb3React} from '@web3-react/core';
 
 import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT} from '../consts/consts';
 import {useGlobalContext} from '../providers/GlobalContext';
+import useNftData from './useNftData';
 
 /*
     Determine how many, if any NFTs the user owns in the collection:
@@ -20,6 +21,7 @@ const useNftOwner = () => {
   const {provider} = useWeb3React();
   const {account} = useGlobalContext();
   const signer = provider?.getSigner();
+  const {currentNftId, maxNftSupply, maxNftMintAmount} = useNftData();
   // stores user's ownership status: if the user owns any of the NFTs in the collection
   const [isOwnerOf, setIsOwnerOf] = useState<boolean | null>(null);
 
@@ -45,7 +47,7 @@ const useNftOwner = () => {
       // get token uris
     }
     return usersNfts;
-  }, [account]);
+  }, [account, currentNftId]);
 
 
   useEffect(() => {
@@ -62,13 +64,24 @@ const useNftOwner = () => {
       // 5.
       setIsOwnerOf(isNftOwner);
 
-      // 6.
-      setAvailableMints(MAX_MINT_AMOUNT-nftsInWallet.length);
+      /* 6.
+        if totalMintsRemaining < userMintsAvailable ?
+          Total Mints remaining is the available mints
+          :
+          it is the users max mint amount - nfts already minted by user
+      */
+      const userMintsAvailable = maxNftMintAmount - nftsInWallet.length;
+
+      const totalMintsRemaining = maxNftSupply - currentNftId;
+
+      const mintsAvailable = totalMintsRemaining < userMintsAvailable ? totalMintsRemaining: userMintsAvailable;
+
+      setAvailableMints(mintsAvailable);
 
       setTimeout(() => setIsLoadingNftOwnerData(false), 1000);
     };
     handleIsOwnerOf();
-  }, [account]);
+  }, [account, currentNftId]);
 
   return {nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData};
 };

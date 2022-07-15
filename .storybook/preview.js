@@ -1,4 +1,5 @@
 import Web3Provider from '../src/providers/Web3Provider';
+import {ToastProvider} from '../src/providers/ToastContext';
 import '../src/styles/tailwind.css';
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -13,7 +14,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <Web3Provider>
-      <Story/>
+      <ToastProvider>
+        <Story/>
+      </ToastProvider>
     </Web3Provider>
   ),
 ];

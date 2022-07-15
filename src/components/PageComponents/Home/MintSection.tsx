@@ -10,6 +10,7 @@ import {NFT_MINT_DATE} from '../../../consts/consts';
 
 import {handleMint} from '../../../utils/mintUtil';
 import {pluralize} from '../../../utils/formatUtil';
+import {useToastContext} from '../../../providers/ToastContext';
 
 const MintSection = ({
   mintSectionRef,
@@ -31,6 +32,7 @@ const MintSection = ({
   const countdownRef = useRef<Countdown>(null);
   const [isMinting, setIsMinting] = useState<boolean>(false);
   const {provider} = useWeb3React();
+  const {addToast} = useToastContext();
 
   // check dom before rendering to see if we should display completed countdown timer state
   useLayoutEffect(() => {
@@ -96,7 +98,7 @@ const MintSection = ({
           />
         </div>
         <div className="w-full md:w-1/2">
-          <h2 className="mt-8 md:mt-0 flex flex-col text-center font-black text-5xl md:text-6xl lg:text-7xl dark:text-white overflow-hidden">
+          <h2 className="mt-8 md:mt-0 flex flex-col text-center font-black text-4xl md:text-6xl lg:text-7xl dark:text-white overflow-hidden">
             <Countdown
               date={NFT_MINT_DATE}
               ref={countdownRef}
@@ -106,7 +108,7 @@ const MintSection = ({
           </h2>
           <div className="relative w-full overflow-hidden rounded-3xl bg-secondary-500 p-6 py-12 mt-12">
             {isAccountConnected ? (
-              <div className="h-36 md:h-48 flex flex-col justify-center items-center">
+              <div className="h-48 flex flex-col justify-center items-center">
                 <h3 className='mb-4 text-3xl font-semibold'>Mint Cost: {formattedTotalCost} Ξ</h3>
                 <div className="flex justify-center items-center pb-4">
                   <Button
@@ -147,7 +149,7 @@ const MintSection = ({
                   {...disabledProp}
                   onClick={() => {
                     setIsMinting(true);
-                    handleMint(mintAmount, provider, nftCost);
+                    handleMint(mintAmount, provider, nftCost, addToast);
                     setIsMinting(false);
                   }}
                   loading={isMinting}

@@ -9,12 +9,13 @@ import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT, MAX_NFT_SUPPLY, NFT_COST
     Fetch NftCost, allowMintingAfter, and baseExtension? (to show what NFTs you minted) .... from smart contract
 */
 const useNftData = () => {
-  const {provider} = useWeb3React();
+  const {provider, account} = useWeb3React();
   const [nftCost, setNftCost] = useState<number>(NFT_COST);
   const [currentNftId, setCurrentNftId] = useState<number>(0);
   const [maxNftSupply, setMaxNftSupply] = useState<number>(MAX_NFT_SUPPLY);
   const [isNftDataLoading, setIsNftDataLoading] = useState<boolean>(true);
   const [maxNftMintAmount, setMaxNftMintAmount] = useState<number>(MAX_MINT_AMOUNT);
+  const [isNftRevealed, setIsNftRevealed] = useState<boolean>(false);
   /*
         some people use ethers to get provider but since we are using web3React... we use web3React to get our provider.
         On the provider object is a function that gets the signer (aka connected account).
@@ -29,6 +30,7 @@ const useNftData = () => {
     let maxMintAmount;
     // maxNFTSupply
     let maxSupply;
+    let isRevealed;
     try {
       const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, provider);
 
@@ -47,25 +49,28 @@ const useNftData = () => {
       // TotalSupply is the current NFT of the MaxAmount... i.e. 1 of 25
       const totalSupply = await contract.totalSupply();
       currentToken = parseInt(totalSupply.toString());
+
+      isRevealed = await contract.isRevealed();
     } catch (error) {
       console.warn('Error fetching cost of NFT (useNftData.ts):', error);
     }
-    return {perNftCost, maxSupply, currentToken, maxMintAmount};
-  }, [provider]);
+    return {perNftCost, maxSupply, currentToken, maxMintAmount, isRevealed};
+  }, [provider, account]);
 
   useEffect(() => {
     if (window.ethereum && provider) {
       const handleFetchNftData = async () => {
-        const {perNftCost, maxSupply, currentToken, maxMintAmount} = await getNftData();
+        const {perNftCost, maxSupply, currentToken, maxMintAmount, isRevealed} = await getNftData();
         setNftCost(perNftCost || NFT_COST);
         setMaxNftSupply(maxSupply || MAX_NFT_SUPPLY);
         setCurrentNftId(currentToken || 0);
         setMaxNftMintAmount(maxMintAmount || MAX_MINT_AMOUNT);
+        setIsNftRevealed(isRevealed);
         setIsNftDataLoading(false);
       };
       handleFetchNftData();
     }
-  }, [provider]);
-  return {maxNftMintAmount, nftCost, maxNftSupply, currentNftId, isNftDataLoading};
+  }, [provider, account]);
+  return {maxNftMintAmount, nftCost, maxNftSupply, currentNftId, isNftDataLoading, isNftRevealed};
 };
 export default useNftData;

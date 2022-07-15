@@ -3,6 +3,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useWeb3React} from '@web3-react/core';
 
 import {useGlobalContext} from '../providers/GlobalContext';
+import useNftData from '../hooks/useNftData';
 
 import Layout from '../components/Layout/Layout';
 import Divider from '../components/UI/Divider';
@@ -12,16 +13,16 @@ import OpenseaBannerSection from '../components/PageComponents/Home/OpenseaBanne
 import SoldOutSection from '../components/PageComponents/Home/SoldOutSection';
 import IntroSection from '../components/PageComponents/Home/IntroSection';
 import FaqsSection from '../components/PageComponents/Home/FaqsSection';
-import useNftData from '../hooks/useNftData';
-import useNftOwner from '../hooks/useNftOwner';
+import {useNftOwnerContext} from '../providers/NftOwnerContext';
 
 const Home = () => {
   const {setPageTitle, setMetaDescription} = useGlobalContext();
   const mintSectionRef = useRef<null | HTMLDivElement>(null);
   const {isActive} = useWeb3React();
+
   // had race condition b/c of signer not being initialized when useNFTData was called... but signer as dependency caused infinite loop...
   const {nftCost, maxNftSupply, currentNftId, isNftDataLoading} = useNftData();
-  const {availableMints} = useNftOwner();
+  const {availableMints} = useNftOwnerContext();
   const [isSoldOut, setIsSoldOut] = useState(false);
 
   useEffect(() => {

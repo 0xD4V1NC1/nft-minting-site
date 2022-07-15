@@ -10,6 +10,7 @@ import {Helmet} from 'react-helmet';
 import AppRoutes from './AppRoutes';
 import {GlobalContext} from './providers/GlobalContext';
 import {NftOwnerContextProvider} from './providers/NftOwnerContext';
+import {ToastProvider} from './providers/ToastContext';
 
 const App = () => {
   const [pageTitle, setPageTitle]= useState<string>('');
@@ -31,9 +32,11 @@ const App = () => {
 
       <GlobalContext.Provider value={{pageTitle, setPageTitle, metaDescription, setMetaDescription, account}}>
         <NftOwnerContextProvider>
-          <div className="app">
-            <AppRoutes/>
-          </div>
+          <ToastProvider>
+            <div className="app">
+              <AppRoutes/>
+            </div>
+          </ToastProvider>
         </NftOwnerContextProvider>
 
       </GlobalContext.Provider>

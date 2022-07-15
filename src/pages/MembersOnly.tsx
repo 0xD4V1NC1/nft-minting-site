@@ -9,17 +9,20 @@ import {useGlobalContext} from '../providers/GlobalContext';
 import {useNftOwnerContext} from '../providers/NftOwnerContext';
 
 import {NFT_IMAGE_CID, NFT_HIDDEN_IMAGE_CID, GRADIENT_TEXT} from '../consts/consts';
+import useNftData from '../hooks/useNftData';
 
 const UsersNfts = ({nftsOwned}: { nftsOwned: number[]}) => {
   const [isImgLoading, setIsImgLoading] = useState<boolean>(true);
-  const isHidden = true;
-  const imgCID = isHidden ? NFT_HIDDEN_IMAGE_CID : NFT_IMAGE_CID;
+  const {isNftRevealed} = useNftData();
+
+  const imgCID = isNftRevealed ? NFT_IMAGE_CID : NFT_HIDDEN_IMAGE_CID;
   // @TODO this is one way of doing it but it may be very slow... alternative is saving all of the NFTs locally to the project (depending on file size...)
+  // a gateway is absolutely necessary for serious projects
   return (
     <div className='pt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center'>
       { nftsOwned.map((nftTokenId) => {
         const nft = `/${nftTokenId}.png`;
-        const nftImageUrl = `https://ipfs.io/ipfs/${imgCID}${ isHidden ? '' : nft}`;
+        const nftImageUrl = `https://gateway.pinata.cloud/ipfs/${imgCID}${ isNftRevealed ? nft : ''}`;
 
         return (
           <div key={`nft-${nftTokenId}`}>
