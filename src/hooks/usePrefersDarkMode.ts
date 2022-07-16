@@ -19,7 +19,7 @@ const getInitialTheme = () => {
   // return true instead
   return false;
 };
-export function usePrefersDarkMode() {
+const usePrefersDarkMode = () => {
   // we set initial value to initial theme to prevent unwanted flashing of white or dark theme if we used true or false
   const [value, setValue] = useState<boolean>(getInitialTheme);
   useEffect(() => {
@@ -32,4 +32,5 @@ export function usePrefersDarkMode() {
   }, []);
 
   return value;
-}
+};
+export default usePrefersDarkMode;

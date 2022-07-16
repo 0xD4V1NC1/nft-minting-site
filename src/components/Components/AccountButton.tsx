@@ -3,10 +3,12 @@ import {useWeb3React} from '@web3-react/core';
 
 import ConnectWalletButton from './ConnectWalletButton';
 import AddressInformationButton from './AddressInformationButton';
+import {useGlobalContext} from '../../providers/GlobalContext';
 
 
 const AccountButton = () => {
-  const {connector, account, isActive} = useWeb3React();
+  const {connector, isActive} = useWeb3React();
+  const {account} = useGlobalContext();
   return (
     <>
       {isActive ? <AddressInformationButton address={account || ''} connector={connector} /> : <ConnectWalletButton />}

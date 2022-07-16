@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import {createPortal} from 'react-dom';
+
 import FocusLock from 'react-focus-lock';
 import ModalInterface from '../../interfaces/ModalInterface';
 
@@ -136,40 +138,43 @@ const Modal = ({
       {trigger}
       {open && (
         // if autoFocus is set to true will set focus on first focusable element in module - Focus being handled above when focusLocked is true
-        <FocusLock autoFocus={false} disabled={!focusLocked} returnFocus>
-          <div
-            onClick={toggle}
-            className={`${open ? '' : 'hidden'} fixed top-0 left-0 w-full`}
-            style={{backgroundColor: 'rgba(0, 0, 0, 0.69)', zIndex: '2000'}}
-            id="modal-container"
-          >
-            <div className={`z-20 px-5 overflow-scroll h-screen ${positionStyles}`}>
+        createPortal(
+            <FocusLock autoFocus={false} disabled={!focusLocked} returnFocus>
               <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                className={modalContentClassName}
-                style={{maxHeight: '80vh'}}
-                {...ariaLabelProps}
+                onClick={toggle}
+                className={`${open ? '' : 'hidden'} fixed top-0 left-0 w-full`}
+                style={{backgroundColor: 'rgba(0, 0, 0, 0.69)', zIndex: '2000'}}
+                id="modal-container"
               >
-                {header && (
-                  <div className={`${transparentBg ? '' : 'border-b-xs border-gray-400'} flex justify-between items-center px-6 py-1 md:py-2`}>
-                    <h5 className="text-xl inline-block">{header}</h5>
-                    <CloseX toggle={toggle} omitCloseX={omitCloseX} color={closeIconColor} />
-                  </div>
-                )}
-                <div className={`${bgColor} relative ${paddingB} ${header ? 'pt-5' : 'pt-0'}`}>
-                  {!header && (
-                    <div className={`absolute top-0 right-0 text-center block ${closeXClassName || 'pr-3 -mt-1'}`}>
-                      <CloseX toggle={toggle} omitCloseX={omitCloseX} color={closeIconColor} />
+                <div className={`z-20 px-5 overflow-scroll h-screen ${positionStyles}`}>
+                  <div
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className={modalContentClassName}
+                    style={{maxHeight: '80vh'}}
+                    {...ariaLabelProps}
+                  >
+                    {header && (
+                      <div className={`${transparentBg ? '' : 'border-b-xs border-gray-400'} flex justify-between items-center px-6 py-1 md:py-2`}>
+                        <h5 className="text-xl inline-block">{header}</h5>
+                        <CloseX toggle={toggle} omitCloseX={omitCloseX} color={closeIconColor} />
+                      </div>
+                    )}
+                    <div className={`${bgColor} relative ${paddingB} ${header ? 'pt-5' : 'pt-0'}`}>
+                      {!header && (
+                        <div className={`absolute top-0 right-0 text-center block ${closeXClassName || 'pr-3 -mt-1'}`}>
+                          <CloseX toggle={toggle} omitCloseX={omitCloseX} color={closeIconColor} />
+                        </div>
+                      )}
+                      {children}
                     </div>
-                  )}
-                  {children}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </FocusLock>
+            </FocusLock>,
+            document.body,
+        )
       )}
     </>
   );

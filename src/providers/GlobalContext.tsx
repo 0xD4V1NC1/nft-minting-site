@@ -5,6 +5,7 @@ export type GlobalState = {
     setPageTitle: (newTitle: string) => void;
     metaDescription: string;
     setMetaDescription: (newMetaDescription: string) => void;
+    account: string | undefined;
 };
 
 export const GlobalContext = createContext<GlobalState>({
@@ -12,6 +13,7 @@ export const GlobalContext = createContext<GlobalState>({
   setPageTitle: () => {/* empty */},
   metaDescription: '',
   setMetaDescription: () => {/* empty */},
+  account: '',
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);
