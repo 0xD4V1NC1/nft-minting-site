@@ -13,7 +13,6 @@ import {walletConnect} from '../../connectors/walletConnect';
 
 import Image from '../UI/Image';
 import Modal from '../UI/Modal';
-// eslint-disable-next-line no-unused-vars
 import {CHAIN_ID} from '../../consts/consts';
 
 const walletOptions = [
