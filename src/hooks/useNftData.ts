@@ -55,7 +55,7 @@ const useNftData = () => {
       console.warn('Error fetching cost of NFT (useNftData.ts):', error);
     }
     return {perNftCost, maxSupply, currentToken, maxMintAmount, isRevealed};
-  }, [provider, account]);
+  }, [provider]);
 
   useEffect(() => {
     if (window.ethereum && provider) {
@@ -70,7 +70,7 @@ const useNftData = () => {
       };
       handleFetchNftData();
     }
-  }, [provider, account]);
+  }, [provider]);
   return {maxNftMintAmount, nftCost, maxNftSupply, currentNftId, isNftDataLoading, isNftRevealed};
 };
 export default useNftData;

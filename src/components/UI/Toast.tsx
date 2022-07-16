@@ -26,7 +26,7 @@ const Toast = ({toastType, toastHeader, toastMessage}: ToastInterface) => {
   const toastBodyStyles = getToastBodyStyles(toastType);
   return (
     <>
-      <div id="toast-success" className={`${toastBodyStyles} transition ease-in-out duration-500 -translate-y-12`} role="alert">
+      <div id="toast-success" className={`${toastBodyStyles}`} role="alert">
         <div className='ml-3 text-lg font-semibold'>{toastHeader}</div>
         <div className="ml-3 text-sm font-normal">{toastMessage}</div>
       </div>
