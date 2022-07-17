@@ -29,7 +29,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
 /// @title WFNT Smart Contract
 /// @author 0xD4V1NC1
@@ -90,9 +90,9 @@ contract WfNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
 
         uint256 supply = totalSupply();
         require(!isPaused, "Error: Minting is pause");
-        require(_mintAmount > 0);
-        require(_mintAmount <= maxMintAmount);
-        require(supply + _mintAmount <= maxSupply);
+        require(_mintAmount > 0, "You need to mint at least 1 NFT");
+        require(_mintAmount <= maxMintAmount, "Max mint amount exceeded");
+        require(supply + _mintAmount <= maxSupply, "Request exceeded availble mints");
 
         if (sender != owner()) {
             require(msg.value >= cost * _mintAmount, "Not enough funds provided");
@@ -133,7 +133,7 @@ contract WfNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
     {
         require(
             _exists(tokenId),
-            "ERC721Metadata: URI query for nonexistent token"
+            "URI query for nonexistent token"
         );
 
         if (isRevealed == false) {
@@ -194,9 +194,7 @@ contract WfNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
     }
 
     function withdraw() public payable onlyOwner {
-        (bool success, ) = payable(msg.sender).call{
-            value: address(this).balance
-        }("");
-        require(success);
+        payable(msg.sender).transfer(address(this).balance);
+
     }
 }
