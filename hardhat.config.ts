@@ -1,11 +1,8 @@
 import * as dotenv from 'dotenv';
-// const dotenv = require('dotenv');
 
 import {HardhatUserConfig, task} from 'hardhat/config';
-// const {HardhatUserConfig, task} = require('hardhat/config');
 
 import '@nomiclabs/hardhat-etherscan';
-// require('@nomiclabs/hardhat-etherscan');
 
 import '@nomiclabs/hardhat-waffle';
 
