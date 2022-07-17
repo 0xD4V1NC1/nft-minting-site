@@ -4,8 +4,8 @@ coverage
 coverage.json
 typechain
 typechain-types
-#build
-#.vscode
+build
+.vscode
 #Hardhat files
 cache
 artifacts
