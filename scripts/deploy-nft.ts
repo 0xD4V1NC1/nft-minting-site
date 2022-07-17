@@ -1,3 +1,4 @@
+import '@nomiclabs/hardhat-ethers';
 import {ethers} from 'hardhat';
 import fs from 'fs';
 
@@ -8,7 +9,10 @@ async function main() {
   const MINT_COST = process.env.REACT_APP_MINT_COST || 0;
   const MAX_SUPPLY = process.env.REACT_APP_MAX_SUPPLY || 0;
   const MAX_MINT_AMOUNT = process.env.REACT_APP_MAX_MINT_AMOUNT || 1;
-  const NFT_MINT_DATE = new Date(process.env.REACT_APP_NFT_MINT_DATE || 0).getTime().toString().slice(0, 10);
+  const NFT_MINT_DATE = new Date(process.env.REACT_APP_NFT_MINT_DATE || 0)
+      .getTime()
+      .toString()
+      .slice(0, 10);
   const IPFS_IMAGE_METADATA_URI = `ipfs://${process.env.REACT_APP_IPFS_IMAGE_METADATA_CID}/`;
   const IPFS_HIDDEN_IMAGE_METADATA_URI = `ipfs://${process.env.REACT_APP_IPFS_HIDDEN_IMAGE_METADATA_CID}/hidden.json`;
   console.log('------------------------------------------\n');
@@ -20,7 +24,10 @@ async function main() {
   console.log('MAX MINT AMOUNT: ', MAX_MINT_AMOUNT);
   console.log('NFT MINT DATE: ', NFT_MINT_DATE);
   console.log('IPFS_IMAGE_METADATA_URI: ', IPFS_IMAGE_METADATA_URI);
-  console.log('IPFS_HIDDEN_IMAGE_METADATA_URI: ', IPFS_HIDDEN_IMAGE_METADATA_URI);
+  console.log(
+      'IPFS_HIDDEN_IMAGE_METADATA_URI: ',
+      IPFS_HIDDEN_IMAGE_METADATA_URI,
+  );
   console.log('TEST FE APP ENV:', process.env.NODE_ENV);
   console.log('------------------------------------------');
   // We get the contract to deploy
@@ -29,7 +36,16 @@ async function main() {
   const WfNFT = await ethers.getContractFactory('WfNFT');
   console.log('Attempting to Deploy Contract...');
   console.log('------------------------------------------');
-  const wfNft = await WfNFT.deploy(NAME, SYMBOL, MINT_COST, MAX_SUPPLY, MAX_MINT_AMOUNT, NFT_MINT_DATE, IPFS_IMAGE_METADATA_URI, IPFS_HIDDEN_IMAGE_METADATA_URI);
+  const wfNft = await WfNFT.deploy(
+      NAME,
+      SYMBOL,
+      MINT_COST,
+      MAX_SUPPLY,
+      MAX_MINT_AMOUNT,
+      NFT_MINT_DATE,
+      IPFS_IMAGE_METADATA_URI,
+      IPFS_HIDDEN_IMAGE_METADATA_URI,
+  );
 
   await wfNft.deployed();
   console.log('NFT Smart Contract deployed to: ', wfNft.address);
