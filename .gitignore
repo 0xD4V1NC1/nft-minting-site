@@ -6,6 +6,7 @@ typechain
 typechain-types
 build
 .vscode
+todo
 #Hardhat files
 cache
 artifacts
