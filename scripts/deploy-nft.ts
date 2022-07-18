@@ -9,10 +9,7 @@ async function main() {
   const MINT_COST = process.env.REACT_APP_MINT_COST || 0;
   const MAX_SUPPLY = process.env.REACT_APP_MAX_SUPPLY || 0;
   const MAX_MINT_AMOUNT = process.env.REACT_APP_MAX_MINT_AMOUNT || 1;
-  const NFT_MINT_DATE = new Date(process.env.REACT_APP_NFT_MINT_DATE || 0)
-      .getTime()
-      .toString()
-      .slice(0, 10);
+  const NFT_MINT_DATE = new Date(process.env.REACT_APP_NFT_MINT_DATE || 0).getTime().toString().slice(0, 10);
   const IPFS_IMAGE_METADATA_URI = `ipfs://${process.env.REACT_APP_IPFS_IMAGE_METADATA_CID}/`;
   const IPFS_HIDDEN_IMAGE_METADATA_URI = `ipfs://${process.env.REACT_APP_IPFS_HIDDEN_IMAGE_METADATA_CID}/hidden.json`;
   console.log('------------------------------------------\n');
