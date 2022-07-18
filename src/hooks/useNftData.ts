@@ -9,7 +9,7 @@ import {NFT_CONTRACT_ADDRESS, NFT_ABI, MAX_MINT_AMOUNT, MAX_NFT_SUPPLY, NFT_COST
     Fetch NftCost, allowMintingAfter, and baseExtension? (to show what NFTs you minted) .... from smart contract
 */
 const useNftData = () => {
-  const {provider, account} = useWeb3React();
+  const {provider} = useWeb3React();
   const [nftCost, setNftCost] = useState<number>(NFT_COST);
   const [currentNftId, setCurrentNftId] = useState<number>(0);
   const [maxNftSupply, setMaxNftSupply] = useState<number>(MAX_NFT_SUPPLY);

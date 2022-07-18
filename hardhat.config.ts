@@ -32,6 +32,7 @@ task('accounts', 'Prints the list of accounts', async (_taskArgs:any, hre: any) 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+// @TODO NOTE: that the url can be changed to public rpc's or a node from another provider. You are not limited to the one I set up the project with
 const config: HardhatUserConfig = {
   solidity: '0.8.4',
   defaultNetwork: 'localhost',
@@ -43,15 +44,14 @@ const config: HardhatUserConfig = {
     },
     ropsten: {
       url: process.env.REACT_APP_ROPSTEN_URL || '',
-      accounts:
-        process.env.REACT_APP_PRIVATE_KEY !== undefined ? [process.env.REACT_APP_PRIVATE_KEY] : [],
+      accounts: process.env.REACT_APP_PRIVATE_KEY !== undefined ? [process.env.REACT_APP_PRIVATE_KEY] : [],
     },
     mumbai: {
-      url: `https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/polygon/mumbai`,
+      url: `https://matic-mumbai.chainstacklabs.com`,
       accounts: process.env.REACT_APP_PRIVATE_KEY !== undefined ? [process.env.REACT_APP_PRIVATE_KEY] : [],
     },
     matic: {
-      url: `https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/polygon/mainnet`,
+      url: `https://polygon-rpc.com/`,
       accounts: process.env.REACT_APP_PRIVATE_KEY !== undefined ? [process.env.REACT_APP_PRIVATE_KEY] : [],
     },
   },
@@ -65,6 +65,4 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
-// module.exports = {
-//   config,
-// };
+

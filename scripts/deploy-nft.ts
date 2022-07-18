@@ -1,3 +1,4 @@
+import '@nomiclabs/hardhat-ethers';
 import {ethers} from 'hardhat';
 import fs from 'fs';
 
@@ -21,7 +22,6 @@ async function main() {
   console.log('NFT MINT DATE: ', NFT_MINT_DATE);
   console.log('IPFS_IMAGE_METADATA_URI: ', IPFS_IMAGE_METADATA_URI);
   console.log('IPFS_HIDDEN_IMAGE_METADATA_URI: ', IPFS_HIDDEN_IMAGE_METADATA_URI);
-  console.log('TEST FE APP ENV:', process.env.NODE_ENV);
   console.log('------------------------------------------');
   // We get the contract to deploy
   console.log('Getting Contract...');
@@ -29,7 +29,16 @@ async function main() {
   const WfNFT = await ethers.getContractFactory('WfNFT');
   console.log('Attempting to Deploy Contract...');
   console.log('------------------------------------------');
-  const wfNft = await WfNFT.deploy(NAME, SYMBOL, MINT_COST, MAX_SUPPLY, MAX_MINT_AMOUNT, NFT_MINT_DATE, IPFS_IMAGE_METADATA_URI, IPFS_HIDDEN_IMAGE_METADATA_URI);
+  const wfNft = await WfNFT.deploy(
+      NAME,
+      SYMBOL,
+      MINT_COST,
+      MAX_SUPPLY,
+      MAX_MINT_AMOUNT,
+      NFT_MINT_DATE,
+      IPFS_IMAGE_METADATA_URI,
+      IPFS_HIDDEN_IMAGE_METADATA_URI,
+  );
 
   await wfNft.deployed();
   console.log('NFT Smart Contract deployed to: ', wfNft.address);
