@@ -24,10 +24,7 @@ async function main() {
   console.log('MAX MINT AMOUNT: ', MAX_MINT_AMOUNT);
   console.log('NFT MINT DATE: ', NFT_MINT_DATE);
   console.log('IPFS_IMAGE_METADATA_URI: ', IPFS_IMAGE_METADATA_URI);
-  console.log(
-      'IPFS_HIDDEN_IMAGE_METADATA_URI: ',
-      IPFS_HIDDEN_IMAGE_METADATA_URI,
-  );
+  console.log('IPFS_HIDDEN_IMAGE_METADATA_URI: ', IPFS_HIDDEN_IMAGE_METADATA_URI);
   console.log('------------------------------------------');
   // We get the contract to deploy
   console.log('Getting Contract...');
