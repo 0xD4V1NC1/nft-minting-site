@@ -26,74 +26,78 @@ interface ExtendedChainInformation extends BasicChainInformation {
   nativeCurrency: AddEthereumChainParameter['nativeCurrency']
   blockExplorerUrls: AddEthereumChainParameter['blockExplorerUrls']
 }
+/*
+  @TODO if you have a node you should replace these URLs with your node. It is not considered best practice to
+  to use the RPC url to connect to the blockchain but will work
+*/
 export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainInformation } = {
   31337: { // Localhost via Hardhat
     urls: [`http://127.0.0.1:8545/`].filter((url) => url !== undefined),
     name: 'Localhost',
   },
   1: { // eth
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/mainnet`].filter((url) => url !== undefined),
+    urls: [`https://mainnet.infura.io/v3/`].filter((url) => url !== undefined),
     name: 'Mainnet',
   },
   3: { // ropsten
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/ropsten`].filter(
+    urls: [`https://ropsten.infura.io/v3/`].filter(
         (url) => url !== undefined,
     ),
     name: 'Ropsten',
   },
   4: { // Rinkeby
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/rinkeby`].filter(
+    urls: [`https://rinkeby.infura.io/v3/`].filter(
         (url) => url !== undefined,
     ),
     name: 'Rinkeby',
   },
   5: { // Gorli
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/goerli`].filter(
+    urls: [`https://goerli.infura.io/v3/`].filter(
         (url) => url !== undefined,
     ),
     name: 'Görli',
   },
   42: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/eth/kovan`].filter(
+    urls: [`https://kovan.infura.io/v3/`].filter(
         (url) => url !== undefined,
     ),
     name: 'Kovan',
   },
   // Optimism
   10: {
-    urls: [``].filter((url) => url !== undefined),
+    urls: [`https://rpc.ankr.com/optimism`].filter((url) => url !== undefined),
     name: 'Optimism',
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://optimistic.etherscan.io'],
   },
   69: {
-    urls: [``].filter((url) => url !== undefined),
+    urls: [`https://rpc.ankr.com/optimism_testnet`].filter((url) => url !== undefined),
     name: 'Optimism Kovan',
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://kovan-optimistic.etherscan.io'],
   },
   // Arbitrum
   42161: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/arbitrum/mainnet`].filter((url) => url !== undefined),
+    urls: [`https://arb1.arbitrum.io/rpc`].filter((url) => url !== undefined),
     name: 'Arbitrum One',
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://arbiscan.io'],
   },
   421611: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/arbitrum/testnet`].filter((url) => url !== undefined),
+    urls: [`https://rinkeby.arbitrum.io/rpc`].filter((url) => url !== undefined),
     name: 'Arbitrum Testnet',
     nativeCurrency: ETH,
     blockExplorerUrls: ['https://testnet.arbiscan.io'],
   },
   // Polygon
   137: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/polygon/mainnet`].filter((url) => url !== undefined),
+    urls: [`https://young-bold-field.matic.discover.quiknode.pro/${process.env.REACT_APP_QUICK_NODES_API_KEY}/`].filter((url) => url !== undefined),
     name: 'Polygon Mainnet',
     nativeCurrency: MATIC,
     blockExplorerUrls: ['https://polygonscan.com'],
   },
   80001: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/polygon/mumbai`].filter(
+    urls: [`wss://ws-nd-164-731-091.p2pify.com/5844ba136e60932b79f3797ae38ce314`].filter(
         (url) => url !== undefined,
     ),
     name: 'Polygon Mumbai',
@@ -102,7 +106,7 @@ export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainI
   },
   // FTM
   250: {
-    urls: [`https://speedy-nodes-nyc.moralis.io/${process.env.REACT_APP_NODE_MORALIS_API_KEY}/fantom/mainnet`].filter((url) => url !== undefined),
+    urls: [`https://rpc.ankr.com/fantom`].filter((url) => url !== undefined),
     name: 'Fantom',
     nativeCurrency: FTM,
     blockExplorerUrls: ['https://polygonscan.com'],

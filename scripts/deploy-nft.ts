@@ -28,7 +28,6 @@ async function main() {
       'IPFS_HIDDEN_IMAGE_METADATA_URI: ',
       IPFS_HIDDEN_IMAGE_METADATA_URI,
   );
-  console.log('TEST FE APP ENV:', process.env.NODE_ENV);
   console.log('------------------------------------------');
   // We get the contract to deploy
   console.log('Getting Contract...');
