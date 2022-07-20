@@ -3,6 +3,8 @@
 2. Knowledge of how to generate your NFT images, and metadata and deploy it to the IPFS. If you don't know you can look into a Youtube tutorial or look up art-hashlip generator tutorial.
 
 0x5FbDB2315678afecb367f032d93F642f64180aa3
+https://testnets.opensea.io/get-listed
+https://testnet.rarible.com/collection/polygon/0xe665b21fe7adc6e96c59fb96bf3c3a82ce14c060/items
 # Getting Started
 1. Clone Repo
 2. Run yarn install 

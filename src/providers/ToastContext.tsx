@@ -13,10 +13,7 @@ export const ToastContext = createContext<ToastType>({
   },
 });
 
-interface ToastProviderInterface {
-  children: ReactNode,
-};
-export const ToastProvider = ({children}:ToastProviderInterface) => {
+export const ToastProvider = ({children}:{ children: ReactNode}) => {
   const defaultToast: ToastInterface & {id: string} = {
     id: '',
     toastType: '',

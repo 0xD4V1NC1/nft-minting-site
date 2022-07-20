@@ -97,7 +97,7 @@ export const CHAINS: { [chainId: number]: BasicChainInformation | ExtendedChainI
     blockExplorerUrls: ['https://polygonscan.com'],
   },
   80001: {
-    urls: [`wss://ws-nd-164-731-091.p2pify.com/${process.env.REACT_APP_CHAINSTACK_API_KEY}`].filter(
+    urls: [`https://nd-164-731-091.p2pify.com/${process.env.REACT_APP_CHAINSTACK_API_KEY}`].filter(
         (url) => url !== undefined,
     ),
     name: 'Polygon Mumbai',
