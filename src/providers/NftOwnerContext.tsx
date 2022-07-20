@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import React, {createContext, useContext, ReactNode} from 'react';
 import useNftOwner from '../hooks/useNftOwner';
 
 export type NftOwnerData = {
@@ -15,11 +15,11 @@ export const NftOwnerContext = createContext<NftOwnerData>({
   isLoadingNftOwnerData: true,
 });
 
-export const NftOwnerContextProvider = (props: any) => {
+export const NftOwnerContextProvider = ({children}: {children: ReactNode}) => {
   const {nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData} = useNftOwner();
   return (
     <NftOwnerContext.Provider value={{nftsOwned, isOwnerOf, availableMints, isLoadingNftOwnerData}}>
-      {props.children}
+      {children}
     </NftOwnerContext.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 import {Web3ReactHooks, Web3ReactProvider} from '@web3-react/core';
 import {MetaMask} from '@web3-react/metamask';
@@ -35,10 +35,10 @@ const connectors: [MetaMask | WalletConnect | CoinbaseWallet | GnosisSafe | Netw
 
 ];
 
-export default function Web3Provider(props:any) {
+export default function Web3Provider({children}:{children:ReactNode}) {
   return (
     <Web3ReactProvider connectors={connectors}>
-      {props.children}
+      {children}
     </Web3ReactProvider>
   );
 }

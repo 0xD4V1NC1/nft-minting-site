@@ -11,16 +11,18 @@ import AppRoutes from './AppRoutes';
 import {GlobalContext} from './providers/GlobalContext';
 import {NftOwnerContextProvider} from './providers/NftOwnerContext';
 import {ToastProvider} from './providers/ToastContext';
+import useCachedConnector from './hooks/useCachedConnector';
 
 const App = () => {
   const [pageTitle, setPageTitle]= useState<string>('');
   const [metaDescription, setMetaDescription]= useState<string>('');
-  const {connector, account} = useWeb3React();
+  const {account} = useWeb3React();
+  const {lastKnownConnector} = useCachedConnector();
 
   useEffect(() => {
     // this is what attempts to keep wallet connection when returning to the site
-    connector.connectEagerly?.();
-  }, []);
+    lastKnownConnector?.connectEagerly?.();
+  }, [lastKnownConnector]);
 
   return (
     <BrowserRouter>
