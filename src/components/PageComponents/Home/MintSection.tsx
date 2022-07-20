@@ -78,7 +78,7 @@ const MintSection = ({
   const decrementAriaLabel = mintAmount > 0 ? mintAmount - 1 : 0;
   const totalCost = (nftCost * mintAmount);
   const formattedTotalCost = totalCost.toFixed(2);
-  const mintTextColor = availableMints > 0 ? 'text-black' : 'text-red-500';
+  const mintTextColor = availableMints > 0 ? 'text-black dark:text-white' : 'text-red-500';
   return (
     <section
       id="mint-section"
@@ -106,7 +106,7 @@ const MintSection = ({
             />
             {isAccountConnected ? <span className="text-5xl text-primary-400"> {currentNftId} / {maxAmount} Minted </span> : null}
           </h2>
-          <div className="relative w-full overflow-hidden rounded-3xl bg-secondary-500 p-6 py-12 mt-12">
+          <div className="relative w-full overflow-hidden rounded-3xl bg-[#f5f5f5] dark:bg-primary-dark-400 text-black dark:text-white p-6 py-12 mt-12">
             {isAccountConnected ? (
               <div className="h-48 flex flex-col justify-center items-center">
                 <h3 className='mb-4 text-3xl font-semibold'>Mint Cost: {formattedTotalCost} Ξ</h3>
@@ -121,7 +121,7 @@ const MintSection = ({
                   />
                   <input
                     type="number"
-                    className={`mb-0 box-content border-none text-center p-4 w-1/2`}
+                    className={`mb-0 box-content border-none text-black text-center p-4 w-1/2`}
                     onKeyDown={(e) => validateKeyPress(e)}
                     onChange={(e) => {
                       if (parseInt(e.target.value) < 4 && parseInt(e.target.value) > 0) {
