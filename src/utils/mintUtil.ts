@@ -16,7 +16,7 @@ export const handleMint = async (mintAmount:number, provider: any, nftCost:numbe
         const errorMessage = {...error};
         const parsedErrorMessage = JSON.parse(JSON.stringify(errorMessage)).reason;
         // looks for Error message in between single quotes returned from node
-        const regex = /(?<=\').*?(?=\')/mg;
+        const regex = /(\'[\w\s]+\')/g;
         const specificErrorMessage = parsedErrorMessage.match(regex);
         addToast({toastType: 'error', toastHeader: 'Minting Failed', toastMessage: `Your mint failed with error: ${specificErrorMessage}`});
       } else {
