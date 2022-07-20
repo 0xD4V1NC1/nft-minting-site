@@ -15,6 +15,9 @@ import Image from '../UI/Image';
 import Modal from '../UI/Modal';
 import {CHAIN_ID} from '../../consts/consts';
 
+import useCachedConnector from '../../hooks/useCachedConnector';
+import {getConnectorName} from '../../providers/Web3Provider';
+
 const walletOptions = [
   {
     name: 'Metamask',
@@ -49,10 +52,14 @@ const WalletOption = ({
   setIsModalOpen: any;
 }) => {
   if (!walletName || !connector) return null;
+  const {setCachedConnectorName} = useCachedConnector();
+
   const handleConnectWallet = () => {
     // our NFT project is on Polygon, so we want to enforce a connection to Polygon mainnet when in prod, hardhat local when development
     connector.activate(CHAIN_ID);
     setIsModalOpen(false);
+    const connectorName = getConnectorName(connector);
+    setCachedConnectorName(connectorName);
   };
 
   return (
