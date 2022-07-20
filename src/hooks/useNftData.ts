@@ -31,28 +31,30 @@ const useNftData = () => {
     // maxNFTSupply
     let maxSupply;
     let isRevealed;
-    try {
-      const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, provider);
+    if (window.ethereum) {
+      try {
+        const contract = new ethers.Contract(NFT_CONTRACT_ADDRESS, NFT_ABI, provider);
 
-      const cost = await contract.cost();
-      const costInWei = cost && cost.toString();
-      // cost is returned as a bigNumber... to convert it we need to turn it into a string for formatEther then convert it to a number
-      const costInEther = costInWei && parseFloat(ethers.utils.formatEther(costInWei));
-      perNftCost = costInEther;
+        const cost = await contract.cost();
+        const costInWei = cost && cost.toString();
+        // cost is returned as a bigNumber... to convert it we need to turn it into a string for formatEther then convert it to a number
+        const costInEther = costInWei && parseFloat(ethers.utils.formatEther(costInWei));
+        perNftCost = costInEther;
 
-      maxSupply = await contract.maxSupply();
-      // convert BigNumber hex string to readable number
-      maxSupply = maxSupply.toNumber();
+        maxSupply = await contract.maxSupply();
+        // convert BigNumber hex string to readable number
+        maxSupply = maxSupply.toNumber();
 
-      maxMintAmount = await contract.maxMintAmount();
+        maxMintAmount = await contract.maxMintAmount();
 
-      // TotalSupply is the current NFT of the MaxAmount... i.e. 1 of 25
-      const totalSupply = await contract.totalSupply();
-      currentToken = parseInt(totalSupply.toString());
+        // TotalSupply is the current NFT of the MaxAmount... i.e. 1 of 25
+        const totalSupply = await contract.totalSupply();
+        currentToken = parseInt(totalSupply.toString());
 
-      isRevealed = await contract.isRevealed();
-    } catch (error) {
-      console.warn('Error fetching cost of NFT (useNftData.ts):', error);
+        isRevealed = await contract.isRevealed();
+      } catch (error) {
+        console.warn('Error fetching cost of NFT (useNftData.ts):', error);
+      }
     }
     return {perNftCost, maxSupply, currentToken, maxMintAmount, isRevealed};
   }, [provider]);
