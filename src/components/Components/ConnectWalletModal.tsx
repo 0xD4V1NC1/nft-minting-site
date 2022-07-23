@@ -70,7 +70,7 @@ const WalletOption = ({
     >
       <div className="flex justify-start items-center p-4">
         <Image src={logoUrl} size="w-16 h-16" />
-        <p className="ml-4 text-3xl">{walletName}</p>
+        <p className="ml-4 text-3xl text-black dark:text-white">{walletName}</p>
       </div>
     </button>
   );
