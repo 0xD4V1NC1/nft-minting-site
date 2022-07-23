@@ -21,16 +21,16 @@ const MobileMenuOptions = ({isOverlayOpen, setIsOverlayOpen}:{isOverlayOpen: boo
           <p className="text-xs uppercase pb-2 font-bold pl-6">Navigation</p>
         </li>
         {mobile.primary.items.map((item) => (
-          <li key={item.label}>
+          <li key={item.label} className='px-6 hover:bg-gray-200 dark:hover:bg-primary-dark-400 rounded'>
             <Button
               type='button'
               color='none'
               ariaLabel={`${item.ariaLabel}`}
               href={item.href || ''}
-              className="flex w-9/10 mx-4 my-2 items-center cursor-pointer py-1 pl-6 shadow-none rounded hover:bg-gray-200"
+              className="flex w-9/10 mx-4 my-2 items-center cursor-pointer py-1 shadow-none rounded"
             >
               <Icon name={item.icon} size='xlarge' color='primary' className="mr-3" />
-              <p className="text-lg text-primary-500 dark:text-primary-dark-400">{item.label}</p>
+              <p className="text-lg text-primary-500 dark:text-white">{item.label}</p>
             </Button>
           </li>
         ))}
